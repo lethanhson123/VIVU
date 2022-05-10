@@ -50,6 +50,8 @@ public class Blog : CommonAudit
     public bool IsBanner { get; set; } = false;
     public Blog Initialization()
     {
+        DescriptionOriginal = AppGlobal.RemoveHTMLTags(DescriptionHTML);
+        ContentOriginal = AppGlobal.RemoveHTMLTags(ContentHTML);
         URLFull = AppGlobal.Domain + URLCode + "/" + AppGlobal.ConvertNameToCode(Name) + "-" + Id + URLExtension;
         URLImage = AppGlobal.Domain + "/" + AppGlobal.ImagesDirectory + "/" + ImageFileName;
         URLShareFacebook = "https://www.facebook.com/sharer/sharer.php?u=" + URLFull;

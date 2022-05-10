@@ -1,4 +1,6 @@
-﻿namespace VIVU.Ultils.Helpers;
+﻿
+
+namespace VIVU.Ultils.Helpers;
 
 public static class AppGlobal
 {
@@ -56,6 +58,33 @@ public static class AppGlobal
     }
     #endregion
     #region Functions
+    public static string RemoveHTMLTags(string content)
+    {
+        Regex regex = new Regex("\\<[^\\>]*\\>");
+        content = regex.Replace(content, String.Empty);
+        content = content.Trim();
+        return content;
+    }
+    public static string ToUpperFirstLetter(string title)
+    {
+        if (!string.IsNullOrEmpty(title))
+        {
+            string result = "";
+            string[] words = title.Split(' ');
+            foreach (string word in words)
+            {
+                if (word.Trim() != "")
+                {
+                    if (word.Length > 1)
+                        result += word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower() + " ";
+                    else
+                        result += word.ToUpper() + " ";
+                }
+            }
+            title = result;
+        }
+        return title;
+    }
     public static string ConvertNameToCode(string name)
     {
         string nameReturn = name;
