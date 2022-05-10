@@ -1,0 +1,16 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using MediatR;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.Extensions.Options;
+global using System.Security.Claims;
+global using Microsoft.EntityFrameworkCore;
+global using AutoMapper;
+global using VIVU.Data.Contexts;
+global using VIVU.Logic.Commands;
+global using VIVU.Common.Models;
+global using VIVU.Data.Entities;
+global using VIVU.Logic.Queries.Interfaces;

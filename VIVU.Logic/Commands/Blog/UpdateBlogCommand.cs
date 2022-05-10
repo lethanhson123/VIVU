@@ -1,6 +1,19 @@
-﻿namespace VIVU.Data.Entities;
-public class Blog : CommonAudit
+﻿
+namespace VIVU.Logic.Commands;
+
+public class UpdateBlogCommand : CommonAuditCommand, IRequest<CommonCommandResultHasData<Blog>>
 {
+    public int Id { get; set; } = 0;
+    public string CreatedBy { get; set; } = string.Empty;
+    public DateTime? CreatedAt { get; set; }
+    public string UpdatedBy { get; set; } = string.Empty;
+    public DateTime? UpdatedAt { get; set; }
+    public int? ParentId { get; set; }
+    public string Note { get; set; } = string.Empty;
+    public bool IsActive { get; set; } = true;
+    public int? RowVersion { get; set; }
+    public string Code { get; set; } = string.Empty;
+    public int? SortOrder { get; set; }
     public DateTime DatePost { get; set; } = DateTime.Now;
     public string DatePostDisplay { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
@@ -48,15 +61,4 @@ public class Blog : CommonAudit
     /// URLShareLinkedin = "https://www.linkedin.com/sharing/share-offsite/?url=" + URLFull;
     /// </summary>
     public bool IsBanner { get; set; } = false;
-    public Blog Initialization()
-    {
-        URLFull = AppGlobal.Domain + URLCode + "/" + AppGlobal.ConvertNameToCode(Name) + "-" + Id + URLExtension;
-        URLImage = AppGlobal.Domain + "/" + AppGlobal.ImagesDirectory + "/" + ImageFileName;
-        URLShareFacebook = "https://www.facebook.com/sharer/sharer.php?u=" + URLFull;
-        URLShareTwitter = "https://twitter.com/intent/tweet?text=" + Name + "&url=" + URLFull;
-        URLSharePinterest = "https://www.pinterest.com/pin-builder/?url=" + URLFull + "&media=" + URLImage + "&description=" + Name + "&method=button";
-        URLShareLinkedin = "https://www.linkedin.com/sharing/share-offsite/?url=" + URLFull;
-        return this;
-    }
 }
-

@@ -8,13 +8,18 @@
 
   <ItemGroup>
     <Folder Include="Configurations\" />
-    <Folder Include="Contexts\" />
     <Folder Include="InitDatabase\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\VIVU.Common\VIVU.Common.csproj" />
+    <ProjectReference Include="..\VIVU.Ultils\VIVU.Ultils.csproj" />
   </ItemGroup>
 
 </Project>
