@@ -42,6 +42,20 @@ public static class AppGlobal
     }
     #endregion
     #region AppSettings 
+    public static string URLExtension
+    {
+        get
+        {
+            return ".html";
+        }
+    }
+    public static string ImagesDirectory
+    {
+        get
+        {
+            return "";
+        }
+    }
     public static string Domain
     {
         get
@@ -49,7 +63,8 @@ public static class AppGlobal
             return "";
         }
     }
-    public static string ImagesDirectory
+   
+    public static string ApplicationDbContextConectionString
     {
         get
         {

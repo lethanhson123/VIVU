@@ -1,6 +1,8 @@
 ﻿namespace VIVU.Data.Entities;
 public class Blog : CommonAudit
 {
+    public int? WebsiteId { get; set; } = 0;
+    public string WebsiteDomain { get; set; } = string.Empty;
     public DateTime DatePost { get; set; } = DateTime.Now;
     public string DatePostDisplay { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
@@ -49,15 +51,71 @@ public class Blog : CommonAudit
     /// </summary>
     public bool IsBanner { get; set; } = false;
     public Blog Initialization()
-    {
-        DescriptionOriginal = AppGlobal.RemoveHTMLTags(DescriptionHTML);
-        ContentOriginal = AppGlobal.RemoveHTMLTags(ContentHTML);
-        URLFull = AppGlobal.Domain + URLCode + "/" + AppGlobal.ConvertNameToCode(Name) + "-" + Id + URLExtension;
-        URLImage = AppGlobal.Domain + "/" + AppGlobal.ImagesDirectory + "/" + ImageFileName;
-        URLShareFacebook = "https://www.facebook.com/sharer/sharer.php?u=" + URLFull;
-        URLShareTwitter = "https://twitter.com/intent/tweet?text=" + Name + "&url=" + URLFull;
-        URLSharePinterest = "https://www.pinterest.com/pin-builder/?url=" + URLFull + "&media=" + URLImage + "&description=" + Name + "&method=button";
-        URLShareLinkedin = "https://www.linkedin.com/sharing/share-offsite/?url=" + URLFull;
+    {       
+        if (string.IsNullOrEmpty(DatePostDisplay))
+        {
+            DatePostDisplay = DatePost.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+        if (string.IsNullOrEmpty(URLExtension))
+        {
+            URLExtension = AppGlobal.URLExtension;
+        }
+        if (string.IsNullOrEmpty(URLExtension))
+        {
+            URLExtension = AppGlobal.URLExtension;
+        }
+        if (string.IsNullOrEmpty(URL))
+        {
+            URL = AppGlobal.ConvertNameToCode(Name);
+        }
+        if (string.IsNullOrEmpty(DescriptionOriginal))
+        {
+            DescriptionOriginal = AppGlobal.RemoveHTMLTags(DescriptionHTML);
+        }
+        if (string.IsNullOrEmpty(ContentOriginal))
+        {
+            ContentOriginal = AppGlobal.RemoveHTMLTags(ContentHTML);
+        }
+        if (string.IsNullOrEmpty(Display))
+        {
+            Display = Name;
+        }
+        if (string.IsNullOrEmpty(METAKeyword))
+        {
+            METAKeyword = Name;
+        }
+        if (string.IsNullOrEmpty(METAKeywordNews))
+        {
+            METAKeywordNews = Name;
+        }
+        if (string.IsNullOrEmpty(METADescription))
+        {
+            METADescription = DescriptionOriginal;
+        }
+        if (string.IsNullOrEmpty(URLFull))
+        {
+            URLFull = WebsiteDomain + URLCode + "/" + URL + "-" + Id + URLExtension;
+        }
+        if (string.IsNullOrEmpty(URLImage))
+        {
+            URLImage = WebsiteDomain + "/" + AppGlobal.ImagesDirectory + "/" + ImageFileName;
+        }
+        if (string.IsNullOrEmpty(URLShareFacebook))
+        {
+            URLShareFacebook = "https://www.facebook.com/sharer/sharer.php?u=" + URLFull;
+        }
+        if (string.IsNullOrEmpty(URLShareTwitter))
+        {
+            URLShareTwitter = "https://twitter.com/intent/tweet?text=" + Name + "&url=" + URLFull;
+        }
+        if (string.IsNullOrEmpty(URLSharePinterest))
+        {
+            URLSharePinterest = "https://www.pinterest.com/pin-builder/?url=" + URLFull + "&media=" + URLImage + "&description=" + Name + "&method=button";
+        }
+        if (string.IsNullOrEmpty(URLShareLinkedin))
+        {
+            URLShareLinkedin = "https://www.linkedin.com/sharing/share-offsite/?url=" + URLFull;
+        }
         return this;
     }
 }

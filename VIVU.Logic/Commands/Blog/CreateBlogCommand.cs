@@ -1,15 +1,12 @@
-﻿
-namespace VIVU.Logic.Commands;
-
-public class UpdateBlogCommand : CommonAuditCommand, IRequest<CommonCommandResultHasData<Blog>>
+﻿namespace VIVU.Logic.Commands;
+public class CreateBlogCommand : CommonAuditCommand, IRequest<CommonCommandResultHasData<Blog>>
 {
-    public int Id { get; set; } = 0;
     public int? ParentId { get; set; }
     public string Note { get; set; } = string.Empty;
-    public bool IsActive { get; set; } = true;    
+    public bool IsActive { get; set; } = true;
     public string Code { get; set; } = string.Empty;
     public int? SortOrder { get; set; }
-    public DateTime DatePost { get; set; } = DateTime.Now;   
+    public DateTime DatePost { get; set; } = DateTime.Now;
     public string Name { get; set; } = string.Empty;
     public string Display { get; set; } = string.Empty;
     public string DescriptionHTML { get; set; } = string.Empty;

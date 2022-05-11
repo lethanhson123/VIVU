@@ -17,12 +17,16 @@ public class CommonAudit
     {
         CreatedBy = userName;
         CreatedAt = DateTime.Now;
+        UpdatedBy = userName;
+        UpdatedAt = DateTime.Now;
+        RowVersion = 1;
         return this;
     }
     public CommonAudit SetUpdateAudit(string userName)
     {
         UpdatedBy = userName;
         UpdatedAt = DateTime.Now;
+        RowVersion = RowVersion + 1;
         return this;
     }
 }
