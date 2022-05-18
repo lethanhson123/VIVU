@@ -20,10 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\VIVU.Common\VIVU.Common.csproj" />
     <ProjectReference Include="..\VIVU.Logic\VIVU.Logic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\VIVU.Ultils\VIVU.Ultils.csproj" />
   </ItemGroup>
 
 </Project>
