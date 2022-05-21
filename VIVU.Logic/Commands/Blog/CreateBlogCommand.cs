@@ -18,5 +18,5 @@ public class CreateBlogCommand : CommonAuditCommand, IRequest<CommonCommandResul
     public string URLCode { get; set; } = string.Empty;
     public string URL { get; set; } = string.Empty;
     public string ImageFileName { get; set; } = string.Empty;
-    public bool IsBanner { get; set; } = false;
+    public bool IsBanner { get; set; } = true;
 }
