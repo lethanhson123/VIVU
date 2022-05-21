@@ -11,6 +11,10 @@
     <Folder Include="DataTransferObjects\" />
     <Folder Include="EventHandlers\" />
     <Folder Include="Events\" />
+    <Folder Include="Configs\" />
+    <Folder Include="DataTransferObjects\" />
+    <Folder Include="EventHandlers\" />
+    <Folder Include="Events\" />
   </ItemGroup>
 
   <ItemGroup>
