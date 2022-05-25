@@ -15,29 +15,49 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{B2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{899135AD-8B8C-493B-8F78-5EC1D1FB9A7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Data", "VIVU.Data\VIVU.Data.csproj", "{F5082515-C031-4D04-B0DE-C565DBBE8FA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Data", "VIVU.Data\VIVU.Data.csproj", "{F5082515-C031-4D04-B0DE-C565DBBE8FA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Data.Shared", "VIVU.Data.Shared\VIVU.Data.Shared.csproj", "{12DFCAB5-1D6F-48FC-BD79-268A035C9679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Data.Shared", "VIVU.Data.Shared\VIVU.Data.Shared.csproj", "{12DFCAB5-1D6F-48FC-BD79-268A035C9679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Common", "VIVU.Common\VIVU.Common.csproj", "{2692F14E-8AAC-4215-9CF4-E95F29D503FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Common", "VIVU.Common\VIVU.Common.csproj", "{2692F14E-8AAC-4215-9CF4-E95F29D503FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Ultils", "VIVU.Ultils\VIVU.Ultils.csproj", "{A51AEC2C-D229-45E4-A425-4217E9CFCE5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Ultils", "VIVU.Ultils\VIVU.Ultils.csproj", "{A51AEC2C-D229-45E4-A425-4217E9CFCE5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Logic", "VIVU.Logic\VIVU.Logic.csproj", "{D4518901-53C2-4586-B1AD-A65566BC92E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Logic", "VIVU.Logic\VIVU.Logic.csproj", "{D4518901-53C2-4586-B1AD-A65566BC92E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Shared", "VIVU.Shared\VIVU.Shared.csproj", "{B92707C8-CDF1-4E07-9B12-925F73CD2C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Shared", "VIVU.Shared\VIVU.Shared.csproj", "{B92707C8-CDF1-4E07-9B12-925F73CD2C1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Website", "VIVU.Website\VIVU.Website.csproj", "{DF7BABD5-3DE2-4BE8-811A-1A613EE7337C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Website", "VIVU.Website\VIVU.Website.csproj", "{DF7BABD5-3DE2-4BE8-811A-1A613EE7337C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Login", "VIVU.Login\VIVU.Login.csproj", "{72E42D40-3994-4F3A-B10A-3F8A18186E36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Login", "VIVU.Login\VIVU.Login.csproj", "{72E42D40-3994-4F3A-B10A-3F8A18186E36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.CMS", "VIVU.CMS\VIVU.CMS.csproj", "{A7A055EA-6011-445B-8693-B103E68E6170}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.CMS", "VIVU.CMS\VIVU.CMS.csproj", "{A7A055EA-6011-445B-8693-B103E68E6170}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.API", "VIVU.API\VIVU.API.csproj", "{58596523-57CE-42FE-8402-94847A0B4AD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.API", "VIVU.API\VIVU.API.csproj", "{58596523-57CE-42FE-8402-94847A0B4AD5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "intergration", "intergration", "{29ADFE7F-3AE6-45AA-AD02-05CBC39EA347}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIVU.Intergration", "VIVU.Intergration\VIVU.Intergration.csproj", "{E54816C4-9316-46C7-9620-DBAC24DF40E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Intergration", "VIVU.Intergration\VIVU.Intergration.csproj", "{E54816C4-9316-46C7-9620-DBAC24DF40E4}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminLTE-3.2.0", "AdminLTE-3.2.0\", "{5C7E57F2-BF58-4ED3-BCE3-73866A658219}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_57211"
+		Debug.AspNetCompiler.PhysicalPath = "AdminLTE-3.2.0\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57211\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_57211"
+		Release.AspNetCompiler.PhysicalPath = "AdminLTE-3.2.0\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57211\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57211"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +109,10 @@ Global
 		{E54816C4-9316-46C7-9620-DBAC24DF40E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E54816C4-9316-46C7-9620-DBAC24DF40E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E54816C4-9316-46C7-9620-DBAC24DF40E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7E57F2-BF58-4ED3-BCE3-73866A658219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7E57F2-BF58-4ED3-BCE3-73866A658219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7E57F2-BF58-4ED3-BCE3-73866A658219}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7E57F2-BF58-4ED3-BCE3-73866A658219}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
