@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VIVU.Data\VIVU.Data.csproj" />
+    <ProjectReference Include="..\VIVU.Shared\VIVU.Shared.csproj" />
   </ItemGroup>
 
 </Project>

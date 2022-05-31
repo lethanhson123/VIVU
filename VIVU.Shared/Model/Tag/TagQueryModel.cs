@@ -8,5 +8,8 @@ namespace VIVU.Shared.Model
 {
     public class TagQueryModel
     {
+        public string Keywords { get; set; } = string.Empty;
+        public int PageSize { get; set; }
+        public int PageIndex { get; set; }
     }
 }
