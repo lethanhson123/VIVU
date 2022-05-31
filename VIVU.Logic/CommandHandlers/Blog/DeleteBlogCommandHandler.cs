@@ -4,9 +4,9 @@ namespace VIVU.Logic.CommandHandlers.Blog;
 
 public class DeleteBlogCommandHandler : IRequestHandler<DeleteBlogCommand, CommonCommandResult>
 {
-    private readonly ApplicationDbContext applicationDatabase;
+    private readonly AppDatabase applicationDatabase;
     private readonly IMapper mapper;
-    public DeleteBlogCommandHandler(ApplicationDbContext applicationDatabase,
+    public DeleteBlogCommandHandler(AppDatabase applicationDatabase,
         IMapper mapper)
     {
         this.applicationDatabase = applicationDatabase;

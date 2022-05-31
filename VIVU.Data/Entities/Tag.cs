@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace VIVU.Data.Entities
 {
-    internal class Tag
+    public class Tag : CommonAudit
     {
+        public int Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Meta { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
     }
 }

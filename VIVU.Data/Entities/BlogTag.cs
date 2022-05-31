@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace VIVU.Data.Entities
 {
-    internal class ProductVariant
+    public class BlogTag : CommonAudit
     {
+        public int Id { get; set; }
+        public int BlogId { get; set; }
+        public int TagId { get; set; }
     }
 }

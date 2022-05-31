@@ -38,7 +38,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services
-    .AddSqlServerDatabase<ApplicationDbContext>(
+    .AddSqlServerDatabase<AppDatabase>(
         builder.Configuration.GetConnectionString("Database"));
 
 var app = builder.Build();
@@ -48,7 +48,7 @@ var app = builder.Build();
 /// </summary>
 using (var scope = app.Services.CreateScope())
 {
-    var applicationDb = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    var applicationDb = scope.ServiceProvider.GetRequiredService<AppDatabase>();
 
 
 

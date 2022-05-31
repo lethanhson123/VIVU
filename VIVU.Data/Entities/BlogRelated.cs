@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace VIVU.Data.Entities
 {
-    public class SalesOrder
+    public class BlogRelated : CommonAudit
     {
-
+        public int Id { get; set; }
+        public int PostId { get; set; }
+        public int RelatedId { get; set; }
     }
 }

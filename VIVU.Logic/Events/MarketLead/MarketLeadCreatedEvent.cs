@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VIVU.Data.Entities
+namespace VIVU.Logic.Events
 {
-    public class SalesOrder
+    internal class MarketLeadCreatedEvent
     {
-
     }
 }

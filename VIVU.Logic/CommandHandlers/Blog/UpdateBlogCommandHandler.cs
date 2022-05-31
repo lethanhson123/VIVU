@@ -1,10 +1,10 @@
 ﻿namespace VIVU.Logic.CommandHandlers;
 public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand, CommonCommandResultHasData<VIVU.Data.Entities.Blog>>
 {
-    private readonly ApplicationDbContext applicationDatabase;
+    private readonly AppDatabase applicationDatabase;
     private readonly IMapper mapper;
 
-    public UpdateBlogCommandHandler(ApplicationDbContext applicationDatabase, IMapper mapper)
+    public UpdateBlogCommandHandler(AppDatabase applicationDatabase, IMapper mapper)
     {
         this.applicationDatabase = applicationDatabase;
         this.mapper = mapper;

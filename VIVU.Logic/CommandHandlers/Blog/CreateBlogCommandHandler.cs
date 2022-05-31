@@ -2,10 +2,10 @@
 
 public class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, CommonCommandResultHasData<VIVU.Data.Entities.Blog>>
 {
-    private readonly ApplicationDbContext applicationDatabase;
+    private readonly AppDatabase applicationDatabase;
     private readonly IMapper mapper;
 
-    public CreateBlogCommandHandler(ApplicationDbContext applicationDatabase, IMapper mapper)
+    public CreateBlogCommandHandler(AppDatabase applicationDatabase, IMapper mapper)
     {
         this.applicationDatabase = applicationDatabase;
         this.mapper = mapper;

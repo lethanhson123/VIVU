@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace VIVU.Data.Entities
 {
-    internal class SalesOrderDetail
+    public class SalesOrderDetail
     {
+
     }
 }
