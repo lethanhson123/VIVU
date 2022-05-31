@@ -7,16 +7,17 @@ namespace VIVU.API.Controllers;
 [Route("api/v{version:apiVersion}/blog/")]
 [ApiVersion("1.0")]
 [ApiController]
-public class BlogController : ControllerBase
+public class BlogsController : ControllerBase
 {
     private readonly IMediator mediator;
     private readonly IBlogQueries blogQueries;
-    public BlogController(IMediator mediator,
+    public BlogsController(IMediator mediator,
              IBlogQueries blogQueries)
     {
         this.mediator = mediator;
         this.blogQueries = blogQueries;
     }
+
     [HttpGet]
     [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<Blog>>), 200)]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<Blog>>>> GetAll()
