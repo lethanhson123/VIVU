@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Logic.Configs
 {
-    internal class ErrorConfig
+    public class ErrorConfig
     {
     }
 }

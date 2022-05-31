@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VIVU.Shared.Model.SalesOrder
+namespace VIVU.Shared.Model
 {
-    internal class SalesOrderModel
+    public class SalesOrderModel
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Logic.MappingProfiles
 {
-    internal class SalesOrderMappingProfile
+    public class SalesOrderMappingProfile
     {
     }
 }

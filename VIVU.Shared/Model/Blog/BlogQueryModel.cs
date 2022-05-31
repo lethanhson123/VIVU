@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Shared.Model.Blog
 {
-    internal class BlogQueryModel
+    public class BlogQueryModel
     {
     }
 }

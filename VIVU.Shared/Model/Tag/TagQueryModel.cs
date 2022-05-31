@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VIVU.Logic.Commands
+namespace VIVU.Shared.Model
 {
-    public class UpdateCategoryCommand
+    public class TagQueryModel
     {
     }
 }

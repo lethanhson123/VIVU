@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Shared.Process
 {
-    internal class SalesOrderProcess
+    public class SalesOrderProcess
     {
     }
 }

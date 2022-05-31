@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Shared.Model.Cateogry
 {
-    internal class CategoryModel
+    public class CategoryModel
     {
     }
 }

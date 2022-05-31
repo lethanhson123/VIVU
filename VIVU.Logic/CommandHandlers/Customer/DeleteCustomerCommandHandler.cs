@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Logic.CommandHandlers
 {
-    internal class DeleteCustomerCommandHandler
+    public class DeleteCustomerCommandHandler
     {
     }
 }

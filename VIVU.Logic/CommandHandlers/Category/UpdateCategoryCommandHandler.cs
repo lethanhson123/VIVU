@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Logic.CommandHandlers.Category
 {
-    internal class UpdateCategoryCommandHandler
+    public class UpdateCategoryCommandHandler
     {
     }
 }

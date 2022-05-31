@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Shared.Model.Product
 {
-    internal class ProductModel
+    public class ProductModel
     {
     }
 }

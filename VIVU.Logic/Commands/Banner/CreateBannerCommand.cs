@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Logic.Commands
 {
-    internal class CreateBannerCommand
+    public class CreateBannerCommand
     {
     }
 }

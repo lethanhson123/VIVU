@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Logic.Commands
 {
-    internal class UpdateCustomerCommand
+    public class UpdateCustomerCommand
     {
     }
 }

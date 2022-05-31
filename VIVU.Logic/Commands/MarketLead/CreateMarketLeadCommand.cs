@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Logic.Commands
 {
-    internal class CreateMarketLeadCommand
+    public class CreateMarketLeadCommand
     {
     }
 }

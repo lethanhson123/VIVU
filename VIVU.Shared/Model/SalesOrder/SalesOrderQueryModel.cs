@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Shared.Model
 {
-    internal class SalesOrderQueryModel
+    public class SalesOrderQueryModel
     {
     }
 }
