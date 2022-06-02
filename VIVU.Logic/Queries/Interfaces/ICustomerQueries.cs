@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VIVU.Shared.Model
+namespace VIVU.Logic.Queries.Interfaces
 {
-    public class CustomerQueryModel
+    public interface ICustomerQueries
     {
 
     }

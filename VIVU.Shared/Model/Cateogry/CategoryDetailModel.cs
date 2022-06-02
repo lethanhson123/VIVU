@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace VIVU.Shared.Model
 {
-    public class CustomerQueryModel
+    public class CategoryDetailModel : CategoryModel
     {
-
+        public List<BlogModel> Blogs = new List<BlogModel>();
     }
 }

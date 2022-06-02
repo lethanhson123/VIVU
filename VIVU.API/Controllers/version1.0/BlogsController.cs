@@ -4,7 +4,7 @@ using System.Net;
 using VIVU.Common.Models;
 using VIVU.Data.Entities;
 using VIVU.Logic.Queries.Interfaces;
-using VIVU.Shared.Model.Blog;
+using VIVU.Shared.Model;
 
 namespace VIVU.API.Controllers;
 

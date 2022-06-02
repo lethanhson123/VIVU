@@ -15,6 +15,7 @@ public class AppDatabase : IdentityDbContext<User>
     /// <summary>
     /// Post
     /// </summary>
+    public virtual DbSet<Banner> Banners => Set<Banner>();
     public virtual DbSet<Blog> Blogs => Set<Blog>();
     public virtual DbSet<BlogRelated> PostRelateds => Set<BlogRelated>();
     public virtual DbSet<BlogTag> PostTags => Set<BlogTag>();
@@ -36,6 +37,9 @@ public class AppDatabase : IdentityDbContext<User>
     protected override void OnModelCreating(ModelBuilder builder)
     {         
         base.OnModelCreating(builder);
+        builder.Entity<Banner>().HasKey(p => p.Id);
+        builder.Entity<Banner>().Property(x => x.Id).UseIdentityColumn();
+
         builder.Entity<Blog>().HasKey(p => p.Id);
         builder.Entity<Blog>().Property(x => x.Id).UseIdentityColumn();
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using VIVU.Common.Models;
-using VIVU.Shared.Model.Cateogry;
+using VIVU.Shared.Model;
 
 namespace VIVU.API.Controllers
 {

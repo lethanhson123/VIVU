@@ -35,5 +35,10 @@ namespace VIVU.Data.Entities
         public string ContactEmail { get; set; } = string.Empty;
         public string ContactPhone { get; set; } = string.Empty;
         public string Website { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Channel: facebook, link, website,...
+        /// </summary>
+        public string Channel { get; set; } = string.Empty;
     }
 }

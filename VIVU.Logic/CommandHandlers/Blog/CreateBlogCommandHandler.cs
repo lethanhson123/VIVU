@@ -1,6 +1,7 @@
 ﻿namespace VIVU.Logic.CommandHandlers;
 
-public class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, CommonCommandResultHasData<VIVU.Data.Entities.Blog>>
+public class CreateBlogCommandHandler 
+    : IRequestHandler<CreateBlogCommand, CommonCommandResultHasData<VIVU.Data.Entities.Blog>>
 {
     private readonly AppDatabase applicationDatabase;
     private readonly IMapper mapper;
