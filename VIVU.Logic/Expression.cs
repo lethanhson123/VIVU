@@ -13,6 +13,9 @@ namespace VIVU.Logic
         public static IServiceCollection AddQueries(this IServiceCollection services)
         {
             services.AddScoped<IBlogQueries, BlogQueries>();
+            services.AddScoped<IProductQueries, ProductQueries>();
+            services.AddScoped<IMarketLeadQueries, MarketLeadQueries>();
+            services.AddScoped<ICustomerQueries, CustomerQueries>();
             return services;
         }
     }

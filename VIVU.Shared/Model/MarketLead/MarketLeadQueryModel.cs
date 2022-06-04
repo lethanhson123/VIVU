@@ -8,6 +8,8 @@ namespace VIVU.Shared.Model
 {
     public class MarketLeadQueryModel
     {
-
+        public string? Keywords { get; set; } = string.Empty;
+        public int? PageSize { get; set; }
+        public int? PageIndex { get; set; }
     }
 }

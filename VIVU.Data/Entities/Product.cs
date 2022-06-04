@@ -8,7 +8,7 @@ namespace VIVU.Data.Entities
 {
     public class Product : CommonAudit
     {
-        public string Id { get; set; } = string.Empty;
+        public int Id { get; set; } 
         public string Name { get; set; } = string.Empty;
         public string SKU { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;

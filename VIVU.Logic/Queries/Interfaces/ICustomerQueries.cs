@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace VIVU.Logic.Queries.Interfaces;
 
-namespace VIVU.Logic.Queries.Interfaces
+public interface ICustomerQueries
 {
-    public interface ICustomerQueries
-    {
-
-    }
+    IEnumerable<CustomerModel> Get();
+    IEnumerable<CustomerModel> Get(CustomerQueryModel query);
+    IEnumerable<CustomerModel> Get(string? keywords);
+    Task<CustomerModel> GetDetail(int Id);
 }

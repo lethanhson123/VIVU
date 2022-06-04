@@ -18,7 +18,7 @@ public class CreateBlogCommandHandler
 
         try
         {
-            model.SetCreateAudit(request.UserName);
+            model.SetCreatedAudit(request.UserName);
             applicationDatabase.Blogs.Add(model);
             applicationDatabase.SaveChanges();
 

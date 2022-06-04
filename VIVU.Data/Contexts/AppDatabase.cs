@@ -56,8 +56,14 @@ public class AppDatabase : IdentityDbContext<User>
         builder.Entity<Tag>().Property(x => x.Id).UseIdentityColumn();
 
         builder.Entity<Customer>().HasKey(x => x.Id);
+        builder.Entity<Customer>().Property(x => x.Id).UseIdentityColumn();
+
         builder.Entity<Product>().HasKey(x => x.Id);
+        builder.Entity<Product>().Property(x => x.Id).UseIdentityColumn();
+
         builder.Entity<MarketLead>().HasKey(x => x.Id);
+        builder.Entity<MarketLead>().Property(x => x.Id).UseIdentityColumn();
+
     }
 }
 

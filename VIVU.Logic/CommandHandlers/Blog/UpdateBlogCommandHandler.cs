@@ -20,7 +20,7 @@ public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand, Commo
             {
                 mapper.Map(request, model);
                 applicationDatabase.Blogs.Update(model);
-                model.SetUpdateAudit(request.UserName);
+                model.SetUpdatedAudit(request.UserName);
                 applicationDatabase.SaveChanges();
 
                 result.Success = true;

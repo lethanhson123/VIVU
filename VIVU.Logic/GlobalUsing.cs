@@ -14,3 +14,7 @@ global using VIVU.Logic.Commands;
 global using VIVU.Common.Models;
 global using VIVU.Data.Entities;
 global using VIVU.Logic.Queries.Interfaces;
+global using System.Text.Json.Serialization;
+global using VIVU.Shared.Absstraction;
+global using VIVU.Shared.Model;
+global using VIVU.Logic.Configs;

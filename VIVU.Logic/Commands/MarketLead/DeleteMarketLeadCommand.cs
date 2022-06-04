@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VIVU.Shared.Absstraction;
 
 namespace VIVU.Logic.Commands
 {
-    public class DeleteCustomerCommand : IAuditCommand, IRequest<CommonCommandResult>
+    public class DeleteMarketLeadCommand : IAuditCommand, IRequest<CommonCommandResult>
     {
+        [JsonIgnore]
         public string UserName { get; set; } = string.Empty;
         public int Id { get; set; }
     }

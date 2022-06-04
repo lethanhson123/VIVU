@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+namespace VIVU.Logic.Commands;
 
-namespace VIVU.Logic.Commands
+public class CreateProductCommand : ProductModel, IAuditCommand, IRequest<CommonCommandResultHasData<ProductModel>>
 {
-    public class CreateProductCommand
-    {
-    }
+    [JsonIgnore]
+    public string UserName { get; set; } = string.Empty;
 }
