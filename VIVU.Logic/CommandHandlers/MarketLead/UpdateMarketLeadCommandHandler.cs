@@ -28,7 +28,7 @@ public class UpdateMarketLeadCommandHandler : IRequestHandler<UpdateMarketLeadCo
                 mapper.Map(request, marketLead);
                 marketLead.SetUpdatedAudit(request.UserName);
 
-                database.Update(marketLead);
+                database.MarketLeads.Update(marketLead);
                 database.SaveChanges();
 
                 result.Success = true;

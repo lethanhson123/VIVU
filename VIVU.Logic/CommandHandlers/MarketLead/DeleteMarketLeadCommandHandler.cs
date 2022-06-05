@@ -29,7 +29,7 @@
                     mapper.Map(request, marketLead);
                     marketLead.MarkAsDeleted(request.UserName);
 
-                    database.Update(marketLead);
+                    database.MarketLeads.Update(marketLead);
                     database.SaveChanges();
                     result.Success = true;
                 }

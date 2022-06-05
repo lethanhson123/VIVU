@@ -29,7 +29,7 @@ public class DeleteTagCommandHandler :
                 mapper.Map(request, tag);
                 tag.MarkAsDeleted(request.UserName);
 
-                database.Update(tag);
+                database.Tags.Update(tag);
                 database.SaveChanges();
                 result.Success = true;
             }

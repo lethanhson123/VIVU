@@ -32,7 +32,7 @@ namespace VIVU.Logic.CommandHandlers
                 if (category != null)
                 {
                     category.MarkAsDeleted(request.UserName);
-                    database.Update(category);
+                    database.Categories.Update(category);
                     database.SaveChanges();
 
                     result.Success = true;

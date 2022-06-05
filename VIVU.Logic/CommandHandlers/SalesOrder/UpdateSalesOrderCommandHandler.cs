@@ -27,10 +27,10 @@ public class UpdateSalesOrderCommandHandler : IRequestHandler<UpdateSalesOrderCo
             {
                 mapper.Map(request, salesOrder);
                 salesOrder.SetUpdatedAudit(request.UserName);
-                database.Update(salesOrder);
+                database.SalesOrders.Update(salesOrder);
 
                 var orderDetail = database.SalesOrderDetails.Where(x => x.SalesOrderId == request.Id && !x.IsDeleted).ToList();
-                database.UpdateRange(orderDetail);
+                database.SalesOrderDetails.UpdateRange(orderDetail);
                 database.SaveChanges();
                 result.Success = true;
             }

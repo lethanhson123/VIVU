@@ -35,6 +35,7 @@ public class AppDatabase : IdentityDbContext<User>
     public virtual DbSet<MarketLead> MarketLeads => Set<MarketLead>();
     public virtual DbSet<SalesOrder> SalesOrders => Set<SalesOrder>();
     public virtual DbSet<SalesOrderDetail> SalesOrderDetails => Set<SalesOrderDetail>();
+    public virtual DbSet<ProductImage> ProductImages => Set<ProductImage>();
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -65,7 +66,9 @@ public class AppDatabase : IdentityDbContext<User>
         builder.Entity<MarketLead>().HasKey(x => x.Id);
         builder.Entity<SalesOrder>().HasKey(x => x.Id);
         builder.Entity<SalesOrderDetail>().HasKey(x => x.Id);
-        builder.Entity<SalesOrderDetail>().Property(x => x.Id).UseIdentityColumn();
+        builder.Entity<SalesOrderDetail>().Property(x => x.Id).UseIdentityColumn();  
+        builder.Entity<ProductImage>().HasKey(x => x.Id);
+        builder.Entity<ProductImage>().Property(x => x.Id).UseIdentityColumn();
 
 
     }

@@ -16,6 +16,7 @@ namespace VIVU.Logic
             services.AddScoped<IProductQueries, ProductQueries>();
             services.AddScoped<IMarketLeadQueries, MarketLeadQueries>();
             services.AddScoped<ICustomerQueries, CustomerQueries>();
+            services.AddScoped<IProductImageQueries, ProductImageQueries>();
             return services;
         }
     }

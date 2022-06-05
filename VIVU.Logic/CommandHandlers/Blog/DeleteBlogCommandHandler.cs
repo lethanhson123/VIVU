@@ -22,7 +22,7 @@ public class DeleteBlogCommandHandler : IRequestHandler<DeleteBlogCommand, Commo
             if (category != null)
             {
                 category.MarkAsDeleted(request.UserName);
-                applicationDatabase.Update(category);            
+                applicationDatabase.Blogs.Update(category);            
                 applicationDatabase.SaveChanges();
                 result.Success = true;
             }

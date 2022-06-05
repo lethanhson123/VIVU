@@ -1,12 +1,12 @@
 ﻿namespace VIVU.Logic.CommandHandlers;
 
-public class UpdateTagCommandHandler : IRequestHandler<UpdateTagCommand, CommonCommandResult>
+public class UpdateProductImageCommandHandler : IRequestHandler<UpdateProductImageCommand, CommonCommandResult>
 {
     private readonly AppDatabase database;
     private readonly IMapper mapper;
     private readonly ErrorConfig errorConfig;
 
-    public UpdateTagCommandHandler(AppDatabase database,
+    public UpdateProductImageCommandHandler(AppDatabase database,
         IMapper mapper,
         IOptions<ErrorConfig> errorConfig)
     {
@@ -15,27 +15,27 @@ public class UpdateTagCommandHandler : IRequestHandler<UpdateTagCommand, CommonC
         this.errorConfig = errorConfig.Value;
     }
 
-    public Task<CommonCommandResult> Handle(UpdateTagCommand request, CancellationToken cancellationToken)
+    public Task<CommonCommandResult> Handle(UpdateProductImageCommand request, CancellationToken cancellationToken)
     {
         var result = new CommonCommandResult();
 
         try
         {
-            var tag = database.Tags.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
+            var product = database.ProductImages.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
-            if (tag != null)
+            if (product != null)
             {
-                mapper.Map(request, tag);
-                tag.SetUpdatedAudit(request.UserName);
+                mapper.Map(request, product);
+                product.SetUpdatedAudit(request.UserName);
 
-                database.Tags.Update(tag);
+                database.ProductImages.Update(product);
                 database.SaveChanges();
 
                 result.Success = true;
             }
             else
             {
-                result.Message = errorConfig.GetByKey("NotFoundTag");
+                result.Message = errorConfig.GetByKey("NotFoundProduct");
             }
         }
         catch (Exception ex)

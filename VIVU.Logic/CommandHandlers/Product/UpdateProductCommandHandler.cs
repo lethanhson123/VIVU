@@ -28,7 +28,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
                 mapper.Map(request, product);
                 product.SetUpdatedAudit(request.UserName);
 
-                database.Update(product);
+                database.Products.Update(product);
                 database.SaveChanges();
 
                 result.Success = true;

@@ -18,5 +18,7 @@ namespace VIVU.Data.Entities
         public decimal DeliverPrice { get; set; } // Giá bán cuối cùng
         public string Tags { get; set; } = string.Empty;
         public string Meta { get; set; } = string.Empty;
+        public string Thumbnail { get; set; } = string.Empty;
+
     }
 }

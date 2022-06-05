@@ -28,11 +28,11 @@ public class DeleteSalesOrderCommandHandler : IRequestHandler<DeleteSalesOrderCo
                 mapper.Map(request, order);
                 order.MarkAsDeleted(request.UserName);
 
-                database.Update(order);
+                database.SalesOrders.Update(order);
 
                 var orderDetail = database.SalesOrderDetails.Where(x => x.SalesOrderId == request.Id && !x.IsDeleted).ToList();
                 orderDetail.ForEach(x => x.IsDeleted = true);
-                database.UpdateRange(orderDetail);
+                database.SalesOrderDetails.UpdateRange(orderDetail);
 
                 database.SaveChanges();
                 result.Success = true;

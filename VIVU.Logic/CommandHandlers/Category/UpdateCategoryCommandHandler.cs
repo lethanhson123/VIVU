@@ -36,7 +36,7 @@ namespace VIVU.Logic.CommandHandlers
                     mapper.Map(request, category);
                     category.SetUpdatedAudit(request.UserName);
 
-                    database.Update(category);
+                    database.Categories.Update(category);
                     database.SaveChanges();
 
                     result.Success = true;

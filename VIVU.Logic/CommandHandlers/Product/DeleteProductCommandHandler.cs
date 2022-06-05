@@ -29,7 +29,7 @@ public class DeleteProductCommandHandler :
                 mapper.Map(request, product);
                 product.MarkAsDeleted(request.UserName);
 
-                database.Update(product);
+                database.Products.Update(product);
                 database.SaveChanges();
                 result.Success = true;
             }

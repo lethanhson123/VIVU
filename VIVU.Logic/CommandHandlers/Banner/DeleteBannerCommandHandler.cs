@@ -36,7 +36,7 @@ namespace VIVU.Logic.CommandHandlers
                     mapper.Map(request, banner);
                     banner.MarkAsDeleted(request.UserName);
 
-                    database.Update(banner);
+                    database.Banners.Update(banner);
                     database.SaveChanges();
 
                     result.Success = true;
