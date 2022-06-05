@@ -21,7 +21,7 @@ public class UpdateMarketLeadCommandHandler : IRequestHandler<UpdateMarketLeadCo
 
         try
         {
-            var marketLead = database.MarketLeads.FirstOrDefault(x => x.Id == request.Id);
+            var marketLead = database.MarketLeads.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
             if (marketLead != null)
             {

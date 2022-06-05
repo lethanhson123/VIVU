@@ -81,7 +81,7 @@ public class ProductsController : ControllerBase
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<CommonResponseModel<object>>> Delete(int id)
+    public async Task<ActionResult<CommonResponseModel<object>>> Delete(string id)
     {
         if (string.IsNullOrEmpty(id.ToString()))
             return BadRequest();

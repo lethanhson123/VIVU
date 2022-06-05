@@ -22,12 +22,12 @@ public class DeleteTagCommandHandler :
 
         try
         {
-            var tag = database.Tags.FirstOrDefault(x => x.Id == request.Id);
+            var tag = database.Tags.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
             if (tag != null)
             {
                 mapper.Map(request, tag);
-                tag.SetUpdatedAudit(request.UserName);
+                tag.MarkAsDeleted(request.UserName);
 
                 database.Update(tag);
                 database.SaveChanges();

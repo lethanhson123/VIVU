@@ -2,7 +2,7 @@
 
 public class SalesOrderModel
 {
-    public int Id { get; set; }
+    public string Id { get; set; } = string.Empty;
     public string Number { get; set; } = string.Empty;
 
     /// <summary>
@@ -27,8 +27,11 @@ public class SalesOrderModel
     public DateTime ShipDate { get; set; }
 
     public decimal AmountWithoutTax { get; set; }
+    public decimal ShipFee { get; set; }
+    public decimal DiscountAmount { get; set; }
     public decimal TaxAmount { get; set; }
     public decimal TotalAmount { get; set; }
+    public string ChanelId { get; set; } = string.Empty;
 
     public string Status { get; set; } = string.Empty;
     public string Note { get; set; } = string.Empty;

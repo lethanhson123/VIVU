@@ -25,14 +25,16 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 
         try
         {
-            var tag = mapper.Map<Product>(request);
-            tag.SetCreatedAudit(request.UserName);
+            var productId = Nanoid.Nanoid.Generate("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 12);
+            request.Id = productId;
+            var product = mapper.Map<Product>(request);
+            product.SetCreatedAudit(request.UserName);
 
-            database.Products.Add(tag);
+            database.Products.Add(product);
             database.SaveChanges();
 
             result.Success = true;
-            result.Data = mapper.Map<ProductModel>(tag);
+            result.Data = mapper.Map<ProductModel>(product);
         }
         catch (DbUpdateException ex)
         {

@@ -21,7 +21,7 @@ public class UpdateTagCommandHandler : IRequestHandler<UpdateTagCommand, CommonC
 
         try
         {
-            var tag = database.Tags.FirstOrDefault(x => x.Id == request.Id);
+            var tag = database.Tags.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
             if (tag != null)
             {

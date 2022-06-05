@@ -22,12 +22,12 @@
 
             try
             {
-                var marketLead = database.MarketLeads.FirstOrDefault(x => x.Id == request.Id);
+                var marketLead = database.MarketLeads.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted );
 
                 if (marketLead != null)
                 {
                     mapper.Map(request, marketLead);
-                    marketLead.SetUpdatedAudit(request.UserName);
+                    marketLead.MarkAsDeleted(request.UserName);
 
                     database.Update(marketLead);
                     database.SaveChanges();

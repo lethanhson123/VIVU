@@ -22,12 +22,12 @@ public class DeleteProductCommandHandler :
 
         try
         {
-            var product = database.Products.FirstOrDefault(x => x.Id == request.Id);
+            var product = database.Products.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
             if (product != null)
             {
                 mapper.Map(request, product);
-                product.SetUpdatedAudit(request.UserName);
+                product.MarkAsDeleted(request.UserName);
 
                 database.Update(product);
                 database.SaveChanges();

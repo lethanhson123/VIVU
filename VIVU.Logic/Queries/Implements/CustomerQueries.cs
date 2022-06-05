@@ -32,7 +32,7 @@ public class CustomerQueries : ICustomerQueries
            .Select(x => mapper.Map<CustomerModel>(x));
     }
 
-    public Task<CustomerModel> GetDetail(int Id)
+    public Task<CustomerModel> GetDetail(string Id)
     {
         var data = new CustomerModel();
 

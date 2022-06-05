@@ -29,7 +29,7 @@ namespace VIVU.Logic.CommandHandlers
 
             try
             {
-                var banner = database.Banners.FirstOrDefault(x => x.Id == request.Id);
+                var banner = database.Banners.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
                 if (banner != null)
                 {

@@ -33,6 +33,9 @@ public class AppDatabase : IdentityDbContext<User>
     public virtual DbSet<Customer> Customers => Set<Customer>();
     public virtual DbSet<Product> Products => Set<Product>();
     public virtual DbSet<MarketLead> MarketLeads => Set<MarketLead>();
+    public virtual DbSet<SalesOrder> SalesOrders => Set<SalesOrder>();
+    public virtual DbSet<SalesOrderDetail> SalesOrderDetails => Set<SalesOrderDetail>();
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {         
@@ -56,13 +59,14 @@ public class AppDatabase : IdentityDbContext<User>
         builder.Entity<Tag>().Property(x => x.Id).UseIdentityColumn();
 
         builder.Entity<Customer>().HasKey(x => x.Id);
-        builder.Entity<Customer>().Property(x => x.Id).UseIdentityColumn();
 
         builder.Entity<Product>().HasKey(x => x.Id);
-        builder.Entity<Product>().Property(x => x.Id).UseIdentityColumn();
 
         builder.Entity<MarketLead>().HasKey(x => x.Id);
-        builder.Entity<MarketLead>().Property(x => x.Id).UseIdentityColumn();
+        builder.Entity<SalesOrder>().HasKey(x => x.Id);
+        builder.Entity<SalesOrderDetail>().HasKey(x => x.Id);
+        builder.Entity<SalesOrderDetail>().Property(x => x.Id).UseIdentityColumn();
+
 
     }
 }

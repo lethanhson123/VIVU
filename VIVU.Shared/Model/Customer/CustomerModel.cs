@@ -8,7 +8,7 @@ namespace VIVU.Shared.Model
 {
     public class CustomerModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;

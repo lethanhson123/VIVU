@@ -29,7 +29,7 @@ namespace VIVU.Logic.CommandHandlers
 
             try
             {
-                var customer = database.Customers.FirstOrDefault(x => x.Id == request.Id);
+                var customer = database.Customers.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
                 if (customer != null)
                 {

@@ -21,7 +21,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
 
         try
         {
-            var product = database.Products.FirstOrDefault(x => x.Id == request.Id);
+            var product = database.Products.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
             if (product != null)
             {

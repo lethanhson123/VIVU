@@ -31,7 +31,7 @@ public class ProductQueries : IProductQueries
            .Select(x => mapper.Map<ProductModel>(x));
     }
 
-    public Task<ProductModel> GetDetail(int Id)
+    public Task<ProductModel> GetDetail(string Id)
     {
         var data = new ProductModel();
 

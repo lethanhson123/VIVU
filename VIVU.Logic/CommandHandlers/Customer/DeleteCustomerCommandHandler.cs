@@ -29,12 +29,12 @@ namespace VIVU.Logic.CommandHandlers
 
             try
             {
-                var customer = database.Customers.FirstOrDefault(x => x.Id == request.Id);
+                var customer = database.Customers.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
                 if (customer != null)
                 {
                     mapper.Map(request, customer);
-                    customer.SetUpdatedAudit(request.UserName);
+                    customer.MarkAsDeleted(request.UserName);
 
                     database.Update(customer);
                     database.SaveChanges();

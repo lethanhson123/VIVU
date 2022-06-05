@@ -14,14 +14,15 @@ public class DeleteBlogCommandHandler : IRequestHandler<DeleteBlogCommand, Commo
     }
     public Task<CommonCommandResult> Handle(DeleteBlogCommand request, CancellationToken cancellationToken)
     {
-        var category = applicationDatabase.Blogs.FirstOrDefault(x => x.Id == request.Id);
+        var category = applicationDatabase.Blogs.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
         var result = new CommonCommandResult();
 
         try
         {
             if (category != null)
             {
-                applicationDatabase.Blogs.Remove(category);
+                category.MarkAsDeleted(request.UserName);
+                applicationDatabase.Update(category);            
                 applicationDatabase.SaveChanges();
                 result.Success = true;
             }

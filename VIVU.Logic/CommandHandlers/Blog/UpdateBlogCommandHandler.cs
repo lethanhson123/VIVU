@@ -1,5 +1,5 @@
 ﻿namespace VIVU.Logic.CommandHandlers;
-public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand, CommonCommandResultHasData<VIVU.Data.Entities.Blog>>
+public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand, CommonCommandResult>
 {
     private readonly AppDatabase applicationDatabase;
     private readonly IMapper mapper;
@@ -9,10 +9,10 @@ public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand, Commo
         this.applicationDatabase = applicationDatabase;
         this.mapper = mapper;
     }
-    public Task<CommonCommandResultHasData<VIVU.Data.Entities.Blog>> Handle(UpdateBlogCommand request, CancellationToken cancellationToken)
+    public Task<CommonCommandResult> Handle(UpdateBlogCommand request, CancellationToken cancellationToken)
     {
-        var model = applicationDatabase.Blogs.FirstOrDefault(x => x.Id == request.Id);
-        var result = new CommonCommandResultHasData<VIVU.Data.Entities.Blog>();
+        var model = applicationDatabase.Blogs.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
+        var result = new CommonCommandResult();
 
         try
         {
@@ -22,7 +22,6 @@ public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand, Commo
                 applicationDatabase.Blogs.Update(model);
                 model.SetUpdatedAudit(request.UserName);
                 applicationDatabase.SaveChanges();
-
                 result.Success = true;
             }
             else

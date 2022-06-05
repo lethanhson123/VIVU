@@ -36,7 +36,7 @@ public class CreateTagCommandHandler : IRequestHandler<CreateTagCommand, CommonC
         }
         catch (DbUpdateException ex)
         {
-            if (database.Products.SingleOrDefault(x => x.Id == request.Id) != null)
+            if (database.Tags.SingleOrDefault(x => x.Id == request.Id) != null)
             {
                 result.Message = errorConfig.GetByKey("DuplicateTag");
             }

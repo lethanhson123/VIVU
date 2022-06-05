@@ -1,7 +1,7 @@
 ﻿
 namespace VIVU.Logic.Commands;
 
-public class UpdateBlogCommand : CommonAuditCommand, IRequest<CommonCommandResultHasData<Blog>>
+public class UpdateBlogCommand : CommonAuditCommand, IRequest<CommonCommandResult>
 {
     public int Id { get; set; } = 0;
     public int? ParentId { get; set; }
