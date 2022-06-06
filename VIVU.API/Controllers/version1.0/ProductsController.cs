@@ -45,7 +45,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<ProductModel>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -62,7 +62,7 @@ public class ProductsController : ControllerBase
 
     [HttpPut]
     [Route("{id}")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     public async Task<ActionResult<CommonResponseModel<object>>> Update(string id,
@@ -78,7 +78,7 @@ public class ProductsController : ControllerBase
 
     [HttpDelete]
     [Route("{id}")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     public async Task<ActionResult<CommonResponseModel<object>>> Delete(string id)

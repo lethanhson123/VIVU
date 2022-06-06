@@ -1,14 +1,14 @@
 ﻿namespace VIVU.API.Controllers;
 
-[Route("api/v{version:apiVersion}/product_image")]
+[Route("api/v{version:apiVersion}/product_images")]
 [ApiVersion("1.0")]
 [ApiController]
-public class ProductsImageController : ControllerBase
+public class ProductImagesController : ControllerBase
 {
     private readonly IMediator mediator;
     private readonly IProductImageQueries productImageQueries;
 
-    public ProductsImageController(IMediator mediator, IProductImageQueries productImageQueries)
+    public ProductImagesController(IMediator mediator, IProductImageQueries productImageQueries)
     {
         this.mediator = mediator;
         this.productImageQueries = productImageQueries;
