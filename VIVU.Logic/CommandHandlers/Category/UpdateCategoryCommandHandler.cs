@@ -29,14 +29,14 @@ namespace VIVU.Logic.CommandHandlers
 
             try
             {
-                var category = database.Categories.FirstOrDefault(x => x.Id == request.Id);
+                var category = database.Categories.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
                 if (category != null)
                 {
                     mapper.Map(request, category);
                     category.SetUpdatedAudit(request.UserName);
 
-                    database.Update(category);
+                    database.Categories.Update(category);
                     database.SaveChanges();
 
                     result.Success = true;

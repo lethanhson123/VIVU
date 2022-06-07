@@ -13,8 +13,12 @@ namespace VIVU.Data.Entities
         public string SKU { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Keywords { get; set; } = string.Empty;
-        public decimal Price { get; set; } 
+        public decimal Price { get; set; } // Giá bán
+        public decimal PurchasePrice { get; set; } // giá nhập
+        public decimal DeliverPrice { get; set; } // Giá bán cuối cùng
         public string Tags { get; set; } = string.Empty;
         public string Meta { get; set; } = string.Empty;
+        public string Thumbnail { get; set; } = string.Empty;
+
     }
 }

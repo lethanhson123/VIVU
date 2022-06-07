@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VIVU.Logic.Commands
+namespace VIVU.Shared.Model
 {
-    public class DeleteMarketCommand
+    public class ProductImageQueryModel
     {
+        public string ProductId { get; set; }
     }
 }

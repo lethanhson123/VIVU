@@ -13,11 +13,22 @@ namespace VIVU.API.Controllers
     [ApiController]
     public class MarketLeadsController : ControllerBase
     {
+        private readonly IMediator mediator;
+        private readonly IMarketLeadQueries marketLeadQueries;
+
+        public MarketLeadsController(IMediator mediator, IMarketLeadQueries marketLeadQueries)
+        {
+            this.mediator = mediator;
+            this.marketLeadQueries = marketLeadQueries;
+        }
+
         [HttpGet]
         public async Task<ActionResult<CommonResponseModel<IEnumerable<MarketLeadModel>>>> GetAll(
             [FromQuery] string? keywords)
         {
-            return Ok();
+            var response = new CommonResponseModel<IEnumerable<MarketLeadModel>>();
+            var result = marketLeadQueries.Get();
+            return Ok(response.SetResult(true, String.Empty).SetData(result));
         }
 
         [HttpGet]
@@ -26,7 +37,9 @@ namespace VIVU.API.Controllers
         public async Task<ActionResult<CommonResponseModel<IEnumerable<MarketLeadModel>>>> Get(
             [FromQuery] MarketLeadQueryModel query)
         {
-            return Ok();
+            var response = new CommonResponseModel<IEnumerable<MarketLeadModel>>();
+            var result = marketLeadQueries.Get(query);
+            return Ok(response.SetResult(true, String.Empty).SetData(result));
         }
 
         [HttpGet]
@@ -34,7 +47,9 @@ namespace VIVU.API.Controllers
         [ProducesResponseType(typeof(CommonResponseModel<MarketLeadModel>), 200)]
         public async Task<ActionResult<CommonResponseModel<MarketLeadModel>>> GetOne(string id)
         {
-            return Ok();
+            var response = new CommonResponseModel<IEnumerable<MarketLeadModel>>();
+            var result = marketLeadQueries.Get(id);
+            return Ok(response.SetResult(true, String.Empty).SetData(result));
         }
 
         [HttpPost]
@@ -45,28 +60,42 @@ namespace VIVU.API.Controllers
         public async Task<ActionResult<CommonResponseModel<MarketLeadModel>>> Create(
             [FromBody] CreateMarketLeadCommand command)
         {
-            return Ok();
+            var response = new CommonResponseModel<MarketLeadModel>();
+            var result = await mediator.Send(command);
+            return Ok(result.Success ? response.SetData(result.Data).SetResult(result.Success, result.Message ?? String.Empty)
+                  : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty)
+             );
         }
 
         [HttpPut]
         [Route("{id}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [ProducesResponseType(typeof(CommonResponseModel<MarketLeadModel>), 200)]
+        [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult<CommonResponseModel<MarketLeadModel>>> Update(string id,
+        public async Task<ActionResult<CommonResponseModel<object>>> Update(string id,
             [FromBody] UpdateMarketLeadCommand command)
         {
-            return Ok();
+            if (command == null)
+                return BadRequest();
+            var response = new CommonResponseModel<object>();
+            var result = await mediator.Send(command);
+            return Ok(result.Success ? response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty)
+                     : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
         }
 
         [HttpDelete]
         [Route("{id}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [ProducesResponseType(typeof(CommonResponseModel<MarketLeadModel>), 200)]
+        [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult<CommonResponseModel<MarketLeadModel>>> Delete(string id)
+        public async Task<ActionResult<CommonResponseModel<object>>> Delete(int id)
         {
-            return Ok();
+            if (string.IsNullOrEmpty(id.ToString()))
+                return BadRequest();
+            var response = new CommonResponseModel<object>();
+            var result = await mediator.Send(new DeleteMarketLeadCommand { Id = id });
+            return Ok(result.Success ? response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty)
+                     : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
         }
     }
 }

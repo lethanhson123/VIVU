@@ -29,14 +29,14 @@ namespace VIVU.Logic.CommandHandlers
 
             try
             {
-                var banner = database.Banners.FirstOrDefault(x => x.Id == request.Id);
+                var banner = database.Banners.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
 
                 if (banner != null)
                 {
                     mapper.Map(request, banner);
                     banner.SetUpdatedAudit(request.UserName);
 
-                    database.Update(banner);
+                    database.Banners.Update(banner);
                     database.SaveChanges();
 
                     result.Success = true;

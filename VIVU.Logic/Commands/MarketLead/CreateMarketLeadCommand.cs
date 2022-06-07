@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace VIVU.Logic.Commands;
 
-namespace VIVU.Logic.Commands
+public class CreateMarketLeadCommand : MarketLeadModel, IAuditCommand, IRequest<CommonCommandResultHasData<MarketLeadModel>>
 {
-    public class CreateMarketLeadCommand
-    {
-    }
+    [JsonIgnore]
+    public string UserName { get; set; } = string.Empty;
 }

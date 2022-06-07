@@ -34,14 +34,16 @@ namespace VIVU.Logic.CommandHandlers
 
             try
             {
-                var tag = mapper.Map<Customer>(request);
-                tag.SetCreatedAudit(request.UserName);
+                var customerId = Nanoid.Nanoid.Generate("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 12);
+                request.Id = customerId;
+                var customer = mapper.Map<Customer>(request);
+                customer.SetCreatedAudit(request.UserName);
 
-                database.Customers.Add(tag);
+                database.Customers.Add(customer);
                 database.SaveChanges();
 
                 result.Success = true;
-                result.Data = mapper.Map<CustomerModel>(tag);
+                result.Data = mapper.Map<CustomerModel>(customer);
             }
             catch (DbUpdateException ex)
             {

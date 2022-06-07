@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace VIVU.Logic.Commands;
 
-namespace VIVU.Logic.Commands
+public class DeleteSalesOrderCommand : IAuditCommand, IRequest<CommonCommandResult>
 {
-    public class DeleteSalesOrderCommand
-    {
-    }
+    [JsonIgnore]
+    public string UserName { get; set; } = string.Empty;
+    public string Id { get; set; } = string.Empty;
 }
+

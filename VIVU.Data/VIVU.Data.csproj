@@ -8,11 +8,8 @@
 
   <ItemGroup>
     <Compile Remove="Configurations\**" />
-    <Compile Remove="Migrations\**" />
     <EmbeddedResource Remove="Configurations\**" />
-    <EmbeddedResource Remove="Migrations\**" />
     <None Remove="Configurations\**" />
-    <None Remove="Migrations\**" />
   </ItemGroup>
 
   <ItemGroup>
