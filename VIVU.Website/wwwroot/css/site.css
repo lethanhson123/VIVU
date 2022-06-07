@@ -2,17 +2,16 @@ html {
   font-size: 14px;
 }
 
+a {
+    text-decoration: none;
+}
+
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
+.text-font {
+    font-family: 'Oswald';
 }
