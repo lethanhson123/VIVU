@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VIVU.Data.Entities
 {
-    public class UserToken
+    public class UserToken : CommonAudit
     {
         public int Id { get; set; }
         public string UserName { get; set; } = string.Empty;

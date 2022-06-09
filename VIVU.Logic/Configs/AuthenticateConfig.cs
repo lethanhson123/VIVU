@@ -8,5 +8,9 @@ namespace VIVU.Logic.Configs
 {
     public class AuthenticateConfig
     {
+        public static string ConfigName { get; set; } = "Authenticate";
+        public int? TokenExpireAfterMinutes { get; set; }
+        public string SecretKey { get; set; } =string.Empty;
+        public string VerifySignUp { get; set; } = string.Empty;
     }
 }
