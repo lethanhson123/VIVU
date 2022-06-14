@@ -18,7 +18,6 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
     public Task<CommonCommandResult> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {
         var result = new CommonCommandResult();
-
         try
         {
             var product = database.Products.FirstOrDefault(x => x.Id == request.Id && !x.IsDeleted);
@@ -42,7 +41,6 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
         {
             result.Message = ex.Message;
         }
-
         return Task.FromResult(result);
     }
 }

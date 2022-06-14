@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using VIVU.Data.Entities;
 using VIVU.Logic;
 using VIVU.Logic.Configs;
@@ -37,7 +39,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredUniqueChars = 0;
 });
 builder.Services.AddCustomApiVersioning();
-
+builder.Services.AddSwagerUI(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(BlogMappingProfile));
 builder.Services.AddAuthenticationJwt(builder.Configuration);
 builder.Services.AddMediatR(typeof(CreateBlogCommand).Assembly);
@@ -94,7 +96,7 @@ using (var scope = app.Services.CreateScope())
         }
     });
 }
-    
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
