@@ -3,6 +3,8 @@
 [Route("api/v{version:apiVersion}/product")]
 [ApiVersion("1.0")]
 [ApiController]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
 public class ProductsController : ControllerBase
 {
     private readonly IMediator mediator;
@@ -25,6 +27,7 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("with_query")]
+
     [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<ProductModel>>), 200)]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<ProductModel>>>> Get(
         [FromQuery] ProductQueryModel query)
@@ -36,6 +39,7 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("{id}")]
+
     [ProducesResponseType(typeof(CommonResponseModel<ProductModel>), 200)]
     public async Task<ActionResult<CommonResponseModel<ProductModel>>> GetOne(string id)
     {
@@ -45,7 +49,6 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<ProductModel>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -62,7 +65,6 @@ public class ProductsController : ControllerBase
 
     [HttpPut]
     [Route("{id}")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     public async Task<ActionResult<CommonResponseModel<object>>> Update(string id,
@@ -78,7 +80,6 @@ public class ProductsController : ControllerBase
 
     [HttpDelete]
     [Route("{id}")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     public async Task<ActionResult<CommonResponseModel<object>>> Delete(string id)

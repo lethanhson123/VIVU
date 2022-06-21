@@ -19,5 +19,6 @@ namespace VIVU.Logic
             services.AddScoped<IProductImageQueries, ProductImageQueries>();
             return services;
         }
+       
     }
 }
