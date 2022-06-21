@@ -15,3 +15,7 @@ a {
 .text-font {
     font-family: 'Oswald';
 }
+
+.stripe-line {
+    background-image: url('../images/stripe.png');
+}
