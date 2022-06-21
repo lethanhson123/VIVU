@@ -2,17 +2,20 @@ html {
   font-size: 14px;
 }
 
+a {
+    text-decoration: none;
+}
+
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.text-font {
+    font-family: 'Oswald';
 }
 
-body {
-  margin-bottom: 60px;
+.stripe-line {
+    background-image: url('../images/stripe.png');
 }
