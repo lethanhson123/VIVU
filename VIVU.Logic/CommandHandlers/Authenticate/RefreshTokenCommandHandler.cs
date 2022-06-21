@@ -51,7 +51,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, C
                 var dataResponse = new AuthenticateModel
                 {
                     RefreshToken = userToken.RefreshToken,
-                    TokenExpireTime = authenticateConfig.TokenExpireAfterMinutes ?? 30,
+                    TokenExpireTime = authenticateConfig.TokenExpireAfterMinutes,
                     AccessToken = token
                 };
 
@@ -99,7 +99,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, C
                     new Claim("id", user.Id) ,
                     new Claim("roles", roles?.Count > 0 ? string.Join("$", roles) : string.Empty)
                 }),
-            Expires = DateTime.Now.AddMinutes(authenticateConfig.TokenExpireAfterMinutes ?? 30),
+            Expires = DateTime.Now.AddMinutes(authenticateConfig.TokenExpireAfterMinutes),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);

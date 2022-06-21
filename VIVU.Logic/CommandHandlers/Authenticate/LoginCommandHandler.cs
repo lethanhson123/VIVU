@@ -62,7 +62,7 @@ public class LoginCommandHandler
                 var dataResponse = new AuthenticateModel
                 {
                     RefreshToken = refreshToken,
-                    TokenExpireTime = authenConfig.TokenExpireAfterMinutes ?? 30,
+                    TokenExpireTime = authenConfig.TokenExpireAfterMinutes,
                     AccessToken = token,
                     IssuedAt = DateTime.Now
                 };
@@ -94,7 +94,7 @@ public class LoginCommandHandler
                     new Claim("id", user.Id) ,
                     new Claim("roles", roles?.Count > 0 ? string.Join("$", roles) : string.Empty)
                 }),
-            Expires = DateTime.Now.AddMinutes(authenConfig.TokenExpireAfterMinutes ?? 30),
+            Expires = DateTime.Now.AddMinutes(authenConfig.TokenExpireAfterMinutes),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
