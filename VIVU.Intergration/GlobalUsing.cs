@@ -1,0 +1,12 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using VIVU.Common.Models;
+global using VIVU.Shared.Model;
+global using VIVU.Intergration.Interface;
+global using Microsoft.Extensions.Options;
+global using System.Net.Http;
+global using VIVU.Intergration.Config;
+global using VIVU.Intergration.Implement;

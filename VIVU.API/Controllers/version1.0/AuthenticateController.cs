@@ -1,6 +1,6 @@
 ﻿namespace VIVU.API.Controllers;
 
-[Route("api/v{version:apiVersion}/product")]
+[Route("api/v{version:apiVersion}/authenticate")]
 [ApiVersion("1.0")]
 [ApiController]
 public class AuthenticateController : ControllerBase

@@ -2,8 +2,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
+builder.Services.RegisterClientService();
+builder.Services.RegisterClientHelper();
 
 var app = builder.Build();
+builder.Services
+    .Configure<ClientConfig>(builder.Configuration.GetSection(ClientConfig.ConfigName));
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

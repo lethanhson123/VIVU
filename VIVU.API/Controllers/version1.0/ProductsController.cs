@@ -17,8 +17,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<CommonResponseModel<IEnumerable<ProductModel>>>> GetAll(
-        [FromQuery] string? keywords)
+    public async Task<ActionResult<CommonResponseModel<IEnumerable<ProductModel>>>> GetAll()
     {
         var response = new CommonResponseModel<IEnumerable<ProductModel>>();
         var result = productQueries.Get();
