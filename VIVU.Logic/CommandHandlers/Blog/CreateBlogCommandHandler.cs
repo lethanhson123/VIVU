@@ -1,11 +1,12 @@
 ﻿namespace VIVU.Logic.CommandHandlers;
 
-public class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, CommonCommandResultHasData<VIVU.Data.Entities.Blog>>
+public class CreateBlogCommandHandler 
+    : IRequestHandler<CreateBlogCommand, CommonCommandResultHasData<VIVU.Data.Entities.Blog>>
 {
-    private readonly ApplicationDbContext applicationDatabase;
+    private readonly AppDatabase applicationDatabase;
     private readonly IMapper mapper;
 
-    public CreateBlogCommandHandler(ApplicationDbContext applicationDatabase, IMapper mapper)
+    public CreateBlogCommandHandler(AppDatabase applicationDatabase, IMapper mapper)
     {
         this.applicationDatabase = applicationDatabase;
         this.mapper = mapper;
@@ -17,7 +18,7 @@ public class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, Commo
 
         try
         {
-            model.SetCreateAudit(request.UserName);
+            model.SetCreatedAudit(request.UserName);
             applicationDatabase.Blogs.Add(model);
             applicationDatabase.SaveChanges();
 

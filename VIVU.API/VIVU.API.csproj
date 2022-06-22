@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\VIVU.Common\VIVU.Common.csproj" />
     <ProjectReference Include="..\VIVU.Logic\VIVU.Logic.csproj" />
+    <ProjectReference Include="..\VIVU.Shared\VIVU.Shared.csproj" />
     <ProjectReference Include="..\VIVU.Ultils\VIVU.Ultils.csproj" />
   </ItemGroup>
 
