@@ -1,6 +1,6 @@
 ﻿namespace VIVU.Shared.Model;
 
-public class SalesOrderModel
+public class SalesOrderModelResponse
 {
     public string Id { get; set; } = string.Empty;
     public string Number { get; set; } = string.Empty;
@@ -23,14 +23,27 @@ public class SalesOrderModel
     /// <summary>
     /// Thời gian
     /// </summary>
+    public DateTime OrderDate { get; set; }
     public DateTime ShipDate { get; set; }
+
+    public decimal AmountWithoutTax { get; set; }
     public decimal ShipFee { get; set; }
     public decimal DiscountAmount { get; set; }
+    public decimal TaxAmount { get; set; }
+    public decimal TotalAmount { get; set; }
+    public string ChanelId { get; set; } = string.Empty;
+
+    public string Status { get; set; } = string.Empty;
     public string Note { get; set; } = string.Empty;
-    public List<SalesOrderDetailModel>? OrderDetail { get; set; }
+    public List<SalesOrderDetailModelResponse>? OrderDetail { get; set; }
 }
-public class SalesOrderDetailModel
+public class SalesOrderDetailModelResponse
 {
+    public string ProductName { get; set; }
     public string ProductId { get; set; } = string.Empty;
     public decimal Quantity { get; set; }
+    public string Description { get; set; } = string.Empty;
+    public decimal Price { get; set; } // Giá bán
+    public decimal DeliverPrice { get; set; } // Giá bán cuối cùng
+    public decimal TotalPrice { get; set; }
 }

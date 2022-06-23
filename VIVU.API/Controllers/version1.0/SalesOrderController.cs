@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using VIVU.Common.Models;
+using VIVU.Logic.Commands;
 using VIVU.Shared.Model;
 
 namespace VIVU.API.Controllers
@@ -13,6 +14,14 @@ namespace VIVU.API.Controllers
     [ApiController]
     public class SalesOrderController : ControllerBase
     {
+        private readonly IMediator mediator;
+        private readonly IProductQueries productQueries;
+
+        public SalesOrderController(IMediator mediator, IProductQueries productQueries)
+        {
+            this.productQueries = productQueries;
+            this.mediator = mediator;
+        }
         [HttpGet]
         public async Task<ActionResult<CommonResponseModel<IEnumerable<SalesOrderModel>>>> GetAll(
             [FromQuery] string? keywords)
@@ -42,10 +51,16 @@ namespace VIVU.API.Controllers
         [ProducesResponseType(typeof(CommonResponseModel<SalesOrderModel>), 200)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        [AllowAnonymous]
         public async Task<ActionResult<CommonResponseModel<SalesOrderModel>>> Create(
             [FromBody] CreateSalesOrderCommand command)
         {
-            return Ok();
+            if (command == null)
+                return BadRequest();
+            var response = new CommonResponseModel<SalesOrderModel>();
+            var result = await mediator.Send(command);
+            return Ok(result.Success ? response.SetData(result.Data).SetResult(result.Success, result.Message ?? String.Empty)
+                     : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
         }
 
         [HttpPut]
@@ -61,12 +76,16 @@ namespace VIVU.API.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(typeof(CommonResponseModel<SalesOrderModel>), 200)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<ActionResult<CommonResponseModel<SalesOrderModel>>> Delete(string id)
         {
-            return Ok();
+            if (string.IsNullOrEmpty(id.ToString()))
+                return BadRequest();
+            var response = new CommonResponseModel<object>();
+            var result = await mediator.Send(new DeleteSalesOrderCommand { Id = id });
+            return Ok(result.Success ? response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty)
+                     : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
         }
     }
 }

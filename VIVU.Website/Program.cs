@@ -50,7 +50,7 @@ builder.Services
 
 var app = builder.Build();
 builder.Services
-    .Configure<ClientConfig>(builder.Configuration.GetSection(ClientConfig.ConfigName));
+    .Configure<VIVU.Intergration.Config.ClientConfig>(builder.Configuration.GetSection(VIVU.Intergration.Config.ClientConfig.ConfigName));
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

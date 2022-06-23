@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+namespace VIVU.Logic.MappingProfiles;
 
-namespace VIVU.Logic.MappingProfiles
+public class SalesOrderMappingProfile : Profile
 {
-    public class SalesOrderMappingProfile
+    public SalesOrderMappingProfile()
     {
+        CreateMap<CreateSalesOrderCommand, SalesOrder>();
+        CreateMap<Product, SalesOrderDetail>()
+                    .ForMember(x => x.ProductId, y => y.MapFrom(src => src.Id))
+                    .ForMember(x => x.ProductName, y => y.MapFrom(src => src.Name))
+                    .ForMember(x => x.TotalPrice, y => y.Ignore())
+                    .ForMember(x => x.Id, y => y.Ignore());
+
     }
 }
