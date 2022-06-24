@@ -15,8 +15,8 @@ public class ProductsController : ControllerBase
         this.mediator = mediator;
         this.productQueries = productQueries;
     }
-
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<ProductModel>>>> GetAll()
     {
         var response = new CommonResponseModel<IEnumerable<ProductModel>>();
@@ -26,7 +26,7 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("with_query")]
-
+    [AllowAnonymous]
     [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<ProductModel>>), 200)]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<ProductModel>>>> Get(
         [FromQuery] ProductQueryModel query)
@@ -38,12 +38,12 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("{id}")]
-
+    [AllowAnonymous]
     [ProducesResponseType(typeof(CommonResponseModel<ProductModel>), 200)]
     public async Task<ActionResult<CommonResponseModel<ProductModel>>> GetOne(string id)
     {
-        var response = new CommonResponseModel<IEnumerable<ProductModel>>();
-        var result = productQueries.Get(id);
+        var response = new CommonResponseModel<ProductModel>();
+        var result = productQueries.GetDetail(id);
         return Ok(response.SetResult(true, String.Empty).SetData(result));
     }
 

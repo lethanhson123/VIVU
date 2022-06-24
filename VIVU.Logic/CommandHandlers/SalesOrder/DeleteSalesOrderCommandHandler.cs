@@ -25,7 +25,6 @@ public class DeleteSalesOrderCommandHandler : IRequestHandler<DeleteSalesOrderCo
 
             if (order != null)
             {
-                mapper.Map(request, order);
                 order.MarkAsDeleted(request.UserName);
 
                 database.SalesOrders.Update(order);

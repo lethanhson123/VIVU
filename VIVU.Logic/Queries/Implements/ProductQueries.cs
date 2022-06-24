@@ -18,30 +18,28 @@ public class ProductQueries : IProductQueries
     }
     public IEnumerable<ProductModel> Get(ProductQueryModel query)
     {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<ProductModel> Get(string? keywords)
-    {
         return database.Products.Where(x => x.IsDeleted != true &&
-                                          (x.Name.Contains(keywords ?? string.Empty) ||
-                                          x.SKU.Contains(keywords ?? string.Empty) ||
-                                          x.Keywords.Contains(keywords ?? string.Empty) ||
-                                          x.Description.Contains(keywords ?? string.Empty)))
-           .Select(x => mapper.Map<ProductModel>(x));
-    }
+                                         (x.Name.Contains(query.Keywords ?? string.Empty) ||
+                                         x.SKU.Contains(query.Keywords ?? string.Empty) ||
+                                         x.Keywords.Contains(query.Keywords ?? string.Empty) ||
+                                         x.Description.Contains(query.Keywords ?? string.Empty) ||
+                                            x.Id.Contains(query.Keywords ?? string.Empty)
+                                         ))
+          .Select(x => mapper.Map<ProductModel>(x)).Skip((query.PageIndex - 1) * query.Limit).Take(query.Limit);
 
-    public Task<ProductModel> GetDetail(string Id)
+    }
+    public ProductModel GetDetail(string Id)
     {
         var data = new ProductModel();
 
         var hexagram = database.Products.FirstOrDefault(x => x.Id == Id &&
                                                           x.IsDeleted != true);
+        ;
         if (hexagram != null)
         {
             mapper.Map(hexagram, data);
         }
 
-        return Task.FromResult(data);
+        return data;
     }
 }
