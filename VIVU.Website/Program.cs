@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.ResponseCompression;
-using System.IO.Compression;
-using VIVU.Logic.Configs;
-using VIVU.Ultils.Model;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,7 +47,7 @@ builder.Services
 
 var app = builder.Build();
 builder.Services
-    .Configure<ClientConfig>(builder.Configuration.GetSection(ClientConfig.ConfigName));
+    .Configure<VIVU.Intergration.Config.ClientConfig>(builder.Configuration.GetSection(VIVU.Intergration.Config.ClientConfig.ConfigName));
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -79,27 +76,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseEndpoints(e =>
-{
-    e.MapControllerRoute(
-       name: "fengshui",
-       pattern: "tien-ich/phong-thuy.html",
-       defaults: new { controller = "FengShui", action = "Index" });
-
-    e.MapControllerRoute(
-       name: "horoscope",
-       pattern: "tien-ich/lap-la-so-tu-vi.html",
-       defaults: new { controller = "Horoscope", action = "Index" });
-
-    e.MapControllerRoute(
-       name: "horoscope",
-       pattern: "tien-ich/la-so-tu-vi.html",
-       defaults: new { controller = "Horoscope", action = "Detail" });
-
-    e.MapControllerRoute(
-       name: "fengshui-phone-number",
-       pattern: "tien-ich/phong-thuy-sim.html",
-       defaults: new { controller = "FengShui", action = "PhoneNumber" });
-
+{    
     e.MapControllerRoute(
        name: "post-detail",
        pattern: "{meta}-{id}.html",

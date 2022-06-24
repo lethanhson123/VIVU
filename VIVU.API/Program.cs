@@ -1,11 +1,4 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using VIVU.Data.Entities;
-using VIVU.Logic;
-using VIVU.Logic.Configs;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
