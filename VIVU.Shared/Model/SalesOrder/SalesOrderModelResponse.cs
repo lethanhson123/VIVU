@@ -39,10 +39,10 @@ public class SalesOrderModelResponse
 }
 public class SalesOrderDetailModelResponse
 {
-    public string ProductName { get; set; }
+    public int Id { get; set; }
+    public string ProductName { get; set; } = String.Empty;
     public string ProductId { get; set; } = string.Empty;
     public decimal Quantity { get; set; }
-    public string Description { get; set; } = string.Empty;
     public decimal Price { get; set; } // Giá bán
     public decimal DeliverPrice { get; set; } // Giá bán cuối cùng
     public decimal TotalPrice { get; set; }

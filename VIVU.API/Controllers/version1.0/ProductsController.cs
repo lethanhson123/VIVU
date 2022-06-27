@@ -17,6 +17,7 @@ public class ProductsController : ControllerBase
     }
     [HttpGet]
     [AllowAnonymous]
+    [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<SalesOrderModelResponse>>), 200)]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<ProductModel>>>> GetAll()
     {
         var response = new CommonResponseModel<IEnumerable<ProductModel>>();
@@ -32,8 +33,8 @@ public class ProductsController : ControllerBase
         [FromQuery] ProductQueryModel query)
     {
         var response = new CommonResponseModel<IEnumerable<ProductModel>>();
-        var result = productQueries.Get(query);
-        return Ok(response.SetResult(true, String.Empty).SetData(result));
+        var result =productQueries.Get(query);
+        return  Ok(response.SetResult(true, String.Empty).SetData(result));
     }
 
     [HttpGet]
@@ -43,7 +44,7 @@ public class ProductsController : ControllerBase
     public async Task<ActionResult<CommonResponseModel<ProductModel>>> GetOne(string id)
     {
         var response = new CommonResponseModel<ProductModel>();
-        var result = productQueries.GetDetail(id);
+        var result = await productQueries.GetDetail(id);
         return Ok(response.SetResult(true, String.Empty).SetData(result));
     }
 

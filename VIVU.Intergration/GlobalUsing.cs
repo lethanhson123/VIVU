@@ -10,3 +10,4 @@ global using Microsoft.Extensions.Options;
 global using System.Net.Http;
 global using VIVU.Intergration.Config;
 global using VIVU.Intergration.Implement;
+global using VIVU.Ultils.Extensions;

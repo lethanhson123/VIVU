@@ -30,16 +30,27 @@ public class CreateSalesOrderCommandHandler : IRequestHandler<CreateSalesOrderCo
             var order = mapper.Map<SalesOrder>(request);
             order.Id = orderId;
             order.SetCreatedAudit(request.UserName);
+            if (request.OrderDetail == null)
+            {
+                result.Message = errorConfig.GetByKey("NotExistsDataOrderDatail");
+                return Task.FromResult(result);
 
-           
+            }
+
             var listProductId = request?.OrderDetail?.Select(x => x.ProductId).ToList();
             var product = database.Products.Where(x => listProductId!.Contains(x.Id)).ToList();
 
             var orderDetail = mapper.Map<List<SalesOrderDetail>>(product);
             decimal totalPrice = 0;
-            foreach(var item in orderDetail)
+            if(orderDetail == null)
             {
-                foreach (var detail in request.OrderDetail)
+                result.Message = errorConfig.GetByKey("NotExistsDataOrderDatail");
+                return Task.FromResult(result);
+
+            }
+            foreach (var item in orderDetail)
+            {
+                foreach (var detail in request!.OrderDetail)
                 {
                     if(item.ProductId == detail.ProductId)
                     {

@@ -1,5 +1,4 @@
-﻿using VIVU.Ultils.Extensions;
-
+﻿
 namespace VIVU.Intergration.Implement;
 
 public class ProductService : IProductService

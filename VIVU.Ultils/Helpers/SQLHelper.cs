@@ -77,7 +77,7 @@ public static class SQLHelper
                 cmd.Parameters.AddRange(parameters);
                 await conn.OpenAsync();
                 var result = await cmd.ExecuteScalarAsync();
-                return result;
+                return result??new object();
             }
         }
     }

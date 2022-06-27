@@ -33,9 +33,15 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, C
         try
         {
             var userToken = await appDatabase.UserTokens.FirstOrDefaultAsync(x => x.IsExpired == false && x.RefreshToken == request.RefreshToken);
+           
             if (userToken != null)
             {
                 var user = await appDatabase.Users.FirstOrDefaultAsync(x => x.UserName == userToken.UserName);
+                if(user == null)
+                {
+                    result.SetResult(false, "Người dùng không tồn tại");
+                    return result;
+                }
                 var userRoles = await userManager.GetRolesAsync(user).ConfigureAwait(false);
                 var token = GenerateToken(user, userRoles);
 
@@ -89,7 +95,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, C
         }
 
     }
-    private string GenerateToken(User user, IList<string> roles = null)
+    private string GenerateToken(User user, IList<string>? roles = null)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(authenticateConfig.SecretKey ?? String.Empty);

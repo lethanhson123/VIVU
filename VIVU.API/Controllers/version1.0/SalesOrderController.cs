@@ -15,35 +15,42 @@ namespace VIVU.API.Controllers
     public class SalesOrderController : ControllerBase
     {
         private readonly IMediator mediator;
-        private readonly IProductQueries productQueries;
+        private readonly ISaleOrderQueries saleOrderQueries;
 
-        public SalesOrderController(IMediator mediator, IProductQueries productQueries)
+        public SalesOrderController(IMediator mediator, ISaleOrderQueries saleOrderQueries)
         {
-            this.productQueries = productQueries;
+            this.saleOrderQueries = saleOrderQueries;
             this.mediator = mediator;
         }
         [HttpGet]
-        public async Task<ActionResult<CommonResponseModel<IEnumerable<SalesOrderModel>>>> GetAll(
-            [FromQuery] string? keywords)
+        [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<SalesOrderModelResponse>>), 200)]
+        public async Task<ActionResult<CommonResponseModel<IEnumerable<SalesOrderModelResponse>>>> GetAll()
         {
-            return Ok();
+            var response = new CommonResponseModel<IEnumerable<SalesOrderModelResponse>>();
+            var result = saleOrderQueries.Get();
+            return Ok(response.SetResult(true, String.Empty).SetData(result));
         }
 
         [HttpGet]
         [Route("with_query")]
-        [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<SalesOrderModel>>), 200)]
-        public async Task<ActionResult<CommonResponseModel<IEnumerable<SalesOrderModel>>>> Get(
+        [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<SalesOrderModelResponse>>), 200)]
+        public async Task<ActionResult<CommonResponseModel<IEnumerable<SalesOrderModelResponse>>>> Get(
             [FromQuery] SalesOrderQueryModel query)
         {
-            return Ok();
+            var response = new CommonResponseModel<IEnumerable<SalesOrderModelResponse>>();
+            var result = saleOrderQueries.Get(query);
+            return Ok(response.SetResult(true, String.Empty).SetData(result));
         }
 
         [HttpGet]
         [Route("{id}")]
-        [ProducesResponseType(typeof(CommonResponseModel<SalesOrderModel>), 200)]
-        public async Task<ActionResult<CommonResponseModel<SalesOrderModel>>> GetOne(string id)
+        [ProducesResponseType(typeof(CommonResponseModel<SalesOrderModelResponse>), 200)]
+        [AllowAnonymous]
+        public async Task<ActionResult<CommonResponseModel<SalesOrderModelResponse>>> GetOne(string id)
         {
-            return Ok();
+            var response = new CommonResponseModel<SalesOrderModelResponse>();
+            var result = await saleOrderQueries.GetDetail(id);
+            return Ok(response.SetResult(true, String.Empty).SetData(result));
         }
 
         [HttpPost]

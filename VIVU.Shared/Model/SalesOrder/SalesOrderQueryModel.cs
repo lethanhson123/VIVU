@@ -8,5 +8,8 @@ namespace VIVU.Shared.Model
 {
     public class SalesOrderQueryModel
     {
+        public string? Keywords { get; set; }
+        public int PageIndex { get; set; }
+        public int Limit { get; set; }
     }
 }

@@ -28,7 +28,7 @@ public class ProductQueries : IProductQueries
           .Select(x => mapper.Map<ProductModel>(x)).Skip((query.PageIndex - 1) * query.Limit).Take(query.Limit);
 
     }
-    public ProductModel GetDetail(string Id)
+    public Task<ProductModel> GetDetail(string Id)
     {
         var data = new ProductModel();
 
@@ -40,6 +40,6 @@ public class ProductQueries : IProductQueries
             mapper.Map(hexagram, data);
         }
 
-        return data;
+        return Task.FromResult(data);
     }
 }

@@ -11,6 +11,10 @@ public class SalesOrderMappingProfile : Profile
                     .ForMember(x => x.ProductName, y => y.MapFrom(src => src.Name))
                     .ForMember(x => x.TotalPrice, y => y.Ignore())
                     .ForMember(x => x.Id, y => y.Ignore());
+        CreateMap<SalesOrder, SalesOrderModelResponse>()
+            .ForMember(x => x.OrderDetail, y => y.Ignore());
+
+        CreateMap<SalesOrderDetail, SalesOrderDetailModelResponse>();
 
     }
 }
