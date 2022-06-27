@@ -11,6 +11,7 @@ namespace VIVU.Shared.Model
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string SKU { get; set; } = string.Empty;
+        public string CategoryId { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Keywords { get; set; } = string.Empty;
         public decimal Price { get; set; }

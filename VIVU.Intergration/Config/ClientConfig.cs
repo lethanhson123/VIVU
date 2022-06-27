@@ -18,5 +18,7 @@ namespace VIVU.Intergration.Config
         public string Product { get; set; } = string.Empty;
         public string SaleOrderGetWithQuery { get; set; } = string.Empty;
         public string SaleOrder { get; set; } = string.Empty;
+        public string ProductCategoryGetWithQuery { get; set; } = string.Empty;
+        public string ProductCategory { get; set; } = string.Empty;
     }
 }
