@@ -1,0 +1,70 @@
+﻿<div class="container my-2 px-0">
+    <div class="row w-100 m-0">
+        <div class="col-md-8">
+            <!--Bài viết-->
+            <div class="card p-0 border-0 w-100">
+                <div class="card-body p-0 w-100">
+                    <div class="cat-title text-dark d-flex justify-content-start align-items-center w-100">
+                        <div class="m-0 w-100 mr-2 text-success text-font" style="flex-basis: content; white-space: nowrap; padding-right: 8px; ">Tổng hợp bài viết</div>
+                        <div class="stripe-line w-100 px-2" style="height: 14px;"></div>
+                    </div>
+                    <div class="cat-content" id="list-post">
+                        <input type="hidden" id="list-post-page-index" value="1"/>
+                        <input type="hidden" id="next-page-index" value="1"/>
+                        <a href="#" class="row">
+                            <div class="col-md-4">
+                                <img src="https://nhagotunhien.com/wp-content/uploads/2020/12/z2240788944703_9029b8a0d8519696e1d4d23c0d8450f0-300x237.jpg" width="250" height="200" class="w-100"/>
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="text-font mb-1 text-dark" style="font-size: 18px">Mẫu Bàn Gỗ Kết Hợp Chân Sắt Đẹp</h6>
+                                <p class="mb-1 text-font-light text-secondary" style="font-size: 14px"><i class="fa-solid fa-clock"></i> @DateTime.Now.ToString("dd-MM-yyyyy")</p>
+                                <p class="post-summary text-font-light mb-0 text-dark">Phong cách nội thất gỗ tự nhiên vẫn luôn được đánh giá cao và là sự lựa chọn hàng đầu của khách hàng khi lựa chọn sản phẩm nội thất cho gia đình. Riêng đối với sản phẩm mặt bàn</p>
+                                <p class="btn bg-warning">Đọc tiếp</p>
+                            </div>
+                        </a>
+                        <hr class="my-1"/>
+                        <a href="#" class="row">
+                            <div class="col-md-4">
+                                <img src="https://nhagotunhien.com/wp-content/uploads/2020/10/z2147149362958_6d96a45fdf93ed7647b06d92871bd6ee-300x222.jpg" width="250" height="200" class="w-100"/>
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="text-font mb-1 text-dark" style="font-size: 18px">Phong cách nội thất gỗ tự nhiên độc đáo</h6>
+                                <p class="mb-1 text-font-light text-secondary" style="font-size: 14px"><i class="fa-solid fa-clock"></i> @DateTime.Now.ToString("dd-MM-yyyyy")</p>
+                                <p class="post-summary text-font-light mb-0 text-dark">Phong cách nội thất gỗ tự nhiên vẫn luôn được đánh giá cao và là sự lựa chọn hàng đầu của khách hàng khi lựa chọn sản phẩm nội thất cho gia đình. Riêng đối với sản phẩm mặt bàn</p>
+                                <p class="btn bg-warning">Đọc tiếp</p>
+                            </div>
+                        </a>
+                        <hr class="my-1"/>
+                        <a href="#" class="row">
+                            <div class="col-md-4">
+                                <img src="https://nhagotunhien.com/wp-content/uploads/2019/03/WIN_20190926_18_40_05_Pro-e1569684065940-300x214.jpg" width="250" height="200" class="w-100"/>
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="text-font mb-1 text-dark" style="font-size: 18px">Bàn ăn 4 ghế giành cho căn hộ chung cư</h6>
+                                <p class="mb-1 text-font-light text-secondary" style="font-size: 14px"><i class="fa-solid fa-clock"></i> @DateTime.Now.ToString("dd-MM-yyyyy")</p>
+                                <p class="post-summary text-font-light mb-0 text-dark">Phong cách nội thất gỗ tự nhiên vẫn luôn được đánh giá cao và là sự lựa chọn hàng đầu của khách hàng khi lựa chọn sản phẩm nội thất cho gia đình. Riêng đối với sản phẩm mặt bàn</p>
+                                <p class="btn bg-warning">Đọc tiếp</p>
+                            </div>
+                        </a>
+                        <hr class="my-1"/>
+                        <a href="#" class="row">
+                            <div class="col-md-4">
+                                <img src="https://nhagotunhien.com/wp-content/uploads/2019/08/65226268_1715244245443613_6322356472923553792_o-300x225.jpg" width="250" height="200" class="w-100"/>
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="text-font mb-1 text-dark" style="font-size: 18px">Mặt bàn gỗ tự nhiên nguyên tấm</h6>
+                                <p class="mb-1 text-font-light text-secondary" style="font-size: 14px"><i class="fa-solid fa-clock"></i> @DateTime.Now.ToString("dd-MM-yyyyy")</p>
+                                <p class="post-summary text-font-light mb-0 text-dark">Phong cách nội thất gỗ tự nhiên vẫn luôn được đánh giá cao và là sự lựa chọn hàng đầu của khách hàng khi lựa chọn sản phẩm nội thất cho gia đình. Riêng đối với sản phẩm mặt bàn</p>
+                                <p class="btn bg-warning">Đọc tiếp</p>
+                            </div>
+                        </a>
+                        <hr class="my-1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            @await Html.PartialAsync("~/Views/Partial/MenuRight.cshtml")
+        </div>
+    </div>
+</div>

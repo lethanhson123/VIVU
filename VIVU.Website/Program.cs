@@ -1,5 +1,3 @@
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -44,10 +42,10 @@ builder.Services
     .Configure<SiteConfig>(builder.Configuration.GetSection(SiteConfig.ConfigName));
 builder.Services
     .Configure<SitePageConfig>(builder.Configuration.GetSection(SitePageConfig.ConfigName));
+builder.Services
+    .Configure<ClientConfig>(builder.Configuration.GetSection(ClientConfig.ConfigName));
 
 var app = builder.Build();
-builder.Services
-    .Configure<VIVU.Intergration.Config.ClientConfig>(builder.Configuration.GetSection(VIVU.Intergration.Config.ClientConfig.ConfigName));
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -19,3 +19,12 @@ a {
 .stripe-line {
     background-image: url('../images/stripe.png');
 }
+
+.text-collapse {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+}

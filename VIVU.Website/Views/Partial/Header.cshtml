@@ -1,5 +1,65 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using Microsoft.Extensions.Options
+@using VIVU.Shared.Model
+@model HeaderModel
+@inject IOptions<SiteConfig> siteConfig
+
+<title>@Model?.Title</title> 
+<link rel="icon" href=@($"{siteConfig.Value.HttpsUrl}{siteConfig.Value.Icon}")>
+<meta name="description" content="@Model?.Description"/>
+<meta name="keywords" content="@Model?.KeyWords"/>
+<meta name="news_keywords" content="@Model?.NewsKeyWords"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=1" name="viewport"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="@Model?.AppleMobileWebAppTitle"/>
+<meta name="tt_article_id" content="@Model?.ArticleId"/>
+<meta name="tt_category_id" content="@Model?.CategoryId"/>
+<meta name="tt_site_id" content="@Model?.SiteId"/>
+<meta name="tt_site_id_new" content="@Model?.SiteIdNew"/>
+<meta name="tt_list_folder" content="@Model?.ListFolder"/>
+<meta name="tt_list_folder_name" content="@Model?.ListFolderName"/>
+<meta name="tt_page_type" content="@Model?.PageType"/>
+<meta name="tt_page_type_new" content="@Model?.PageTypeNew"/>
+<!-- add meta for pvtt3334 -->
+<!-- end meta for pvtt -->
+<!-- META FOR FACEBOOK -->
+<meta property="og:site_name" content="@Model?.OgSiteName"/>
+<meta property="og:rich_attachment" content="@Model?.OgRichAttachment"/>
+<meta property="og:type" content="@Model?.OgType"/>
+<meta property="og:url" itemprop="url" content="@Model?.OgUrl"/>
+<meta property="og:image" itemprop="thumbnailUrl" content="@Model?.OgImage"/>
+<meta property="og:image:width" content="@Model?.OgImageWidth"/>
+<meta property="og:image:height" content="@Model?.OgImageHeight"/>
+<meta property="article:tag" content="@Model?.ArticleTags"/>
+<meta content="@Model?.OgTitle" itemprop="headline" property="og:title"/>
+<meta content="@Model?.OgDescription" itemprop="description" property="og:description"/>
+<!-- END META FOR FACEBOOK -->
+<meta content="@Model?.Medium" itemprop="genre" name="medium"/>
+<meta content="@Model?.InLanguage" itemprop="inLanguage"/>
+<meta content="@Model?.ArticleSection" itemprop="articleSection"/>
+<meta content="@Model?.Source" itemprop="sourceOrganization" name="source"/>
+<meta name="copyright" content="@Model?.Copyright"/>
+<meta name="author" content="@Model?.Author"/>
+<meta name="robots" content="@Model?.Robots"/>
+<meta name="geo.placename" content="@Model?.GeoPlaceName"/>
+<meta name="geo.region" content="@Model?.GeoRegion"/>
+<meta name="geo.position" content="@Model?.GeoPosition"/>
+<meta name="ICBM" content="@Model?.ICBM"/>
+<meta name="revisit-after" content="@Model?.RevisitAfter"/>
+<!-- Twitter Card -->
+<meta name="twitter:card" value="@Model?.TwitterCard"/>
+<meta name="twitter:url" content="@Model?.TwitterUrl"/>
+<meta name="twitter:title" content="@Model?.TwitterTitle"/>
+<meta name="twitter:description" content="@Model?.TwitterDescription"/>
+<meta name="twitter:image" content="@Model?.TwitterImage"/>
+<meta name="twitter:site" content="@Model?.TwitterSite"/>
+<meta name="twitter:creator" content="@Model?.TwitterCreator"/>
+<!-- End Twitter Card -->
+
+<!-- Publish information -->
+@if(string.IsNullOrEmpty(Model?.PubDate?.ToString()))
+{
+    <meta content="@Model?.PubDate?.ToString()" itemprop="datePublished" name="pubdate"/>
+    <meta content="@Model?.PubDate?.ToString()" itemprop="dateModified" name="lastmod"/>
+    <meta content="@Model?.PubDate?.ToString()" itemprop="dateCreated"/>
 }

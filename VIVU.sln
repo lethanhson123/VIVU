@@ -5,8 +5,6 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B02B4CDC-D3A7-4321-8BB9-E96CBD2BD2D8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{AE42CF1C-DC19-4FA7-B77B-4D6B0B760ECD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "business", "business", "{DFD1EC30-F0E3-46A9-BDE2-8CB6B72B6FD8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{FE04B086-4D75-4E81-84B0-C90A8A8187C4}"
@@ -34,27 +32,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "intergration", "intergration", "{29ADFE7F-3AE6-45AA-AD02-05CBC39EA347}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.Intergration", "VIVU.Intergration\VIVU.Intergration.csproj", "{E54816C4-9316-46C7-9620-DBAC24DF40E4}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminLTE-3.2.0", "AdminLTE-3.2.0\", "{5C7E57F2-BF58-4ED3-BCE3-73866A658219}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_57211"
-		Debug.AspNetCompiler.PhysicalPath = "AdminLTE-3.2.0\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57211\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_57211"
-		Release.AspNetCompiler.PhysicalPath = "AdminLTE-3.2.0\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57211\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "57211"
-		SlnRelativePath = "AdminLTE-3.2.0\"
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIVU.CMS", "VIVU.CMS\VIVU.CMS.csproj", "{9CDF97BF-5A1B-41B9-A47D-2CBD394243D2}"
 EndProject
@@ -100,10 +77,6 @@ Global
 		{E54816C4-9316-46C7-9620-DBAC24DF40E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E54816C4-9316-46C7-9620-DBAC24DF40E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E54816C4-9316-46C7-9620-DBAC24DF40E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C7E57F2-BF58-4ED3-BCE3-73866A658219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C7E57F2-BF58-4ED3-BCE3-73866A658219}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C7E57F2-BF58-4ED3-BCE3-73866A658219}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C7E57F2-BF58-4ED3-BCE3-73866A658219}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{9CDF97BF-5A1B-41B9-A47D-2CBD394243D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9CDF97BF-5A1B-41B9-A47D-2CBD394243D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CDF97BF-5A1B-41B9-A47D-2CBD394243D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -113,7 +86,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{AE42CF1C-DC19-4FA7-B77B-4D6B0B760ECD} = {B02B4CDC-D3A7-4321-8BB9-E96CBD2BD2D8}
 		{DFD1EC30-F0E3-46A9-BDE2-8CB6B72B6FD8} = {B02B4CDC-D3A7-4321-8BB9-E96CBD2BD2D8}
 		{FE04B086-4D75-4E81-84B0-C90A8A8187C4} = {B02B4CDC-D3A7-4321-8BB9-E96CBD2BD2D8}
 		{B2D81B71-96B4-49F7-A9C9-6170986A90A3} = {B02B4CDC-D3A7-4321-8BB9-E96CBD2BD2D8}

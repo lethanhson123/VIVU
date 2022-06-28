@@ -4,31 +4,31 @@
 @inject IOptions<SiteConfig> siteConfig
 @inject IHttpContextAccessor httpContextAccessor
 
-<div class="container px-0">
+<div class="container px-md-0">
     <div class="row w-100 m-0">
-        <a href="@siteConfig.Value.HttpsUrl" class="col-4 col-md-2 px-0 py-2 d-flex align-items-center">
-            <img src="@($"{siteConfig.Value.HttpsUrl}/images/vivu.jpg")" height="40"/>
+        <a href="@siteConfig.Value.HttpsUrl" class="col-3 col-md-2 px-0 py-2 d-flex align-items-center">
+            <img src="@($"{siteConfig.Value.HttpsUrl}/images/vivu.webp")" height="40" class="w-100"/>
         </a>
-        <div class="col-md-6 my-2">
+        <div class="col-7 col-md-6 my-2">
             <div class="input-group input-group-lg">
                 <input type="text" class="form-control" placeholder="Sản phẩm, bài viết,..." 
                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
                 <span class="input-group-text bg-white" id="inputGroup-sizing-lg"><i class="fas fa-search"></i></span>
             </div>
         </div>
-        <div class="col-4 col-md-2 px-1 py-2 d-flex">
+        <div class="col-1 col-md-2 px-1 py-2 d-flex">
             <div class="d-flex text-success align-items-center">
                 <i class="mb-0 h4 fas fa-phone text-success"></i>
                 <a href="#" class="ms-2 text-dark" style="text-decoration:none;">
-                    <p class="mb-0">Hotline<br/>0917219888</p>
+                    <p class="mb-0 d-none d-md-block">Hotline<br/>0917219888</p>
                 </a>
             </div>
         </div>
-        <div class="col-4 col-md-2 px-1 py-2 d-flex">
+        <div class="col-1 col-md-2 px-1 py-2 d-flex">
             <div class="d-flex text-success align-items-center">
                 <i class="mb-0 h4 fas fa-shopping-cart"></i>
                 <a href="#" class="ms-2 text-dark" style="text-decoration:none;">
-                    <p class="mb-0">Giỏ hàng<br/>(0 sản phẩm)</p>
+                    <p class="mb-0 d-none d-md-block">Giỏ hàng<br/>(0 sản phẩm)</p>
                 </a>
             </div>
         </div>
@@ -44,10 +44,7 @@
                             <a class="ps-0 nav-link custom-nav-link text-white" asp-action="index" asp-controller="home">Trang chủ</a>
                         </li>
                         <li class="nav-item text-font" style="font-size: 24px; font-weight: bold;">
-                            <a class="nav-link custom-nav-link text-white" asp-action="index" asp-controller="home">Bài viết</a>
-                        </li>
-                        <li class="nav-item text-font" style="font-size: 24px; font-weight: bold;">
-                            <a class="nav-link custom-nav-link text-white" asp-action="index" asp-controller="home">Sản phẩm</a>
+                            <a class="nav-link custom-nav-link text-white" asp-action="index" asp-controller="blog">Bài viết</a>
                         </li>
                         <li class="nav-item text-font" style="font-size: 24px; font-weight: bold;">
                             <a class="nav-link custom-nav-link text-white" asp-action="contact" asp-controller="home">Liên hệ</a>
