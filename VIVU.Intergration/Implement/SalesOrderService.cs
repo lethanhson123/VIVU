@@ -1,6 +1,6 @@
 ﻿namespace VIVU.Intergration.Implement;
 
-internal class SalesOrderService :ISalesOrderService
+internal class SalesOrderService : ISalesOrderService
 {
     private readonly IHttpClientFactory httpClientFactory;
     private readonly ClientConfig clientConfig;
@@ -67,21 +67,21 @@ internal class SalesOrderService :ISalesOrderService
         return Task.FromResult(response);
     }
 
-    public Task<CommonResponseModel<SalesOrderDetailModelResponse>> GetDetail(string Id, string token)
+    public Task<CommonResponseModel<SalesOrderModelResponse>> GetDetail(string id, string token)
     {
-        var response = new CommonResponseModel<SalesOrderDetailModelResponse>();
+        var response = new CommonResponseModel<SalesOrderModelResponse>();
         try
         {
             var client = httpClientFactory.CreateClient();
             var headers = new Dictionary<string, string>();
-            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.SaleOrder, Id);
+            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.SaleOrder, id);
 
             headers.Add("Authorization", token);
             var remoteResponse = client
-                .ExecuteGet<CommonResponseModel<SalesOrderDetailModelResponse>>(
+                .ExecuteGet<CommonResponseModel<SalesOrderModelResponse>>(
                    path, null, headers);
             response = remoteResponse.Result.Data ??
-                new CommonResponseModel<SalesOrderDetailModelResponse>();
+                new CommonResponseModel<SalesOrderModelResponse>();
         }
         catch (Exception ex)
         {
@@ -135,6 +135,29 @@ internal class SalesOrderService :ISalesOrderService
 
         return Task.FromResult(response);
     }
+    public Task<CommonResponseModel<object>> Status(string id, int status, string token = "")
+    {
+        var response = new CommonResponseModel<object>();
+
+        try
+        {
+            var client = httpClientFactory.CreateClient();
+            var headers = new Dictionary<string, string>();
+            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.SaleOrderStatus, id);
+            headers.Add("Authorization", token);
+            var remoteResponse = client.ExecutePut<CommonResponseModel<object>>(
+               path, status, null, headers);
+            response = remoteResponse.Result.Data ??
+                new CommonResponseModel<object>();
+        }
+        catch (Exception ex)
+        {
+            response.Message = ex.Message;
+        }
+
+        return Task.FromResult(response);
+    }
+
     public Task<CommonResponseModel<object>> Delete(string Id, string token = "")
     {
         var response = new CommonResponseModel<object>();

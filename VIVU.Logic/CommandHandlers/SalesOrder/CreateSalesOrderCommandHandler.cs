@@ -1,4 +1,6 @@
-﻿namespace VIVU.Logic.CommandHandlers;
+﻿using VIVU.Ultils;
+
+namespace VIVU.Logic.CommandHandlers;
 
 public class CreateSalesOrderCommandHandler : IRequestHandler<CreateSalesOrderCommand, CommonCommandResultHasData<SalesOrderModel>>
 {
@@ -29,6 +31,7 @@ public class CreateSalesOrderCommandHandler : IRequestHandler<CreateSalesOrderCo
             request.Id = orderId;
             var order = mapper.Map<SalesOrder>(request);
             order.Id = orderId;
+            order.Status = SaleOrderEnum.NEW.GetHashCode();
             order.SetCreatedAudit(request.UserName);
             if (request.OrderDetail == null)
             {

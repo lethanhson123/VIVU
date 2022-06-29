@@ -37,7 +37,7 @@ namespace VIVU.Data.Entities
         public decimal ShipFee { get; set; }
         public decimal DiscountAmount { get; set; }
         public decimal TotalAmount { get; set; }
-        public string Status { get; set; } = string.Empty;
+        public int Status { get; set; }
         public string ChanelId { get; set; } = string.Empty;
         public string Note { get; set; } = string.Empty;
     }

@@ -1,7 +1,5 @@
 ﻿global using System;
 global using System.Collections.Generic;
-global using System.Linq;
-global using System.Text;
 global using System.Threading.Tasks;
 global using VIVU.Common.Models;
 global using VIVU.Shared.Model;
@@ -11,3 +9,6 @@ global using System.Net.Http;
 global using VIVU.Intergration.Config;
 global using VIVU.Intergration.Implement;
 global using VIVU.Ultils.Extensions;
+global using ViVU.Data.Shared.DataTransferObject;
+global using Microsoft.AspNetCore.Http;
+global using System.Security.Claims;

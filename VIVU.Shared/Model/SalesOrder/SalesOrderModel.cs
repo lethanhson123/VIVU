@@ -27,6 +27,7 @@ public class SalesOrderModel
     public decimal ShipFee { get; set; }
     public decimal DiscountAmount { get; set; }
     public string Note { get; set; } = string.Empty;
+    public int Status { get; set; } 
     public List<SalesOrderDetailModel>? OrderDetail { get; set; }
 }
 public class SalesOrderDetailModel

@@ -11,6 +11,7 @@ namespace VIVU.Intergration.Config
         public static string ConfigName { get; set; } = "Client";
         public string Host { get; set; } = string.Empty;
         public string Login { get; set; } = string.Empty;
+        public string RefreshToken { get; set; } = string.Empty;
         /// <summary>
         /// Product
         /// </summary>
@@ -18,6 +19,7 @@ namespace VIVU.Intergration.Config
         public string Product { get; set; } = string.Empty;
         public string SaleOrderGetWithQuery { get; set; } = string.Empty;
         public string SaleOrder { get; set; } = string.Empty;
+        public string SaleOrderStatus { get; set; } = string.Empty;
         public string ProductCategoryGetWithQuery { get; set; } = string.Empty;
         public string ProductCategory { get; set; } = string.Empty;
     }

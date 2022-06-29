@@ -1,0 +1,16 @@
+﻿global using Microsoft.AspNetCore.ResponseCompression;
+global using System.IO.Compression;
+global using VIVU.Intergration;
+global using VIVU.Intergration.Config;
+global using VIVU.Logic.Configs;
+global using Microsoft.AspNetCore.Authentication;
+global using Microsoft.AspNetCore.Authentication.Cookies;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Options;
+global using System.Security.Claims;
+global using VIVU.CMS.Models;
+global using VIVU.Common.Models;
+global using VIVU.Intergration.Interface;
+global using VIVU.Ultils.Extensions;
+global using Microsoft.AspNetCore.Authorization;
+global using VIVU.Shared.Model;

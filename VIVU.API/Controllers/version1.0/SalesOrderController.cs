@@ -75,12 +75,31 @@ namespace VIVU.API.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(typeof(CommonResponseModel<SalesOrderModel>), 200)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult<CommonResponseModel<SalesOrderModel>>> Update(string id,
+        public async Task<ActionResult<CommonResponseModel<object>>> Update(string id,
             [FromBody] UpdateSalesOrderCommand command)
         {
-            return Ok();
+            if (command == null)
+                return BadRequest();
+            var response = new CommonResponseModel<object>();
+            var result = await mediator.Send(command);
+            return Ok(result.Success ? response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty)
+                     : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
         }
-
+        [HttpPut]
+        [Route("status/{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<ActionResult<CommonResponseModel<object>>> Status(string id,
+           [FromBody] UpdateSalesOrderCommand command)
+        {
+            if (command == null)
+                return BadRequest();
+            var response = new CommonResponseModel<object>();
+            var result = await mediator.Send(command);
+            return Ok(result.Success ? response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty)
+                     : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
+        }
         [HttpDelete]
         [Route("{id}")]
         [ProducesResponseType(typeof(CommonResponseModel<SalesOrderModel>), 200)]

@@ -1,0 +1,5 @@
+﻿@font-face {
+    font-family: "Oswald Text";
+    src: url("https://fonts.googleapis.com/css?family=Oswald" ); /* IE */
+    src: local("Oswald Text"), url("https://fonts.googleapis.com/css?family=Oswald") format("truetype"); /*non-IE*/
+}

@@ -12,6 +12,9 @@ namespace VIVU.Intergration
         public static IServiceCollection RegisterClientService(this IServiceCollection services)
         {
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ISalesOrderService, SalesOrderService>();
+            services.AddScoped<IProductCategoryService, ProductCategoryService>();
             return services;
         }
 

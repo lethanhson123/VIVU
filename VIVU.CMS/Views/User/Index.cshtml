@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Danh sách thành viên";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Tác giả</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Phân quyền</a></li>
+                    <li class="breadcrumb-item active">Thành viên</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid px-0">
+        <div class="row w-100 m-0">
+            <div class="card w-100 p-0 mb-0">
+                <div class="card-body p-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" id="keyword" name="keyword" placeholder="Tên, mã,.."/>
+                        </div>
+                        <div class="col-4 col-md-2 col-xl-2">
+                            <button class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onSearch()">
+                                <i class="fas fa-search"></i>
+                                Tìm kiếm
+                            </button>
+                        </div>
+                        <div class="col-4 col-md-2 col-xl-2">
+                            <a class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onDetail('')">
+                                <i class="fas fa-plus"></i>
+                                Thêm
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-1"/>
+                <div class="row w-100 m-0 mt-2" id="list-author">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

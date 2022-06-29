@@ -1,18 +1,17 @@
-html {
-  font-size: 14px;
+#login-body {
+    background-image: url('/images/huyen-do.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
+#login-body::before {
+    position: absolute;
+    background-color: black;
+    content: '';
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }

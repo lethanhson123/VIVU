@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VIVU.Intergration\VIVU.Intergration.csproj" />
+    <ProjectReference Include="..\VIVU.Logic\VIVU.Logic.csproj" />
+  </ItemGroup>
+
 </Project>
