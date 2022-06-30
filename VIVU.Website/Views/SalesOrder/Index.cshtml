@@ -1,3 +1,161 @@
-﻿@{
-    ViewData["Title"] = "Trang chủ";
+﻿@using Microsoft.Extensions.Options
+@using VIVU.Logic.Configs
+
+@inject IOptions<SiteConfig> siteConfig
+@{
+	ViewData["Title"] = "Trang chủ";
 }
+<div class="row">
+	<div class="pt-1 pb-0" id="breadcrumbs-wrapper">		
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m6 l6">
+					<h5 class="breadcrumbs-title">Giỏ hàng</h5>
+				</div>
+				<div class="col s12 m6 l6 right-align-md">
+					<ol class="breadcrumbs mb-0">
+						<li class="breadcrumb-item">
+							<a href="@($"{siteConfig.Value.HttpsUrl}")">Trang chủ</a>
+						</li>
+						<li class="breadcrumb-item active">
+							Giỏ hàng
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="container">
+			<div class="seaction">
+				<div class="row">
+					<div class="col s12 m12 l12">
+						<div id="basic-tabs" class="card card card-default scrollspy">
+							<div class="card-content pt-5 pr-5 pb-5 pl-5">
+								<div id="invoice">
+									<div class="invoice-header">
+										<div class="row section">
+											<div class="col s12 m6 l6">
+												<img class="mb-2 width-50"
+													 src="@($"{siteConfig.Value.HttpsUrl}images/logo.jpg")"
+													 alt="company logo">
+												<p>Số 6 Đường số 2 KDC Thành Ủy, phường Hiệp Bình Chánh, thành phố Thủ Đức, thành phố Hồ Chí Minh</p>
+												<p>0937 89 53 35</p>
+											</div>
+											<div class="col s12 m6 l6">
+												<h4 class="text-uppercase right-align strong mb-5">Đơn hàng</h4>
+											</div>
+										</div>
+										<div class="row section">
+											<div class="col s12 m6 l6">
+												<h6 class="text-uppercase strong mb-2 mt-3">Địa chỉ nhận hàng</h6>
+												<p class="text-uppercase">Dương Nguyễn Tấn Hòa</p>
+												<p>Số 109/21 đường số 10, phường Phong phú, thành phố Thủ Đức, thành phố Hồ Chí Minh</p>
+												<p>0939 091 768</p>
+											</div>
+											<div class="col s12 m6 l6">
+												<div class="invoce-no right-align">
+													<p>
+														<span class="text-uppercase strong">Mã đơn hàng</span>
+														123456789
+													</p>
+												</div>
+												<div class="invoce-no right-align">
+													<p>
+														<span class="text-uppercase strong">Ngày đặt</span>
+														23/06/2022 15:39:26
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="invoice-table">
+										<div class="row">
+											<div class="col s12 m12 l12">
+												<table class="highlight responsive-table">
+													<thead>
+														<tr>
+															<th data-field="no">STT</th>
+															<th data-field="item">Sản phẩm</th>
+															<th data-field="uprice">Đơn giá</th>
+															<th data-field="price">Số lượng</th>
+															<th data-field="price">Tổng cộng</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>1.</td>
+															<td>Cây treo quần áo</td>
+															<td>500.000 đồng</td>
+															<td>2</td>
+															<td>1.000.000 đồng</td>
+														</tr>
+														<tr>
+															<td>2.</td>
+															<td>Giá treo quần áo</td>
+															<td>500.000 đồng</td>
+															<td>2</td>
+															<td>1.000.000 đồng</td>
+														</tr>
+														<tr>
+															<td>3.</td>
+															<td>Móc treo tường</td>
+															<td>500.000 đồng</td>
+															<td>2</td>
+															<td>1.000.000 đồng</td>
+														</tr>
+														<tr>
+															<td>4.</td>
+															<td>Tủ gỗ</td>
+															<td>500.000 đồng</td>
+															<td>2</td>
+															<td>1.000.000 đồng</td>
+														</tr>
+														<tr class="border-none">
+															<td colspan="3"></td>
+															<td>Tạm tính:</td>
+															<td>5.290.000 đồng</td>
+														</tr>
+														<tr class="border-none">
+															<td colspan="3"></td>
+															<td>Phí vận chuyển</td>
+															<td>30.000 đồng</td>
+														</tr>
+														<tr class="border-none">
+															<td colspan="3"></td>
+															<td class="cyan white-text pl-1">Thành tiền</td>
+															<td class="cyan strong white-text">5.871.900 đồng</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<div class="invoice-footer mt-6">
+										<div class="row">
+											<div class="col s12 m6 l6">
+												<p class="strong">Phương thức thanh toán</p>
+												<p>Mọi thắc mắc liên hệ: 0937 89 53 35</p>
+												<a class="strong">Chính sách vận chuyển</a>
+												<ul>
+													<li>Tất cả các bưu kiện đều phải đóng gói sẵn sàng trước khi vận chuyển, được niêm phong bởi Người Bán. Đơn vị vận chuyển sẽ chỉ chịu trách nhiệm vận chuyển hàng hóa theo nguyên tắc “nguyên đai, nguyên kiện”, và sẽ không chịu trách nhiệm với nội dung hàng hóa bên trong nếu sản phẩm được giao tới tay Người Mua/hoàn về tay Người Bán trong tình trạng còn nguyên niêm phong và bao bì không bị rách/vỡ/ướt/móp méo.</li>
+												</ul>
+											</div>
+											<div class="col s12 m6 l6 center-align">
+												<p>Approved By</p>
+												<img src="@($"{siteConfig.Value.HttpsUrl}app-assets/images/misch/signature-scan.png")"
+													 alt="signature">
+												<p class="header">LÊ THANH SƠN</p>
+												<p>Giám đốc</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

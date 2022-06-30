@@ -74,12 +74,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseEndpoints(e =>
-{    
-    e.MapControllerRoute(
-       name: "post-detail",
-       pattern: "{meta}-{id}.html",
-       defaults: new { controller = "Post", action = "Detail" });
-
+{
     e.MapControllerRoute(
        name: "site-map",
        pattern: "site-map/sitemap.xml",
@@ -96,9 +91,29 @@ app.UseEndpoints(e =>
       defaults: new { controller = "Home", action = "About" });
 
     e.MapControllerRoute(
-       name: "categories",
-       pattern: "danh-muc/{meta}-{id}.html",
-       defaults: new { controller = "Category", action = "Index" });
+     name: "gio-hang",
+     pattern: "gio-hang.html",
+     defaults: new { controller = "SalesOrder", action = "Index" });
+
+    e.MapControllerRoute(
+       name: "product",
+       pattern: "san-pham/{meta}-{id}.html",
+       defaults: new { controller = "Product", action = "Index" });
+
+    e.MapControllerRoute(
+       name: "product-detail",
+       pattern: "{meta}-{id}.html",
+       defaults: new { controller = "Product", action = "Detail" });
+
+    e.MapControllerRoute(
+       name: "blog",
+       pattern: "bai-viet/{meta}-{id}.html",
+       defaults: new { controller = "Blog", action = "Index" });
+
+    e.MapControllerRoute(
+       name: "blog",
+       pattern: "thong-tin/{meta}-{id}.html",
+       defaults: new { controller = "Blog", action = "Detail" });
 
     e.MapControllerRoute(
        name: "tag",

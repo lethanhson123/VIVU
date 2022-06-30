@@ -1,5 +1,220 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Microsoft.Extensions.Options
+@using VIVU.Logic.Configs
+
+@inject IOptions<SiteConfig> siteConfig
 @{
+	ViewData["Title"] = "Danh mục";
 }
+
+<div class="row">
+	<div class="pt-1 pb-0" id="breadcrumbs-wrapper">		
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m6 l6">
+					<h5 class="breadcrumbs-title">Cây treo quần áo</h5>
+				</div>
+				<div class="col s12 m6 l6 right-align-md">
+					<ol class="breadcrumbs mb-0">
+						<li class="breadcrumb-item">
+							<a href="@($"{siteConfig.Value.HttpsUrl}")">Trang chủ</a>
+						</li>
+						<li class="breadcrumb-item active">
+							Cây treo quần áo
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="container">
+			<div class="section">
+				<div class="row" id="ecommerce-products">
+					<div class="col s12 m12 l9">
+
+						<div class="col s12 m4 l4">
+							<div class="card animate fadeLeft">
+								<div class="card-badge"><a href="#" class="white-text"><b>Mới</b></a></div>
+								<div class="card-content">
+									<a href="#">
+										<p>Cây treo quần áo</p>
+									</a>
+									<a href="#">
+										<span class="card-title text-ellipsis">
+											Cây Treo Quần Áo Vivudecor 100% Gỗ Tự
+											Nhiên
+										</span>
+									</a>
+									<img src="@($"{siteConfig.Value.HttpsUrl}images/cay-treo-quan-ao-001.jpg")" class="responsive-img" alt="">
+									<div class="row">
+										<h5 class="col s12 m12 l8 mt-3">441.000 đồng</h5>
+										<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+										   href="#">Xem thêm</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col s12 m4 l4">
+							<div class="card animate fadeLeft">
+								<div class="card-badge"><a href="#" class="white-text"><b>Mới</b></a></div>
+								<div class="card-content">
+									<a href="#">
+										<p>Cây treo quần áo</p>
+									</a>
+									<a href="#">
+										<span class="card-title text-ellipsis">
+											Cây Treo Quần Áo Vivudecor 100% Gỗ Tự
+											Nhiên
+										</span>
+									</a>
+									<img src="@($"{siteConfig.Value.HttpsUrl}images/cay-treo-quan-ao-001.jpg")" class="responsive-img" alt="">
+									<div class="row">
+										<h5 class="col s12 m12 l8 mt-3">441.000 đồng</h5>
+										<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+										   href="#">Xem thêm</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col s12 m4 l4">
+							<div class="card animate fadeLeft">
+								<div class="card-badge"><a href="#" class="white-text"><b>Mới</b></a></div>
+								<div class="card-content">
+									<a href="#">
+										<p>Cây treo quần áo</p>
+									</a>
+									<a href="#">
+										<span class="card-title text-ellipsis">
+											Cây Treo Quần Áo Vivudecor 100% Gỗ Tự
+											Nhiên
+										</span>
+									</a>
+									<img src="@($"{siteConfig.Value.HttpsUrl}images/cay-treo-quan-ao-001.jpg")" class="responsive-img" alt="">
+									<div class="row">
+										<h5 class="col s12 m12 l8 mt-3">441.000 đồng</h5>
+										<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+										   href="#">Xem thêm</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="col s12 m3 l3 pr-0 hide-on-med-and-down animate fadeLeft">
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title">Danh mục sản phẩm</span>
+								<hr class="p-0 mb-0">
+								<ul class="collapsible categories-collapsible">
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Cây treo quần áo</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Giá treo quần áo</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Móc treo dán tường</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Kệ gỗ treo tường</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Tủ gỗ</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Sản phẩm mới</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Bán chạy</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Khuyến mãi</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title">Sản phẩm bán chạy</span>
+								<hr class="p-0 mb-0">
+
+								<div class="col s12 m12 l12">
+									<div class="card animate fadeLeft">
+										<div class="card-badge"><a href="#" class="white-text"><b>Bán chạy</b></a></div>
+										<div class="card-content">
+											<a href="#">
+												<p>Giá treo quần áo</p>
+											</a>
+											<a href="#"><span class="card-title text-ellipsis">Giá treo quần áo</span></a>
+											<img src="@($"{siteConfig.Value.HttpsUrl}images/gia-treo-quan-ao-000.jpg")" class="responsive-img" alt="">
+											<div class="row">
+												<h5 class="col s12 m12 l8 mt-3">541.000 đồng</h5>
+												<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+												   href="#">Xem thêm</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col s12 m12 l12">
+									<div class="card animate fadeLeft">
+										<div class="card-badge"><a href="#" class="white-text"><b>Bán chạy</b></a></div>
+										<div class="card-content">
+											<a href="#">
+												<p>Giá treo quần áo</p>
+											</a>
+											<a href="#"><span class="card-title text-ellipsis">Giá treo quần áo</span></a>
+											<img src="@($"{siteConfig.Value.HttpsUrl}images/gia-treo-quan-ao-000.jpg")" class="responsive-img" alt="">
+											<div class="row">
+												<h5 class="col s12 m12 l8 mt-3">541.000 đồng</h5>
+												<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+												   href="#">Xem thêm</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col s12 m12 l12">
+									<div class="card animate fadeLeft">
+										<div class="card-badge"><a href="#" class="white-text"><b>Bán chạy</b></a></div>
+										<div class="card-content">
+											<a href="#">
+												<p>Giá treo quần áo</p>
+											</a>
+											<a href="#"><span class="card-title text-ellipsis">Giá treo quần áo</span></a>
+											<img src="@($"{siteConfig.Value.HttpsUrl}images/gia-treo-quan-ao-000.jpg")" class="responsive-img" alt="">
+											<div class="row">
+												<h5 class="col s12 m12 l8 mt-3">541.000 đồng</h5>
+												<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+												   href="#">Xem thêm</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

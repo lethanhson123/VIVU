@@ -1,70 +1,234 @@
-﻿<div class="container my-2 px-0">
-    <div class="row w-100 m-0">
-        <div class="col-md-8">
-            <!--Bài viết-->
-            <div class="card p-0 border-0 w-100">
-                <div class="card-body p-0 w-100">
-                    <div class="cat-title text-dark d-flex justify-content-start align-items-center w-100">
-                        <div class="m-0 w-100 mr-2 text-success text-font" style="flex-basis: content; white-space: nowrap; padding-right: 8px; ">Tổng hợp bài viết</div>
-                        <div class="stripe-line w-100 px-2" style="height: 14px;"></div>
-                    </div>
-                    <div class="cat-content" id="list-post">
-                        <input type="hidden" id="list-post-page-index" value="1"/>
-                        <input type="hidden" id="next-page-index" value="1"/>
-                        <a href="#" class="row">
-                            <div class="col-md-4">
-                                <img src="https://nhagotunhien.com/wp-content/uploads/2020/12/z2240788944703_9029b8a0d8519696e1d4d23c0d8450f0-300x237.jpg" width="250" height="200" class="w-100"/>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-font mb-1 text-dark" style="font-size: 18px">Mẫu Bàn Gỗ Kết Hợp Chân Sắt Đẹp</h6>
-                                <p class="mb-1 text-font-light text-secondary" style="font-size: 14px"><i class="fa-solid fa-clock"></i> @DateTime.Now.ToString("dd-MM-yyyyy")</p>
-                                <p class="post-summary text-font-light mb-0 text-dark">Phong cách nội thất gỗ tự nhiên vẫn luôn được đánh giá cao và là sự lựa chọn hàng đầu của khách hàng khi lựa chọn sản phẩm nội thất cho gia đình. Riêng đối với sản phẩm mặt bàn</p>
-                                <p class="btn bg-warning">Đọc tiếp</p>
-                            </div>
-                        </a>
-                        <hr class="my-1"/>
-                        <a href="#" class="row">
-                            <div class="col-md-4">
-                                <img src="https://nhagotunhien.com/wp-content/uploads/2020/10/z2147149362958_6d96a45fdf93ed7647b06d92871bd6ee-300x222.jpg" width="250" height="200" class="w-100"/>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-font mb-1 text-dark" style="font-size: 18px">Phong cách nội thất gỗ tự nhiên độc đáo</h6>
-                                <p class="mb-1 text-font-light text-secondary" style="font-size: 14px"><i class="fa-solid fa-clock"></i> @DateTime.Now.ToString("dd-MM-yyyyy")</p>
-                                <p class="post-summary text-font-light mb-0 text-dark">Phong cách nội thất gỗ tự nhiên vẫn luôn được đánh giá cao và là sự lựa chọn hàng đầu của khách hàng khi lựa chọn sản phẩm nội thất cho gia đình. Riêng đối với sản phẩm mặt bàn</p>
-                                <p class="btn bg-warning">Đọc tiếp</p>
-                            </div>
-                        </a>
-                        <hr class="my-1"/>
-                        <a href="#" class="row">
-                            <div class="col-md-4">
-                                <img src="https://nhagotunhien.com/wp-content/uploads/2019/03/WIN_20190926_18_40_05_Pro-e1569684065940-300x214.jpg" width="250" height="200" class="w-100"/>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-font mb-1 text-dark" style="font-size: 18px">Bàn ăn 4 ghế giành cho căn hộ chung cư</h6>
-                                <p class="mb-1 text-font-light text-secondary" style="font-size: 14px"><i class="fa-solid fa-clock"></i> @DateTime.Now.ToString("dd-MM-yyyyy")</p>
-                                <p class="post-summary text-font-light mb-0 text-dark">Phong cách nội thất gỗ tự nhiên vẫn luôn được đánh giá cao và là sự lựa chọn hàng đầu của khách hàng khi lựa chọn sản phẩm nội thất cho gia đình. Riêng đối với sản phẩm mặt bàn</p>
-                                <p class="btn bg-warning">Đọc tiếp</p>
-                            </div>
-                        </a>
-                        <hr class="my-1"/>
-                        <a href="#" class="row">
-                            <div class="col-md-4">
-                                <img src="https://nhagotunhien.com/wp-content/uploads/2019/08/65226268_1715244245443613_6322356472923553792_o-300x225.jpg" width="250" height="200" class="w-100"/>
-                            </div>
-                            <div class="col-md-8">
-                                <h6 class="text-font mb-1 text-dark" style="font-size: 18px">Mặt bàn gỗ tự nhiên nguyên tấm</h6>
-                                <p class="mb-1 text-font-light text-secondary" style="font-size: 14px"><i class="fa-solid fa-clock"></i> @DateTime.Now.ToString("dd-MM-yyyyy")</p>
-                                <p class="post-summary text-font-light mb-0 text-dark">Phong cách nội thất gỗ tự nhiên vẫn luôn được đánh giá cao và là sự lựa chọn hàng đầu của khách hàng khi lựa chọn sản phẩm nội thất cho gia đình. Riêng đối với sản phẩm mặt bàn</p>
-                                <p class="btn bg-warning">Đọc tiếp</p>
-                            </div>
-                        </a>
-                        <hr class="my-1"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            @await Html.PartialAsync("~/Views/Partial/MenuRight.cshtml")
-        </div>
-    </div>
+﻿@using Microsoft.Extensions.Options
+@using VIVU.Logic.Configs
+
+@inject IOptions<SiteConfig> siteConfig
+@{
+	ViewData["Title"] = "Blogs";
+}
+<div class="row">
+	<div class="pt-1 pb-0" id="breadcrumbs-wrapper">		
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m6 l6">
+					<h5 class="breadcrumbs-title">Blogs</h5>
+				</div>
+				<div class="col s12 m6 l6 right-align-md">
+					<ol class="breadcrumbs mb-0">
+						<li class="breadcrumb-item">
+							<a href="index.html">Trang chủ</a>
+						</li>
+						<li class="breadcrumb-item active">
+							Bài viết
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="container">
+			<div class="section" id="blog-list">
+				<div class="row">
+					<div class="col s12 m12 l9">
+						<div class="row">
+
+							<div class="col s12 m6 l4">
+								<div class="card-panel border-radius-6 mt-10 card-animation-1">
+									<a href="#">
+										<img class="responsive-img border-radius-8 z-depth-4 image-n-margin"
+											 src="@($"{siteConfig.Value.HttpsUrl}app-assets/images/cards/news-fashion.jpg")" alt="">
+									</a>
+									<h6 class="deep-purple-text text-darken-3 mt-5">
+										<a href="#">
+											Cây treo quần áo
+											tại thành phố Hồ Chí Minh
+										</a>
+									</h6>
+									<span>
+										Cây treo quần áo Vivudecor được làm bằng 100% gỗ cao su tự nhiên sấy
+										khô bằng công nghệ cao, chắc chắn chịu lực tốt. Đã qua quy trình xử lí
+										chống mối mọt, sơn bóng không gây trầy xước và được bảo hành 1
+										năm.
+									</span>
+									<div class="row mt-4">
+										<div class="col s5 mt-1">
+										</div>
+										<div class="col s7 mt-3 right-align social-icon">
+											<span class="material-icons">access_time</span> <span class="ml-3 vertical-align-top">23/06/2022 15:17</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m6 l4">
+								<div class="card-panel border-radius-6 mt-10 card-animation-1">
+									<a href="#">
+										<img class="responsive-img border-radius-8 z-depth-4 image-n-margin"
+											 src="@($"{siteConfig.Value.HttpsUrl}app-assets/images/cards/news-apple.jpg")" alt="">
+									</a>
+									<h6 class="deep-purple-text text-darken-3 mt-5">
+										<a href="#">
+											Cây treo quần áo
+											tại thành phố Hà Nội
+										</a>
+									</h6>
+									<span>
+										Cây treo quần áo Vivudecor được làm bằng 100% gỗ cao su tự nhiên sấy
+										khô bằng công nghệ cao, chắc chắn chịu lực tốt. Đã qua quy trình xử lí
+										chống mối mọt, sơn bóng không gây trầy xước và được bảo hành 1
+										năm.
+									</span>
+									<div class="row mt-4">
+										<div class="col s5 mt-1">
+										</div>
+										<div class="col s7 mt-3 right-align social-icon">
+											<span class="material-icons">access_time</span> <span class="ml-3 vertical-align-top">23/06/2022 15:17</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m6 l4">
+								<div class="card-panel border-radius-6 mt-10 card-animation-1">
+									<a href="#">
+										<img class="responsive-img border-radius-8 z-depth-4 image-n-margin"
+											 src="@($"{siteConfig.Value.HttpsUrl}app-assets/images/cards/news-twitter.jpg")" alt="">
+									</a>
+									<h6 class="deep-purple-text text-darken-3 mt-5">
+										<a href="#">
+											Cây treo quần áo
+											tại thành phố Hải Phòng
+										</a>
+									</h6>
+									<span>
+										Cây treo quần áo Vivudecor được làm bằng 100% gỗ cao su tự nhiên sấy
+										khô bằng công nghệ cao, chắc chắn chịu lực tốt. Đã qua quy trình xử lí
+										chống mối mọt, sơn bóng không gây trầy xước và được bảo hành 1 năm.
+									</span>
+									<div class="row mt-4">
+										<div class="col s5 p-0 mt-1">
+										</div>
+										<div class="col s7 mt-3 right-align social-icon">
+											<span class="material-icons">access_time</span> <span class="ml-3 vertical-align-top">23/06/2022 15:17</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+					</div>
+					<div class="col s12 m3 l3 pr-0 hide-on-med-and-down animate fadeLeft"
+						 id="ecommerce-products">
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title">Danh mục sản phẩm</span>
+								<hr class="p-0 mb-0">
+								<ul class="collapsible categories-collapsible">
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Cây treo quần áo</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Giá treo quần áo</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Móc treo dán tường</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Kệ gỗ treo tường</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Tủ gỗ</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Sản phẩm mới</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Bán chạy</a>
+										</div>
+									</li>
+									<li>
+										<div class="collapsible-header">
+											<a href="#">Khuyến mãi</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title">Sản phẩm bán chạy</span>
+								<hr class="p-0 mb-0">
+
+								<div class="col s12 m12 l12">
+									<div class="card animate fadeLeft">
+										<div class="card-badge"><a href="#" class="white-text"><b>Bán chạy</b></a></div>
+										<div class="card-content">
+											<a href="#">
+												<p>Giá treo quần áo</p>
+											</a>
+											<a href="#"><span class="card-title text-ellipsis">Giá treo quần áo</span></a>
+											<img src="@($"{siteConfig.Value.HttpsUrl}images/gia-treo-quan-ao-000.jpg")" class="responsive-img" alt="">
+											<div class="row">
+												<h5 class="col s12 m12 l8 mt-3">541.000 đồng</h5>
+												<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+												   href="#">Xem thêm</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col s12 m12 l12">
+									<div class="card animate fadeLeft">
+										<div class="card-badge"><a href="#" class="white-text"><b>Bán chạy</b></a></div>
+										<div class="card-content">
+											<a href="#">
+												<p>Giá treo quần áo</p>
+											</a>
+											<a href="#"><span class="card-title text-ellipsis">Giá treo quần áo</span></a>
+											<img src="@($"{siteConfig.Value.HttpsUrl}images/gia-treo-quan-ao-000.jpg")" class="responsive-img" alt="">
+											<div class="row">
+												<h5 class="col s12 m12 l8 mt-3">541.000 đồng</h5>
+												<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+												   href="#">Xem thêm</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col s12 m12 l12">
+									<div class="card animate fadeLeft">
+										<div class="card-badge"><a href="#" class="white-text"><b>Bán chạy</b></a></div>
+										<div class="card-content">
+											<a href="#">
+												<p>Giá treo quần áo</p>
+											</a>
+											<a href="#"><span class="card-title text-ellipsis">Giá treo quần áo</span></a>
+											<img src="@($"{siteConfig.Value.HttpsUrl}images/gia-treo-quan-ao-000.jpg")" class="responsive-img" alt="">
+											<div class="row">
+												<h5 class="col s12 m12 l8 mt-3">541.000 đồng</h5>
+												<a class="col s12 m12 l4 mt-2 waves-effect waves-light gradient-45deg-green-teal btn modal-trigger"
+												   href="#">Xem thêm</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
