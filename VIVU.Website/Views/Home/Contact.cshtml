@@ -1,54 +1,116 @@
-﻿@{
-    ViewData["Title"] = "Liên hệ";
+﻿@using Microsoft.Extensions.Options
+@using VIVU.Logic.Configs
+@inject IOptions<SiteConfig> siteConfig
+
+@{
+	ViewData["Title"] = "Liên hệ";
 }
-<div class="container px-0">
-    <div class="row w-100 m-0">
-        <div class="col-md-6 ps-md-0 mt-2 mt-md-0">
-            <img src="~/images/vivu.webp" class="w-100" height="80"/>
-            <div class="col-inner px-2 mt-2">
-                <p class="mb-0">ViVuDecor tự hào là đơn vị kinh doanh chuyên mặt hàng gỗ tự nhiên gọn đẹp, phù hợp với mọi không gian. Việc trang trí này giúp không gian bạn thêm phần sang trọng mang lại nhiều thêm ý nghĩa</p>
-                <h4 class="text-font mb-2">Cảm ơn Quý khách hàng đã quan tâm đến sản phẩm của ViVuDecor</h4>
-                <p class="mb-0">Để kết nối trực tiếp với chúng tôi, Quý khách hàng vui lòng liên hệ theo những hình thức sau:</p>
-                <h5 class="text-font">1. Thăm trực tiếp nhà xưởng sản xuất tại địa chỉ:</h5>
-                <p>Xưởng và Showroom:  6 Đường số 2 KDC Thành Ủy , Hiệp Bình Chánh, Thủ Đức, HCM</p>
-                <h5 class="text-font">2. Điện thoại liên hệ trực tiếp:</h5>
-                <p class="mb-0">Di động: 0917219888</p>
-                <h3><span style="font-size: 95%;">3. Kết nối miễn phí để tìm hiểu sâu hơn&nbsp;</span></h3>
-                <p class="mb-0 ">Facebook: <b class="text-success">ViVuDecor</b></p>
-                <p class="mb-0"><span style="font-size: 95%;">Email: vivudecor@gmail.com</span></p>
-            </div>
-        </div>
-        <div class="col-md-6 pe-md-0 h-100 mt-2 mt-md-0">
-            <div class="card w-100 h-100">
-                <div class="card-header border-box bg-white">
-                    <h3 class="card-title text-center m-0 text-font text-success">Liên hệ với ViVu</h3>
-                </div>
-                <div class="card-body p-1">
-                    <form id="contact-form">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" id="full-name" class="form-control" placeholder="Họ tên (*)">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="number" id="full-name" class="form-control" placeholder="Điện thoại (*)">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <input type="text" id="full-name" class="form-control" placeholder="Tiêu đề">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <textarea type="text" id="full-name" class="form-control" placeholder="Nội dung" rows="5"></textarea>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer p-1">
-                    <button class="btn btn-lagre btn-success text-white w-100"><h4>Gửi <i class="fas fa-paper-plane" aria-hidden="true"></i></h4></button>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<div class="row">
+	<div class="content-wrapper-before blue-grey lighten-5"></div>
+	<div class="col s12">
+		<div class="container">			
+			<div id="contact-us" class="section">
+				<div class="app-wrapper">
+					<div class="contact-header">
+						<div class="row contact-us">
+							<div class="col s12 m12 l4 sidebar-title">
+								<h5 class="m-0">
+									<i class="material-icons contact-icon vertical-text-top">mail_outline</i>
+									Liên hệ
+								</h5>
+							</div>
+							<div class="col s12 m12 l8 form-header">
+								<h6 class="form-header-text"><i class="material-icons"> mail_outline </i> Gửi phản hổi cho chúng tôi</h6>
+							</div>
+						</div>
+					</div>					
+					<div id="sidebar-list" class="row contact-sidenav">
+						<div class="col s12 m12 l4">							
+							<div class="sidebar-left sidebar-fixed">
+								<div class="sidebar">
+									<div class="sidebar-content">
+										<div class="sidebar-menu list-group position-relative">
+											<div class="sidebar-list-padding app-sidebar contact-app-sidebar"
+												 id="contact-sidenav">
+												<ul class="contact-list display-grid">
+													<li>
+														<h5 class="m-0">VIVU decor</h5>
+													</li>
+													<li>
+														<h6 class="mt-5 line-height">Nội thất nhà cửa</h6>
+													</li>
+													<li>
+														<hr class="mt-5">
+													</li>
+												</ul>
+												<div class="row">													
+													<div class="col s12 place mt-4 p-0">
+														<div class="col s2 m2 l2">
+															<i class="material-icons">
+																place
+															</i>
+														</div>
+														<div class="col s10 m10 l10">
+															<p class="m-0">
+																Số 46 Lương Văn Can, phường 02 <br> thành phố Vũng Tàu, tỉnh Bà Rịa - Vũng Tàu
+															</p>
+														</div>
+													</div>													
+													<div class="col s12 phone mt-4 p-0">
+														<div class="col s2 m2 l2">
+															<i class="material-icons">
+																call
+															</i>
+														</div>
+														<div class="col s10 m10 l10">
+															<p class="m-0">0937 84 39 70</p>
+														</div>
+													</div>													
+													<div class="col s12 mail mt-4 p-0">
+														<div class="col s2 m2 l2">
+															<i class="material-icons">
+																mail_outline
+															</i>
+														</div>
+														<div class="col s10 m10 l10">
+															<p class="m-0">lienhe@vivudecor.vn</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m12 l8 contact-form margin-top-contact">
+							<div class="row">
+								<form class="col s12">
+									<div class="row">
+										<div class="input-field col m6 s12">
+											<input id="name" type="text" class="validate">
+											<label for="name">Họ tên</label>
+										</div>
+										<div class="input-field col m6 s12">
+											<input id="phone" type="text" class="validate">
+											<label for="phone">Điện thoại</label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="input-field col s12 width-100">
+											<textarea id="textarea1" class="materialize-textarea"></textarea>
+											<label for="textarea1">Phản hồi của bạn</label>
+											<a class="mb-6 btn waves-effect waves-light gradient-45deg-green-teal">Gửi</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

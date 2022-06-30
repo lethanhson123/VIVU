@@ -86,6 +86,16 @@ app.UseEndpoints(e =>
        defaults: new { controller = "Home", action = "SiteMap" });
 
     e.MapControllerRoute(
+       name: "lien-he",
+       pattern: "lien-he.html",
+       defaults: new { controller = "Home", action = "Contact" });
+
+    e.MapControllerRoute(
+      name: "gioi-thieu",
+      pattern: "gioi-thieu.html",
+      defaults: new { controller = "Home", action = "About" });
+
+    e.MapControllerRoute(
        name: "categories",
        pattern: "danh-muc/{meta}-{id}.html",
        defaults: new { controller = "Category", action = "Index" });

@@ -1,60 +1,90 @@
 ﻿@using Microsoft.Extensions.Options
 @using VIVU.Logic.Configs
-
 @inject IOptions<SiteConfig> siteConfig
-@inject IHttpContextAccessor httpContextAccessor
 
-<div class="container px-md-0">
-    <div class="row w-100 m-0">
-        <a href="@siteConfig.Value.HttpsUrl" class="col-3 col-md-2 px-0 py-2 d-flex align-items-center">
-            <img src="@($"{siteConfig.Value.HttpsUrl}/images/vivu.webp")" height="40" class="w-100"/>
-        </a>
-        <div class="col-7 col-md-6 my-2">
-            <div class="input-group input-group-lg">
-                <input type="text" class="form-control" placeholder="Sản phẩm, bài viết,..." 
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
-                <span class="input-group-text bg-white" id="inputGroup-sizing-lg"><i class="fas fa-search"></i></span>
-            </div>
+<header class="page-topbar" id="header">
+    <div class="navbar navbar-fixed">
+      <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-light-blue-cyan">
+        <div class="nav-wrapper">
+          <ul class="left">
+            <li>
+              <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="@($"{siteConfig.Value.HttpsUrl}")"><img src="@($"{siteConfig.Value.HttpsUrl}/images/logo.jpg")"
+                    alt="VIVU decor" title="VIVU decor" width="100%" height="100%"></a></h1>
+            </li>
+          </ul>
+          <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
+            <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Bạn muốn tìm gì">
+          </div>
+          <ul class="navbar-list right">
+            <li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button"
+                href="javascript:void(0);"><i class="material-icons">search </i></a></li>
+            <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);"
+                data-target="notifications-dropdown"><i class="material-icons">shopping_cart<small
+                    class="notification-badge orange accent-3">5</small></i></a></li>
+            <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);"
+                data-target="profile-dropdown"><span class="avatar-status avatar-online"><img
+                    src="@($"{siteConfig.Value.HttpsUrl}app-assets/images/avatar/avatar-7.png")" alt="avatar"><i></i></span></a></li>
+            <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen"
+                href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
+          </ul>          
+          <ul class="dropdown-content" id="translation-dropdown">
+          </ul>
+         
+          <ul class="dropdown-content" id="notifications-dropdown" style="width: 300px;">
+          </ul>
+         
+          <ul class="dropdown-content" id="profile-dropdown">
+          </ul>
         </div>
-        <div class="col-1 col-md-2 px-1 py-2 d-flex">
-            <div class="d-flex text-success align-items-center">
-                <i class="mb-0 h4 fas fa-phone text-success"></i>
-                <a href="#" class="ms-2 text-dark" style="text-decoration:none;">
-                    <p class="mb-0 d-none d-md-block">Hotline<br/>0917219888</p>
-                </a>
-            </div>
-        </div>
-        <div class="col-1 col-md-2 px-1 py-2 d-flex">
-            <div class="d-flex text-success align-items-center">
-                <i class="mb-0 h4 fas fa-shopping-cart"></i>
-                <a href="#" class="ms-2 text-dark" style="text-decoration:none;">
-                    <p class="mb-0 d-none d-md-block">Giỏ hàng<br/>(0 sản phẩm)</p>
-                </a>
-            </div>
-        </div>
+        <nav class="display-none search-sm">
+          <div class="nav-wrapper">
+            <form>
+              <div class="input-field">
+                <input class="search-box-sm" type="search" required="">
+                <label class="label-icon" for="search"><i class="material-icons search-sm-icon">search</i></label><i
+                  class="material-icons search-sm-close">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+      </nav>      
+      <nav class="white hide-on-med-and-down" id="horizontal-nav">
+        <div class="nav-wrapper">
+          <ul class="left hide-on-med-and-down" id="ul-horizontal-nav" data-menu="menu-navigation">
+            <li><a href="@($"{siteConfig.Value.HttpsUrl}")"><span>Trang chủ</span></a></li>
+            <li><a href="@($"{siteConfig.Value.HttpsUrl}gioi-thieu.html")"><span>Giới thiệu</span></a></li>
+            <li><a href="#"><span>Cây treo quần áo</span></a></li>
+            <li><a href="#"><span>Giá treo quần áo</span></a></li>
+            <li><a href="#"><span>Móc treo dán tường</span></a></li>
+            <li><a href="#"><span>Kệ gỗ treo tường</span></a></li>
+            <li><a href="#"><span>Tủ gỗ</span></a></li>
+            <li><a href="#"><span>Sản phẩm mới</span></a></li>
+            <li><a href="#"><span>Bán chạy</span></a></li>
+            <li><a href="#"><span>Khuyến mãi</span></a></li>
+            <li><a href="@($"{siteConfig.Value.HttpsUrl}lien-he.html")"><span>Liên hệ</span></a></li>
+          </ul>
+        </div>        
+      </nav>
     </div>
-</div>
-<div class="container-fluid bg-success">
-    <div class="container px-0">
-        <div class="row w-100 m-0 bg bg-success">
-            <nav class="px-0 navbar navbar-default navbar-fixed-top navbar-expand-lg navbar-dark bg-success py-0 my-0 h-100" style="z-index: 99;">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav px-0">
-                        <li class="nav-item text-font" style="font-size: 24px; font-weight: bold;">
-                            <a class="ps-0 nav-link custom-nav-link text-white" asp-action="index" asp-controller="home">Trang chủ</a>
-                        </li>
-                        <li class="nav-item text-font" style="font-size: 24px; font-weight: bold;">
-                            <a class="nav-link custom-nav-link text-white" asp-action="index" asp-controller="blog">Bài viết</a>
-                        </li>
-                        <li class="nav-item text-font" style="font-size: 24px; font-weight: bold;">
-                            <a class="nav-link custom-nav-link text-white" asp-action="contact" asp-controller="home">Liên hệ</a>
-                        </li>
-                        <li class="nav-item text-font" style="font-size: 24px; font-weight: bold;">
-                            <a class="nav-link custom-nav-link text-white" asp-action="about" asp-controller="home">Về chúng tôi</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+  </header>
+  <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-fixed hide-on-large-only">
+    <div class="brand-sidebar sidenav-light"></div>
+    <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed hide-on-large-only menu-shadow"
+      id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+    
+      <li class="bold"><a class="waves-effect waves-cyan " href="@($"{siteConfig.Value.HttpsUrl}")"><span class="menu-title" data-i18n="">Trang chủ</span></a></li>     
+      <li class="bold"><a class="waves-effect waves-cyan " href="@($"{siteConfig.Value.HttpsUrl}gioi-thieu.html")"><span class="menu-title" data-i18n="">Giới thiệu</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><span class="menu-title" data-i18n="">Cây treo quần áo</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><span class="menu-title" data-i18n="">Giá treo quần áo</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><span class="menu-title" data-i18n="">Móc treo dán tường</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><span class="menu-title" data-i18n="">Kệ gỗ treo tường</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><span class="menu-title" data-i18n="">Tủ gỗ</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><span class="menu-title" data-i18n="">Sản phẩm mới</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><span class="menu-title" data-i18n="">Bán chạy</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><span class="menu-title" data-i18n="">Khuyến mãi</span></a></li>
+      <li class="bold"><a class="waves-effect waves-cyan " href="@($"{siteConfig.Value.HttpsUrl}lien-he.html")"><span class="menu-title" data-i18n="">Liên hệ</span></a></li>      
+    </ul>
+    <div class="navigation-background"></div><a
+      class="sidenav-trigger btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#"
+      data-target="slide-out"><i class="material-icons">menu</i></a>
+  </aside>

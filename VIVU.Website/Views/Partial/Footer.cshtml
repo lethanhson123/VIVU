@@ -1,36 +1,88 @@
-﻿<div class="container-fluid mt-2 px-0" style="background-color: black;">
-   <div class="container px-md-0">
-        <div class="row w-100 m-0 py-2">
-            <div class="col-md-3 ps-0 mt-2">
-                <h5 class="mb-2 text-white">VIVUDECOR</h5>
-                <p class="mb-0 text-white">Chuyên cung cấp đồ gỗ giá rẻ làm đẹp không gian sống của bạn</p>
-                <img class="mt-2" width="200" height="76" src="~/images/bo-cong-thuong.png">
-            </div>
-            <div class="col-md-3 px-0 px-md-2 mt-2">
-                <h5 class="mb-2 text-white">HỖ TRỢ KHÁCH HÀNG</h5>
-                <p class="mb-0 text-white">Trung tâm hỗ trợ</p>
-                <p class="mb-0 text-white">Hướng dẫn đặt hàng</p>
-                <p class="mb-0 text-white">Chính sách đổi trả</p>
-                <p class="mb-0 text-white">Câu hỏi thường gặp</p>
-            </div>
-            <div class="col-md-3 px-0 px-md-2 mt-2">
-                <h5 class="mb-2 text-white">VỀ VIVU</h5>
-                <p class="mb-0 text-white">Hotline và Chat</p>
-                <p class="mb-0 text-white">Chính sách bảo mật</p>
-                <p class="mb-0 text-white">Chính sách quyền riêng tư</p>
-                <p class="mb-0 text-white">Đại lý bán hàng</p>
-            </div>
-            <div class="col-md-3 pe-0">
-                <h5 class="mb-2 text-white">LIÊN KẾT</h5>
-                <img class="mt-2" width="200" height="76" src="~/images/payment.webp">
-            </div>
+﻿@using Microsoft.Extensions.Options
+@using VIVU.Logic.Configs
+
+@inject IOptions<SiteConfig> siteConfig
+
+<footer
+    class="page-footer footer footer-static footer-dark gradient-45deg-light-blue-cyan gradient-shadow navbar-border navbar-shadow">
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l3">
+          <a target="_blank" href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=32402">
+            <img width="200px" height="76px" src="@($"{siteConfig.Value.HttpsUrl}images/bo-cong-thuong.png")">
+          </a>
+          <br />
+          <a target="_blank" href="https://shopee.vn/vivudecor">
+            <img width="200px" height="76px" src="@($"{siteConfig.Value.HttpsUrl}images/Shopee.jpg")">
+          </a>
+          <br />
+          <a target="_blank" href="http://www.lazada.vn/catalog/?q=vivu-decor">
+            <img width="200px" height="76px" src="@($"{siteConfig.Value.HttpsUrl}images/lazada.jpg")">
+          </a>
+          <br />
+          <a target="_blank" href="https://www.sendo.vn/tim-kiem/?q=vivu-decor">
+            <img width="200px" height="76px" src="@($"{siteConfig.Value.HttpsUrl}images/sendo.jpg")">
+          </a>
         </div>
-   </div>
-</div>
-<hr class="my-0 text-white" style=""/>
-<footer class="border-top footer bg bg-black py-2" style="background-color: black;">
-    <div class="container px-md-0">
-        <p class="mb-0 text-white" style="font-weight:bold;">Bản quyền &copy; 2022 - VIVUDECOR</p>
-        <p class="mb-0 text-white"><span style="font-weight:bold;">Địa chỉ:</span> 6 Đường số 2 KDC Thành Ủy , Hiệp Bình Chánh, Thủ Đức, HCM | <span style="font-weight:bold;">Hotline:</span> 0917219888</p>
+        <div class="col s12 m12 l3">
+          <ul>
+            <li><a href='#' style="color: #ffffff;">Chính sách bảo mật</a></li>
+            <li><a href='#' style="color: #ffffff;">Chính sách đại lý Online</a></li>
+            <li><a href='#' style="color: #ffffff;">Quy định đổi trả hàng</a></li>
+            <li><a href='#' style="color: #ffffff;">Hướng dẫn thanh toán và mua hàng</a></li>
+            <li><a href='#' style="color: #ffffff;">Chính sách vận chuyển</a></li>
+            <li><a href='#' style="color: #ffffff;">Chính sách bảo mật</a></li>
+            <li><a href='#' style="color: #ffffff;">Chính sách đại lý Online</a></li>
+            <li><a href='#' style="color: #ffffff;">Quy định đổi trả hàng</a></li>
+            <li><a href='#' style="color: #ffffff;">Hướng dẫn thanh toán và mua hàng</a></li>
+            <li><a href='#' style="color: #ffffff;">Chính sách vận chuyển</a></li>
+          </ul>
+        </div>
+        <div class="col s12 m12 l3">
+          <ul>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại thành phố Hồ Chí Minh</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại thành phố Hà Nội</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại thành phố Hải Phòng</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại thành phố Đà Nẵng</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại thành phố Cần Thơ</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại tỉnh Bình Dương</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại tỉnh Đồng Nai</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại tỉnh Long An</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại tỉnh Bắc Ninh</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại tỉnh Phú Thọ</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại tỉnh Nghệ An</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại tỉnh Cà Mau</a></li>
+            <li><a href='#' style="color: #ffffff;">Cây treo quần áo tại tỉnh Bạc Liêu</a></li>
+
+          </ul>
+        </div>
+        <div class="col s12 m12 l3">
+          
+        </div>
+      </div>
     </div>
-</footer>
+    <div class="footer-copyright">
+      <div class="container"><span>&copy; 2022 <a href="@($"{siteConfig.Value.HttpsUrl}")">VIVU</a> Bảo lưu tất cả
+          các quyền.</span><span class="right hide-on-small-only">Thiết kế và phát triển bởi <a href="https://sohu.vn/"
+            target="_blank">SOHU</a></span></div>
+    </div>
+ </footer>
+
+<div style="position:fixed; bottom:20px; right:20px; z-index:1000;">
+    <div>
+      <a href="https://zalo.me/0937843970" target="_blank">
+        <img src="@($"{siteConfig.Value.HttpsUrl}images/zalo.png")" width="50px" height="50px">
+      </a>
+    </div>
+    <div>
+      <a href="https://m.me/fintechfengshui" target="_blank">
+        <img src="@($"{siteConfig.Value.HttpsUrl}images/messenger.png")" width="50px" height="50px">
+      </a>
+    </div>
+    <div>
+      <a href="tel:0909101303" target="_blank">
+        <img src="@($"{siteConfig.Value.HttpsUrl}images/phone.png")" width="50px" height="50px">
+      </a>
+    </div>
+  </div>
