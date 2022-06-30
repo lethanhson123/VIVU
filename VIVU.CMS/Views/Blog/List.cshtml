@@ -1,5 +1,32 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using FintechFengShui.Shared.Model
+@model IEnumerable<PostModel>
+
+@if(Model != null &&
+   Model.Any())
+{
+    foreach(var post in Model)
+    {
+        <div class="card w-100 p-0 mb-0 border-0">
+            <div class="card-body p-1">
+                <div class="row w-100 m-0">
+                    <div class="col-md-10">
+                        <h6 class="mb-0">@post.Id - @post.Title</h6>
+                        <p class="mb-0" style="font-size:12px;">Từ khóa: @post.Keywords</p>
+                        <p class="mb-0" style="font-size:12px;">Mô tả: @post.Summary</p>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="float-end">
+                            <button class="btn btn-outline-success mx-1" onclick="onDetail(@post.Id)">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="btn btn-outline-danger mx-1" onclick="onDelete(@post.Id)">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }
+

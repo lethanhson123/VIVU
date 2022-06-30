@@ -12,6 +12,7 @@ namespace VIVU.Intergration.Config
         public string Host { get; set; } = string.Empty;
         public string Login { get; set; } = string.Empty;
         public string RefreshToken { get; set; } = string.Empty;
+       
         /// <summary>
         /// Product
         /// </summary>
@@ -22,5 +23,32 @@ namespace VIVU.Intergration.Config
         public string SaleOrderStatus { get; set; } = string.Empty;
         public string ProductCategoryGetWithQuery { get; set; } = string.Empty;
         public string ProductCategory { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Tag url
+        /// </summary>
+        public string CreateTag { get; set; } = string.Empty;
+        public string UpdateTag { get; set; } = string.Empty;
+        public string DeleteTag { get; set; } = string.Empty;
+        public string GetTag { get; set; } = string.Empty;
+        public string GetTagWithQuery { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Category url
+        /// </summary>
+        public string CreateCategory { get; set; } = string.Empty;
+        public string UpdateCategory { get; set; } = string.Empty;
+        public string DeleteCategory { get; set; } = string.Empty;
+        public string GetCategory { get; set; } = string.Empty;
+        public string GetCategoryWithQuery { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Blog url
+        /// </summary>
+        public string CreateBlog { get; set; } = string.Empty;
+        public string UpdateBlog { get; set; } = string.Empty;
+        public string DeleteBlog { get; set; } = string.Empty;
+        public string GetBlog { get; set; } = string.Empty;
+        public string GetBlogWithQuery { get; set; } = string.Empty;
     }
 }

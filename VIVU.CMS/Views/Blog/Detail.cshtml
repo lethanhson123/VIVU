@@ -1,73 +1,284 @@
-﻿@{
-	ViewData["Title"] = "Blog";
+﻿@using VIVU.Intergration.Implement
+@using VIVU.Intergration.Interface
+@using VIVU.Shared.Model
+@inject ITagService tagService
+@inject ICategoriesService categoryService
+@inject IBlogService blogService
+
+@{
+    if(string.IsNullOrEmpty(Model.Title))
+    {
+        ViewData["Title"] = "Thêm bài viết";
+    }
+    else
+    {
+        ViewData["Title"] = Model.Title;
+    }
 }
 
-<div class="content-wrapper">
-	<section class="content-header">
-		<div class="container-fluid">
-			<div class="row mb-2">
-				<div class="col-sm-6">
-					<h1>Detail</h1>
-				</div>
-				<div class="col-sm-6">
-					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Blog</li>
-					</ol>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="content">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="card card-primary">
-						<div class="card-header">
-							<h3 class="card-title">Vui lòng nhập thông tin chi tiết</h3>
-						</div>
-						<form>
-							<div class="card-footer text-right">
-								<a class="btn btn-success" href="javascript:window.open('','_self').close();"><i class="fa fa-angle-left"></i> Danh sách</a>
-								<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi</button>
-							</div>
-							<div class="card-body">
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label for="exampleInputEmail1">Email address</label>
-											<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-										</div>
-										<div class="form-group">
-											<label for="exampleInputPassword1">Password</label>
-											<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-										</div>
-										<div class="form-group">
-											<label for="exampleInputFile">File input</label>
-											<div class="input-group">
-												<div class="custom-file">
-													<input type="file" class="custom-file-input" id="exampleInputFile">
-													<label class="custom-file-label" for="exampleInputFile">Choose file</label>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label for="exampleInputEmail1">Email address</label>
-											<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-										</div>
-										<div class="form-group">
-											<label for="exampleInputPassword1">Password</label>
-											<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+@model BlogDetailModel
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Bài viết</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li><button class="btn btn-primary" onclick="onSave()">Lưu</button></li>
+                    <li><a class="btn btn-dark ms-2" asp-action="index" asp-controller="blog">Thoát</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid px-0">
+        <div class="row w-100 m-0">
+            <div class="col-md-8">
+                <textarea asp-for="Content" id="blog-content" rows="50"></textarea>
+                <div class="card p-0 mt-2 border-0">
+                    <div class="card-header p-2">
+                        <h3 class="card-title font-weight-bold">Bài viết liên quan</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <select multiple class="form-select select2" id="multiple-select-related-blogs" 
+                                data-placeholder="Bài viết liên quan">
+                        @{
+                            var blogRelateds = blogService.Get(string.Empty);
+                            if(blogRelateds.Result.Data != null)
+                                {
+                                    foreach(var blogRelated in blogRelateds.Result.Data)
+                                    {
+                                        <option value="@blogRelated.Id">@blogRelated.Title</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-0 mb-2 border-0">
+                    <div class="card-header p-2">
+                        <h3 class="card-title font-weight-bold mb-0">Thông tin chung</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <input type="hidden" class="form-control" id="Id" asp-for="Id"/>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Tiêu đề</b></label>
+                            <textarea rows="2" class="form-control" asp-for="Title"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Mô tả</b></label>
+                            <textarea rows="4" class="form-control" asp-for="Description"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Tóm tắt</b></label>
+                            <textarea rows="4" class="form-control" asp-for="Summary"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Từ khóa</b></label>
+                            <textarea rows="4" class="form-control" asp-for="Keywords"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Url meta</b></label>
+                            <input class="form-control" asp-for="Meta"/>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Ngày phát hành</b></label>
+                            <input class="form-control" type="datetime-local" asp-for="BlogDate"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-0 mb-2 border-0">
+                    <div class="card-header p-2">
+                        <h3 class="card-title font-weight-bold">Danh mục</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <select multiple class="form-select select2" id="multiple-select-categories" data-placeholder="Danh mục">
+                            @{
+                                var categories = categoryService.GetAll(string.Empty);
+                                if(categories.Result.Data != null)
+                                {
+                                    foreach(var category in categories.Result.Data)
+                                    {
+                                        if (Model.Categories?.Select(x => x.Id).Contains(category.Id) == true)
+                                        {
+                                            <option selected value="@category.Id">@category.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@category.Id">@category.Name</option>
+                                        }
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="card p-0 mb-2 border-0">
+                    <div class="card-header p-2">
+                        <h3 class="card-title font-weight-bold">Thẻ</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <select multiple class="form-select select2" id="multiple-select-tag" data-placeholder="Thẻ">
+                        @{
+                            var tags = tagService.GetAll(string.Empty);
+                            if(tags.Result.Data != null)
+                            {
+                                foreach(var tag in tags.Result.Data)
+                                {
+                                    if (Model.Tags?.Select(x => x.Id).Contains(tag.Id) == true)
+                                    {
+                                        <option selected value="@tag.Id">@tag.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@tag.Id">@tag.Name</option>
+                                    }
+                                }
+                            }
+                        }
+                        </select>
+                    </div>
+                </div>
+                <div class="card p-0 mb-2 border-0">
+                    <div class="card-header p-2">
+                        <h3 class="card-title font-weight-bold">Hình ảnh</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <div class="input-group">
+                            <input type="text" asp-for="Image" class="form-control" placeholder="Chọn file..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text btn btn-success" id="basic-addon2" onclick="onSelectImage()">Chọn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="modal-area-content"></div>
+<div id="modal-file-content">
+    @await Html.PartialAsync("~/Views/FileManager/Modal.cshtml")
 </div>
+<script src="~/lib/jquery.blockUI/jquery.blockUI.min.js"></script>
+<script src="~/lib/sweetalert/sweetalert.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $(".select2").select2({
+            theme: "bootstrap-5",
+        });
+
+        CKEDITOR
+        .replace('blog-content', {
+            height: 600,
+            fontFamily: {
+                options: [
+                    'default',
+                    'Ubuntu, Arial, sans-serif, Monteserrat',
+                    'Ubuntu Mono, Courier New, Courier, monospace'
+                ]
+            },
+            extraPlugins: "toc",
+            toolbar: 'admin_mode',
+            filebrowserImageBrowseUrl :"@Url.Action("Index","FileManager")",
+            filebrowserImageUploadUrl : '/elfinder/connector?cmd=upload',
+        });
+    })
+
+    onSelectImage = () => {
+        $('#file-manager-modal').modal('show');
+        onFileInit(() => {
+            $('#Image').val(_selectedFilePath);
+        })
+    }
+
+    onSave = () => {
+
+        console.log($('#BlogDate').val());
+
+        CKEDITOR.instances['blog-content'].updateElement();
+
+        var categories = $('#multiple-select-categories').select2("data")
+            .map((item) => {
+                return {
+                    id: item.id,
+                    name: item.text
+                }
+            });
+
+        var tags = $('#multiple-select-tag').select2("data")
+            .map((item) => {
+                return {
+                    id: item.id,
+                    name: item.text
+                }
+            });
+
+        var blogRelateds = $('#multiple-select-related-blogs').select2("data")
+            .map((item) => {
+                return {
+                    id: item.id,
+                    name: item.text
+                }
+            });
+
+        var blog = {
+            Id: $('#Id').val(),
+            Title: $('#Title').val(),
+            Meta: $('#Meta').val(),
+            Keywords: $('#Keywords').val(),
+            Description : $('#Description').val(),
+            AuthorId: $('#AuthorId').val(),
+            Summary: $('#Summary').val(),
+            Image: $('#Image').val(),
+            BlogDate: $('#BlogDate').val(),
+            Content: $('#blog-content').val(),
+            Categories: categories,
+            Tags: tags,
+            Relates: blogRelateds
+        };
+
+        $.blockUI({ message: 'Hệ thống đang xử lý vui lòng chờ...'})
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("SaveChange","Blog")",
+            data: blog,
+            success: (res) => {
+                if(res.success == true) {
+                    swal({
+                        title: "Thông báo",
+                        text: "Dữ liệu lưu thành công!",
+                        icon: "success"
+                    });
+
+                    if($('#Id').val() == '')
+                        $('#Id').val(res.data.id)
+                }
+                else {
+                    swal({
+                        title: "Lỗi",
+                        text: res.message,
+                        icon: "error"
+                    });
+                }
+            },
+            error: (xhr, err) => {
+                $.unblockUI();
+                swal({
+                    title: "Lỗi",
+                    text: "Có lỗi trong quá trình xử lý, vui lòng thử lại sau",
+                    icon: "error"
+                });
+                console.log(xhr.responseText);
+            }
+        }).done(() => {
+            $.unblockUI();
+            $('#category-detail-modal').modal('hide');
+        })
+    }
+
+</script>

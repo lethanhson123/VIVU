@@ -6,11 +6,14 @@ namespace VIVU.CMS.Controllers
 {
     public class BlogController : Controller
     {
-        private readonly ILogger<BlogController> _logger;
+        private readonly IBlogService blogService;
+        private readonly IAuthenticateHelper authenticateHelper;
 
-        public BlogController(ILogger<BlogController> logger)
+        public BlogController(IBlogService blogService,
+            IAuthenticateHelper authenticateHelper)
         {
-            _logger = logger;
+            this.blogService = blogService;
+            this.authenticateHelper = authenticateHelper;
         }
 
         public IActionResult Index()
@@ -18,9 +21,61 @@ namespace VIVU.CMS.Controllers
             return View();
         }
 
-        public IActionResult Detail(int Id)
+        public async Task<ActionResult> Detail(int Id)
         {
-            return View();
+            var model = new BlogDetailModel()
+            {
+                PostDate = DateTime.Now
+            };
+
+            if (Id > 0)
+            {
+                var remoteResponseData = await blogService.Get(Id);
+
+                if (remoteResponseData.Data != null)
+                {
+                    model = remoteResponseData.Data;
+                }
+            }
+
+            return View(model);
+        }
+
+        public async Task<ActionResult> List(BlogQueryModel query)
+        {
+            var remoteResponseData = await blogService.Get(query.Keywords ?? string.Empty);
+            var model = remoteResponseData.Data;
+            return PartialView(model);
+        }
+
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> SaveChange(BlogDetailModel model)
+        {
+            var response = new CommonResponseModel<BlogModel>();
+            authenticateHelper.SetInforFromContext(HttpContext);
+            string token = authenticateHelper.GetAccessToken();
+
+            if (model.Id == 0)
+            {
+                response = await blogService.Create(model, token);
+            }
+            else
+            {
+                response = await blogService.Update(model, token);
+            }
+
+            return Json(response);
+        }
+
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var response = new CommonResponseModel<object>();
+            authenticateHelper.SetInforFromContext(HttpContext);
+            string token = authenticateHelper.GetAccessToken();
+
+            response = await blogService.Delete(id, token);
+            return Json(response);
         }
     }
 }

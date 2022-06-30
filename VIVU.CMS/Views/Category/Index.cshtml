@@ -1,5 +1,126 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Danh sách bài viết";
 }
+
+@using FintechFengShui.Shared.Model
+@model CategoryModel
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Bài viết</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Nội dung</a></li>
+                    <li class="breadcrumb-item active">Danh mục bài viết</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid px-0">
+        <div class="row w-100 m-0">
+            <div class="card w-100 p-0 mb-0">
+                <div class="card-body p-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" asp-for="Keywords" placeholder="Tên, mã,.."/>
+                        </div>
+                        <div class="col-4 col-md-2 col-xl-2">
+                            <button class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onSearch()">
+                                <i class="fas fa-search"></i>
+                                Tìm kiếm
+                            </button>
+                        </div>
+                        <div class="col-4 col-md-2 col-xl-2">
+                            <a class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onDetail(0)">
+                                <i class="fas fa-plus"></i>
+                                Thêm
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-1"/>
+                <div class="row w-100 m-0 mt-2" id="list-category">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="modal-area-content"></div>
+<script src="~/lib/jquery.blockUI/jquery.blockUI.min.js"></script>
+<script src="~/lib/sweetalert/sweetalert.min.js"></script>
+<script>
+    onDetail = (id) => {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Modal","Category")',
+            data: {
+                id: id
+            },
+            success: (res) => {
+                $('#modal-area-content').empty();
+                $('#modal-area-content').html(res);
+            },
+        }).done(() => {
+            onInit(() => {
+                onSearch();
+            })
+        })
+    }
+
+    onSearch = () => {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("List","Category")',
+            data: {
+                keywords: $('#Keywords').val(),
+            },
+            success: (res) => {
+                $('#list-category').empty();
+                $('#list-category').html(res);
+            },
+        })
+    }
+
+    onDelete = (id) => {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Delete","Category")',
+            data: {
+                id: id
+            },
+            success: (res) => {
+               if(res.success == true) {
+                    swal({
+                        title: "Thông báo",
+                        text: "Dữ liệu lưu thành công!",
+                        icon: "success"
+                    });
+                }
+                else {
+                    swal({
+                        title: "Lỗi",
+                        text: res.message,
+                        icon: "error"
+                    });
+                }
+            },
+            error: (xhr, err) => {
+                $.unblockUI();
+                swal({
+                    title: "Lỗi",
+                    text: "Có lỗi trong quá trình xử lý, vui lòng thử lại sau",
+                    icon: "error"
+                });
+                console.log(xhr.responseText);
+            }
+        }).done(() => {
+            onSearch();
+        })
+    }
+</script>

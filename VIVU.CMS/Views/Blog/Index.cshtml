@@ -1,242 +1,110 @@
 ﻿@{
-	ViewData["Title"] = "Blog";
+    ViewData["Title"] = "Danh sách bài viết";
 }
-<div class="content-wrapper">
-	<section class="content-header">
-		<div class="container-fluid">
-			<div class="row mb-2">
-				<div class="col-sm-6">
-					<h1>Blog</h1>
-				</div>
-				<div class="col-sm-6">
-					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Blog</li>
-					</ol>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="content">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-header">
-						</div>
-						<div class="card-body">
-							<table id="example1" class="table table-bordered table-striped">
-								<thead>
-									<tr>
-										<th>ID</th>
-										<th>Name</th>
-										<th>Display</th>
-										<th>URL Code</th>
-										<th>URL</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Trident</td>
-										<td>
 
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Bài viết</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Nội dung</a></li>
+                    <li class="breadcrumb-item active">Bài viết</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid px-0">
+        <div class="row w-100 m-0">
+            <div class="card w-100 p-0">
+                <div class="card-body p-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" id="keyword" name="keyword" placeholder="Tên, mã,.."/>
+                        </div>
+                        <div class="col-4 col-md-2 col-xl-2">
+                            <button class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onSearch()">
+                                <i class="fas fa-search"></i>
+                                Tìm kiếm
+                            </button>
+                        </div>
+                        <div class="col-4 col-md-2 col-xl-2">
+                            <a class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onDetail(0)">
+                                <i class="fas fa-plus"></i>
+                                Thêm
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row w-100 m-0 mt-2" id="list-post">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="modal-area-content"></div>
+<script src="~/lib/jquery.blockUI/jquery.blockUI.min.js"></script>
+<script src="~/lib/sweetalert/sweetalert.min.js"></script>
+<script>
+    onSearch = () => {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("List","Post")',
+            data: {
+                keywords: $('#Keywords').val(),
+            },
+            success: (res) => {
+                $('#list-post').empty();
+                $('#list-post').html(res);
+            },
+        })
+    }
 
+    onDetail = (id) => {
+        var url = "@Url.Action("Detail","Post")" + "/" + id;
+        window.location = url;
+    }
 
-											Internet
-											Explorer 4.0
-										</td>
-										<td>Win 95+</td>
-										<td> 4</td>
-										<td>X</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-
-
-
-											Internet
-											Explorer 5.0
-										</td>
-										<td>Win 95+</td>
-										<td>5</td>
-										<td>C</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-									<tr>
-										<td>Trident</td>
-										<td>
-											Internet
-											Explorer 5.5
-										</td>
-										<td>Win 95+</td>
-										<td>5.5</td>
-										<td>A</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<th>ID</th>
-										<th>Name</th>
-										<th>Display</th>
-										<th>URL Code</th>
-										<th>URL</th>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
+    onDelete = (id) => {
+        $.ajax({
+            type:'POST',
+            url: '@Url.Action("Delete","Post")',
+            data: {
+                id: id
+            },
+            success: (res) => {
+               if(res.success == true) {
+                    swal({
+                        title: "Thông báo",
+                        text: "Dữ liệu lưu thành công!",
+                        icon: "success"
+                    });
+                }
+                else {
+                    swal({
+                        title: "Lỗi",
+                        text: res.message,
+                        icon: "error"
+                    });
+                }
+            },
+            error: (xhr, err) => {
+                $.unblockUI();
+                swal({
+                    title: "Lỗi",
+                    text: "Có lỗi trong quá trình xử lý, vui lòng thử lại sau",
+                    icon: "error"
+                });
+                console.log(xhr.responseText);
+            }
+        }).done(() => {
+            onSearch();
+        })
+    }
+</script>
