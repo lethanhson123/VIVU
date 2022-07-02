@@ -57,7 +57,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, C
                 var dataResponse = new AuthenticateModel
                 {
                     RefreshToken = userToken.RefreshToken,
-                    TokenExpireTime = authenticateConfig.TokenExpireAfterMinutes,
+                    ExpiredDate = DateTime.Now.AddMinutes(authenticateConfig.TokenExpireAfterMinutes),
                     AccessToken = token
                 };
 

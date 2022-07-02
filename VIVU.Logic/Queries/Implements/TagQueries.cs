@@ -7,50 +7,50 @@ using VIVU.Shared.Model;
 
 namespace VIVU.Logic.Queries.Implements
 {
-    public class CategoriesQueries : ICategoryQueries
+    public class TagQueries : ITagQueries
     {
         private readonly AppDatabase database;
         private readonly IMapper mapper;
 
-        public CategoriesQueries(AppDatabase database,
+        public TagQueries(AppDatabase database,
             IMapper mapper)
         {
             this.database = database;
             this.mapper = mapper;
         }
 
-        public IEnumerable<CategoryModel> Get(CategoryQueryModel query)
+        public IEnumerable<TagModel> Get(TagQueryModel query)
         {
-            return database.Categories.Where(x => x.IsDeleted != true &&
+            return database.Tags.Where(x => x.IsDeleted != true &&
                                                (x.Name.Contains(query.Keywords ?? string.Empty) ||
                                                x.Title.Contains(query.Keywords ?? string.Empty) ||
                                                x.Description.Contains(query.Keywords ?? string.Empty)
                                                )
                                              )
-                .Select(x => mapper.Map<CategoryModel>(x)).Skip((query.PageIndex - 1) * query.PageSize).Take(query.PageSize);
+                .Select(x => mapper.Map<TagModel>(x)).Skip((query.PageIndex - 1) * query.PageSize).Take(query.PageSize);
         }
 
-        public IEnumerable<CategoryModel> Get()
+        public IEnumerable<TagModel> Get()
         {
-            return database.Categories
-                .Select(x => mapper.Map<CategoryModel>(x));
+            return database.Tags
+                .Select(x => mapper.Map<TagModel>(x));
         }
 
-        public Task<CategoryDetailModel> GetDetail(int Id)
+        public Task<TagDetailModel> GetDetail(int Id)
         {
-            var data = new CategoryDetailModel();
+            var data = new TagDetailModel();
 
-            var category = database.Categories.FirstOrDefault(x => x.Id == Id &&
+            var tag = database.Tags.FirstOrDefault(x => x.Id == Id &&
                                                               x.IsDeleted != true);
-            if (category != null)
+            if (tag != null)
             {
-                mapper.Map(category, data);
-                var postIds = database.PostCategories
+                mapper.Map(tag, data);
+                var postIds = database.PostTags
                     .Where(x => x.IsDeleted != true &&
-                                x.CategoryId == category.Id)
-                    .Select(x => x.PostId)
+                                x.TagId == tag.Id)
+                    .Select(x => x.BlogId)
                     .ToList();
-                data.Blogs = database.Blogs
+                data.Posts = database.Blogs
                     .Where(x => x.IsDeleted != true &&
                                 postIds.Contains(x.Id))
                     .Select(x => mapper.Map<BlogModel>(x)).ToList();

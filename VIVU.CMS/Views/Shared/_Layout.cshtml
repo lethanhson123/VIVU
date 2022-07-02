@@ -29,9 +29,8 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
-             <ul class="navbar-nav">
-
-             </ul>
+            <ul class="navbar-nav">
+            </ul>
             <ul class="navbar-nav ms-auto m-0">
                 <li class="nav-item" id="user-info">
                 </li>
@@ -45,7 +44,6 @@
 
         </nav>
         <!-- /.navbar -->
-
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
@@ -82,18 +80,18 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                               <li class="nav-item">
+                                <li class="nav-item">
                                     <a asp-action="Index" asp-controller="SaleOrder" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p class="h5">Chi tiết sản phẩm</p>
                                     </a>
-                                </li> 
+                                </li>
                                 <li class="nav-item">
                                     <a asp-action="Index" asp-controller="SaleOrder" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p class="h5">Quản lý sản phẩm</p>
                                     </a>
-                                </li>   
+                                </li>
                                 <li class="nav-item">
                                     <a asp-action="Index" asp-controller="Product" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -108,7 +106,7 @@
                             <a href="#" class="nav-link px-0">
                                 <i class="nav-icon far fa-bookmark"></i>
                                 <p class="h5">
-                                   Khách hàng
+                                    Khách hàng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -122,7 +120,7 @@
                                 <li class="nav-item">
                                     <a asp-action="Index" asp-controller="HumanLife" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p class="h5"Quản lý khách hàng</p>
+                                        <p class="h5" Quản lý khách hàng</p>
                                     </a>
                                 </li>
                             </ul>
@@ -133,7 +131,7 @@
                             <a href="#" class="nav-link px-0">
                                 <i class="nav-icon far fa-bookmark"></i>
                                 <p class="h5">
-                                   Đơn hàng
+                                    Đơn hàng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -152,35 +150,49 @@
                                 </li>
                             </ul>
                         </li>
-                                <!--Bài viết-->
+                        <!--Bài viết-->
                         <li class="nav-item">
                             <a href="#" class="nav-link px-0">
                                 <i class="nav-icon far fa-bookmark"></i>
                                 <p class="h5">
-                                   Bài viết
+                                    Bài viết
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-controller="User" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Blog" asp-action="Detail" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p class="h5">Viết bài</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-controller="Role" asp-action="Index" class="nav-link">
+                                    <a asp-controller="Blog" asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p class="h5">Quản lý bài viết</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Category" asp-action="Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p class="h5">Danh mục</p>
+                                    </a>
+                                </li>
+                                 <li class="nav-item">
+                                <a asp-controller="Tag" asp-action="Index" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p class="h5">Thẻ</p>
+                                </a>
+                            </li>
                             </ul>
                         </li>
+
                     </ul>
+
                 </nav>
-            <!-- /.sidebar-menu -->
+                <!-- /.sidebar-menu -->
             </div>
-        <!-- /.sidebar -->
+            <!-- /.sidebar -->
         </aside>
 
         <!--Main content-->
@@ -190,7 +202,7 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-              <b>Phiên bản</b> 1.0.0
+                <b>Phiên bản</b> 1.0.0
             </div>
             <strong>Bản quyền &copy; @DateTime.Now.Year <a href="" style="color: forestgreen">Fintech Fengshui</a>.</strong>
         </footer>

@@ -1,7 +1,6 @@
 ﻿namespace VIVU.Logic.CommandHandlers;
 
-public class CreateBlogCommandHandler 
-    : IRequestHandler<CreateBlogCommand, CommonCommandResultHasData<VIVU.Data.Entities.Blog>>
+public class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand, CommonCommandResultHasData<BlogModel>>
 {
     private readonly AppDatabase applicationDatabase;
     private readonly IMapper mapper;
@@ -11,18 +10,27 @@ public class CreateBlogCommandHandler
         this.applicationDatabase = applicationDatabase;
         this.mapper = mapper;
     }
-    public Task<CommonCommandResultHasData<VIVU.Data.Entities.Blog>> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
+    public Task<CommonCommandResultHasData<BlogModel>> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
     {
-        var model = mapper.Map<VIVU.Data.Entities.Blog>(request);
-        var result = new CommonCommandResultHasData<VIVU.Data.Entities.Blog>();
+      
+        var result = new CommonCommandResultHasData<BlogModel>();
 
         try
         {
-            model.SetCreatedAudit(request.UserName);
-            applicationDatabase.Blogs.Add(model);
-            applicationDatabase.SaveChanges();
+            var blog = mapper.Map<VIVU.Data.Entities.Blog>(request);
+            blog.SetCreatedAudit(request.UserName);
+            applicationDatabase.Blogs.Add(blog);
 
-            result.SetData(model);
+            var tag = mapper.Map<List<BlogTag>>(request.Tags);
+            tag.ForEach(x => x.BlogId = blog.Id);
+            applicationDatabase.PostTags.AddRange(tag);
+
+            var category = mapper.Map<List<BlogCategory>>(request.Categories);
+            category.ForEach(x => x.PostId = blog.Id);
+
+            applicationDatabase.PostCategories.AddRange(category);
+            applicationDatabase.SaveChanges();
+            result.Data = mapper.Map<BlogModel>(blog);
             result.Success = true;
         }
         catch (DbUpdateException ex)

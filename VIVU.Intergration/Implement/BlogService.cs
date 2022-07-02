@@ -27,10 +27,11 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
+                var path = string.Format("{0}{1}", clientConfig.Host, clientConfig.Blog);
 
                 headers.Add("Authorization", "Bearer " + token);
                 var remoteResponse = client.ExecutePost<CommonResponseModel<BlogModel>>(
-                    clientConfig.Host + clientConfig.CreateBlog, request, null, headers);
+                    path, request, null, headers);
                 response = remoteResponse.Result.Data ?? new CommonResponseModel<BlogModel>();
             }
             catch (Exception ex)
@@ -50,10 +51,11 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
+                var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.Blog,Id);
 
                 headers.Add("Authorization", "Bearer " + token);
                 var remoteResponse = client.ExecuteDelete<CommonResponseModel<object>>(
-                    clientConfig.Host + clientConfig.CreateBlog + "/" + Id, null, null, headers);
+                   path, null, null, headers);
                 response = remoteResponse.Result.Data ?? new CommonResponseModel<object>();
             }
             catch (Exception ex)
@@ -73,12 +75,13 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
+                var path = string.Format("{0}{1}?{2}", clientConfig.Host, clientConfig.Blog, request.ToQueryStringData());
 
                 headers.Add("Authorization", "Bearer " + token);
 
                 var remoteResponse = client
                     .ExecuteGet<CommonResponseModel<IEnumerable<BlogModel>>>(
-                        clientConfig.Host + clientConfig.GetBlogWithQuery + "?" + request.ToQueryStringData(), null, headers);
+                        path, null, headers);
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<IEnumerable<BlogModel>>();
             }
@@ -98,11 +101,10 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
-
-                headers.Add("Authorization", "Bearer ");
+                var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.Blog, Id);
                 var remoteResponse = client
                     .ExecuteGet<CommonResponseModel<BlogDetailModel>>(
-                        clientConfig.Host + clientConfig.GetBlog + "/" + Id, null, headers);
+                        path, null, headers);
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<BlogDetailModel>();
             }
@@ -122,14 +124,14 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
-                var url = clientConfig.Host + clientConfig.GetBlog;
+                var url = clientConfig.Host + clientConfig.Blog;
 
                 if (!string.IsNullOrEmpty(keywords))
                 {
                     url += "?keywords=" + keywords;
                 }
 
-                headers.Add("Authorization", "Bearer " + token);
+                headers.Add("Authorization",token);
                 var remoteResponse = client.ExecuteGet<CommonResponseModel<IEnumerable<BlogModel>>>(
                    url, null, headers);
                 response = remoteResponse.Result.Data ??
@@ -153,9 +155,9 @@ namespace VIVU.Intergration.Implement
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
 
-                headers.Add("Authorization", "Bearer " + token);
+                headers.Add("Authorization","Bearer " + token);
                 var remoteResponse = client.ExecutePut<CommonResponseModel<BlogModel>>(
-                    clientConfig.Host + clientConfig.UpdateBlog + "/" + request.Id, request, null, headers);
+                    clientConfig.Host + clientConfig.Blog + "/" + request.Id, request, null, headers);
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<BlogModel>();
             }

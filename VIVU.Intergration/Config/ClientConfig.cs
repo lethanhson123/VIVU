@@ -27,28 +27,19 @@ namespace VIVU.Intergration.Config
         /// <summary>
         /// Tag url
         /// </summary>
-        public string CreateTag { get; set; } = string.Empty;
-        public string UpdateTag { get; set; } = string.Empty;
-        public string DeleteTag { get; set; } = string.Empty;
-        public string GetTag { get; set; } = string.Empty;
-        public string GetTagWithQuery { get; set; } = string.Empty;
+        public string Tag { get; set; } = string.Empty;
+        public string TagGetWithQuery { get; set; } = string.Empty;
 
         /// <summary>
         /// Category url
         /// </summary>
-        public string CreateCategory { get; set; } = string.Empty;
-        public string UpdateCategory { get; set; } = string.Empty;
-        public string DeleteCategory { get; set; } = string.Empty;
-        public string GetCategory { get; set; } = string.Empty;
-        public string GetCategoryWithQuery { get; set; } = string.Empty;
+        public string Categories { get; set; } = string.Empty;
+        public string CategoriesGetWithQuery { get; set; } = string.Empty;
 
         /// <summary>
         /// Blog url
         /// </summary>
-        public string CreateBlog { get; set; } = string.Empty;
-        public string UpdateBlog { get; set; } = string.Empty;
-        public string DeleteBlog { get; set; } = string.Empty;
-        public string GetBlog { get; set; } = string.Empty;
-        public string GetBlogWithQuery { get; set; } = string.Empty;
+        public string Blog { get; set; } = string.Empty;
+        public string BlogGetWithQuery { get; set; } = string.Empty;
     }
 }

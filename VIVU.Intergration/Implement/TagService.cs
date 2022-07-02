@@ -27,9 +27,9 @@ namespace VIVU.Intergration.Implement
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
 
-                headers.Add("Authorization", "Bearer " + token);
+                headers.Add("Authorization", "Bearer " +  token);
                 var remoteResponse = client.ExecutePost<CommonResponseModel<TagModel>>(
-                    clientConfig.Host + clientConfig.CreateTag, request, null, headers);
+                    clientConfig.Host + clientConfig.Tag, request, null, headers);
                 response = remoteResponse.Result.Data ?? new CommonResponseModel<TagModel>();
             }
             catch (Exception ex)
@@ -51,7 +51,7 @@ namespace VIVU.Intergration.Implement
 
                 headers.Add("Authorization", "Bearer " + token);
                 var remoteResponse = client.ExecuteDelete<CommonResponseModel<object>>(
-                    clientConfig.Host + clientConfig.DeleteTag + "/" + Id, null, null, headers);
+                    clientConfig.Host + clientConfig.Tag + "/" + Id, null, null, headers);
                 response = remoteResponse.Result.Data ?? new CommonResponseModel<object>();
             }
             catch (Exception ex)
@@ -71,9 +71,8 @@ namespace VIVU.Intergration.Implement
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
 
-                headers.Add("Authorization", "Bearer " + token);
                 var remoteResponse = client.ExecuteGet<CommonResponseModel<IEnumerable<TagModel>>>(
-                    clientConfig.Host + clientConfig.GetTagWithQuery + "?" + request, null, headers);
+                    clientConfig.Host + clientConfig.TagGetWithQuery + "?" + request.ToQueryStringData(), null, headers);
                 response = remoteResponse.Result.Data ?? new CommonResponseModel<IEnumerable<TagModel>>();
             }
             catch (Exception ex)
@@ -92,10 +91,8 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
-
-                headers.Add("Authorization", "Bearer ");
                 var remoteResponse = client.ExecuteGet<CommonResponseModel<TagDetailModel>>(
-                    clientConfig.Host + clientConfig.GetTag + "/" + Id, null, headers);
+                    clientConfig.Host + clientConfig.Tag + "/" + Id, null, headers);
                 response = remoteResponse.Result.Data ?? new CommonResponseModel<TagDetailModel>();
             }
             catch (Exception ex)
@@ -115,9 +112,9 @@ namespace VIVU.Intergration.Implement
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
 
-                headers.Add("Authorization", "Bearer " + token);
+                headers.Add("Authorization","Bearer " +token);
                 var remoteResponse = client.ExecutePut<CommonResponseModel<TagModel>>(
-                    clientConfig.Host + clientConfig.UpdateTag + "/" + request.Id, request, null, headers);
+                    clientConfig.Host + clientConfig.Tag + "/" + request.Id, request, null, headers);
                 response = remoteResponse.Result.Data ?? new CommonResponseModel<TagModel>();
             }
             catch (Exception ex)
@@ -137,14 +134,12 @@ namespace VIVU.Intergration.Implement
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
 
-                var url = clientConfig.Host + clientConfig.GetTag;
+                var url = clientConfig.Host + clientConfig.Tag;
 
                 if (!string.IsNullOrEmpty(keywords))
                 {
                     url += "?keywords=" + keywords;
                 }
-
-                headers.Add("Authorization", "Bearer " + token);
                 var remoteResponse = client.ExecuteGet<CommonResponseModel<IEnumerable<TagModel>>>(
                     url, null, headers);
                 response = remoteResponse.Result.Data ?? new CommonResponseModel<IEnumerable<TagModel>>();

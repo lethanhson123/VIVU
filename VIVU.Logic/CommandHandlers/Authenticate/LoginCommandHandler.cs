@@ -62,9 +62,8 @@ public class LoginCommandHandler
                 var dataResponse = new AuthenticateModel
                 {
                     RefreshToken = refreshToken,
-                    TokenExpireTime = authenConfig.TokenExpireAfterMinutes,
                     AccessToken = token,
-                    IssuedAt = DateTime.Now
+                    ExpiredDate = DateTime.Now.AddMinutes(authenConfig.TokenExpireAfterMinutes)
                 };
                 result.SetData(dataResponse).SetResult(true, "");
                 return result;

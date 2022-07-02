@@ -26,10 +26,11 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
+                var path = string.Format("{0}{1}", clientConfig.Host, clientConfig.Categories);
 
-                headers.Add("Authorization", "Bearer " + token);
+                headers.Add("Authorization","Bearer "+ token);
                 var remoteResponse = client.ExecutePost<CommonResponseModel<CategoryModel>>(
-                    clientConfig.Host + clientConfig.CreateCategory, request, null, headers);
+                  path, request, null, headers);
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<CategoryModel>();
             }
@@ -53,7 +54,7 @@ namespace VIVU.Intergration.Implement
 
                 headers.Add("Authorization", "Bearer " + token);
                 var remoteResponse = client.ExecuteDelete<CommonResponseModel<object>>(
-                    clientConfig.Host + clientConfig.DeleteCategory + "/" + Id, null, null, headers);
+                    clientConfig.Host + clientConfig.Categories + "/" + Id, null, null, headers);
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<object>();
             }
@@ -74,10 +75,9 @@ namespace VIVU.Intergration.Implement
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
 
-                headers.Add("Authorization", "Bearer ");
                 var remoteResponse = client
                     .ExecuteGet<CommonResponseModel<CategoryDetailModel>>(
-                        clientConfig.Host + clientConfig.GetCategory + "/" + Id, null, headers);
+                        clientConfig.Host + clientConfig.Categories + "/" + Id, null, headers);
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<CategoryDetailModel>();
             }
@@ -97,11 +97,9 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
-
-                headers.Add("Authorization", "Bearer ");
                 var remoteResponse = client
                     .ExecuteGet<CommonResponseModel<IEnumerable<CategoryModel>>>(
-                        clientConfig.Host + clientConfig.GetCategory, null, headers);
+                        clientConfig.Host + clientConfig.Categories, null, headers);
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<IEnumerable<CategoryModel>>();
             }
@@ -121,10 +119,8 @@ namespace VIVU.Intergration.Implement
             {
                 var client = httpClientFactory.CreateClient();
                 var headers = new Dictionary<string, string>();
-
-                headers.Add("Authorization", "Bearer " + token);
-                var remoteResponse = client.ExecutePut<CommonResponseModel<IEnumerable<CategoryModel>>>(
-                    clientConfig.Host + clientConfig.CreateCategory + "?" + request.ToQueryStringData(), request, null, headers);
+                var remoteResponse = client.ExecuteGet<CommonResponseModel<IEnumerable<CategoryModel>>>(
+                    clientConfig.Host + clientConfig.CategoriesGetWithQuery + "?" + request.ToQueryStringData());
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<IEnumerable<CategoryModel>>();
             }
@@ -147,7 +143,7 @@ namespace VIVU.Intergration.Implement
 
                 headers.Add("Authorization", "Bearer " + token);
                 var remoteResponse = client.ExecutePut<CommonResponseModel<CategoryModel>>(
-                    clientConfig.Host + clientConfig.CreateCategory + "/" + request.Id, request, null, headers);
+                    clientConfig.Host + clientConfig.Categories + "/" + request.Id, request, null, headers);
                 response = remoteResponse.Result.Data ??
                     new CommonResponseModel<CategoryModel>();
             }

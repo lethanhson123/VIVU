@@ -45,7 +45,7 @@ public class UpdateSalesOrderCommandHandler : IRequestHandler<UpdateSalesOrderCo
 
             }
             var orderDetailOld = database.SalesOrderDetails.Where(x => x.ProductId == request.Id).ToList();
-            orderDetailOld.ForEach(x => x.IsDeleted = true);
+            orderDetailOld.ForEach(x => x.MarkAsDeleted(request.UserName));
             var listProductId = request?.OrderDetail?.Select(x => x.ProductId).ToList();
             var product = database.Products.Where(x => listProductId!.Contains(x.Id)).ToList();
 

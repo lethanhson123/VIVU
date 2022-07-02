@@ -30,7 +30,7 @@ public class DeleteSalesOrderCommandHandler : IRequestHandler<DeleteSalesOrderCo
                 database.SalesOrders.Update(order);
 
                 var orderDetail = database.SalesOrderDetails.Where(x => x.SalesOrderId == request.Id && !x.IsDeleted).ToList();
-                orderDetail.ForEach(x => x.IsDeleted = true);
+                orderDetail.ForEach(x => x.MarkAsDeleted(request.UserName));
                 database.SalesOrderDetails.UpdateRange(orderDetail);
 
                 database.SaveChanges();

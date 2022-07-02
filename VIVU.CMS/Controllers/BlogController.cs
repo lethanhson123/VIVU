@@ -42,8 +42,12 @@ namespace VIVU.CMS.Controllers
         }
 
         public async Task<ActionResult> List(BlogQueryModel query)
+
         {
-            var remoteResponseData = await blogService.Get(query.Keywords ?? string.Empty);
+            query.Keywords = query.Keywords ?? string.Empty;
+            query.PageIndex = query.PageIndex > 1 ? query.PageIndex : 1;
+            query.PageSize = query.PageSize > 0 ? query.PageSize : 1000;
+            var remoteResponseData = await blogService.GetWithQuery(query);
             var model = remoteResponseData.Data;
             return PartialView(model);
         }

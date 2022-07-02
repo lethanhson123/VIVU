@@ -1,4 +1,4 @@
-﻿namespace VIVU.Intergration.Interface.Implement;
+﻿namespace VIVU.Intergration.Implement;
 
 public class AuthenticateHelper : IAuthenticateHelper
 {

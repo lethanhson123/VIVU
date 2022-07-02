@@ -8,7 +8,7 @@ using VIVU.Shared.Model;
 
 namespace VIVU.API.Controllers;
 
-[Route("api/v{version:apiVersion}/blogs")]
+[Route("api/v{version:apiVersion}/blog")]
 [ApiVersion("1.0")]
 [ApiController]
 public class BlogsController : ControllerBase
@@ -23,27 +23,38 @@ public class BlogsController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<CategoryModel>>), 200)]
+    [AllowAnonymous]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<BlogModel>>>> GetAll(
             [FromQuery] string? keywords)
     {
-        return Ok();
+        var response = new CommonResponseModel<IEnumerable<BlogModel>>();
+        var result = blogQueries.Get();
+        return Ok(response.SetResult(true, String.Empty).SetData(result));
     }
 
     [HttpGet]
     [Route("with_query")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<BlogModel>>), 200)]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<BlogModel>>>> Get(
         [FromQuery] BlogQueryModel query)
     {
-        return Ok();
+        var response = new CommonResponseModel<IEnumerable<BlogModel>>();
+        var result = blogQueries.Get(query);
+        return Ok(response.SetResult(true, String.Empty).SetData(result));
+
     }
 
     [HttpGet]
     [Route("{id}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(CommonResponseModel<BlogModel>), 200)]
-    public async Task<ActionResult<CommonResponseModel<BlogModel>>> GetOne(string id)
+    public async Task<ActionResult<CommonResponseModel<BlogModel>>> GetOne(int id)
     {
-        return Ok();
+        var response = new CommonResponseModel<BlogModel>();
+        var result = await blogQueries.GetDetail(id);
+        return Ok(response.SetResult(true, String.Empty).SetData(result));
     }
 
     [HttpPost]
@@ -54,18 +65,28 @@ public class BlogsController : ControllerBase
     public async Task<ActionResult<CommonResponseModel<BlogModel>>> Create(
         [FromBody] CreateBlogCommand command)
     {
-        return Ok();
+        if (command == null)
+            return BadRequest();
+        var response = new CommonResponseModel<BlogModel>();
+        var result = await mediator.Send(command);
+        return Ok(result.Success ? response.SetData(result.Data).SetResult(result.Success, result.Message ?? String.Empty)
+                 : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
     }
 
     [HttpPut]
     [Route("{id}")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    [ProducesResponseType(typeof(CommonResponseModel<BlogModel>), 200)]
+    [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<CommonResponseModel<BlogModel>>> Update(string id,
+    public async Task<ActionResult<CommonResponseModel<object>>> Update(string id,
         [FromBody] UpdateBlogCommand command)
     {
-        return Ok();
+        if (command == null)
+            return BadRequest();
+        var response = new CommonResponseModel<object>();
+        var result = await mediator.Send(command);
+        return Ok(result.Success ? response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty)
+                 : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
     }
 
     [HttpDelete]
@@ -73,9 +94,14 @@ public class BlogsController : ControllerBase
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<BlogModel>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<CommonResponseModel<BlogModel>>> Delete(string id)
+    public async Task<ActionResult<CommonResponseModel<BlogModel>>> Delete(int id)
     {
-        return Ok();
+        if (string.IsNullOrEmpty(id.ToString()))
+            return BadRequest();
+        var response = new CommonResponseModel<object>();
+        var result = await mediator.Send(new DeleteBlogCommand { Id = id });
+        return Ok(result.Success ? response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty)
+                 : response.SetData(null).SetResult(result.Success, result.Message ?? String.Empty));
     }
 
 }

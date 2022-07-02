@@ -1,5 +1,5 @@
-﻿@using FintechFengShui.Shared.Model
-@model IEnumerable<PostModel>
+﻿@using VIVU.Shared.Model
+@model IEnumerable<BlogModel>
 
 @if(Model != null &&
    Model.Any())
@@ -11,7 +11,6 @@
                 <div class="row w-100 m-0">
                     <div class="col-md-10">
                         <h6 class="mb-0">@post.Id - @post.Title</h6>
-                        <p class="mb-0" style="font-size:12px;">Từ khóa: @post.Keywords</p>
                         <p class="mb-0" style="font-size:12px;">Mô tả: @post.Summary</p>
                     </div>
                     <div class="col-md-2">

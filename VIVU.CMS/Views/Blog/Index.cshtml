@@ -24,7 +24,7 @@
                 <div class="card-body p-2">
                     <div class="row">
                         <div class="col-md-6">
-                            <input class="form-control" type="text" id="keyword" name="keyword" placeholder="Tên, mã,.."/>
+                            <input class="form-control" type="text" id="keywords" name="keywords" placeholder="Tên, mã,.."/>
                         </div>
                         <div class="col-4 col-md-2 col-xl-2">
                             <button class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onSearch()">
@@ -55,9 +55,9 @@
     onSearch = () => {
         $.ajax({
             type: 'GET',
-            url: '@Url.Action("List","Post")',
+            url: '@Url.Action("List","Blog")',
             data: {
-                keywords: $('#Keywords').val(),
+                keywords: $('#keywords').val(),
             },
             success: (res) => {
                 $('#list-post').empty();
@@ -67,14 +67,14 @@
     }
 
     onDetail = (id) => {
-        var url = "@Url.Action("Detail","Post")" + "/" + id;
+        var url = "@Url.Action("Detail","Blog")" + "/" + id;
         window.location = url;
     }
 
     onDelete = (id) => {
         $.ajax({
             type:'POST',
-            url: '@Url.Action("Delete","Post")',
+            url: '@Url.Action("Delete","Blog")',
             data: {
                 id: id
             },

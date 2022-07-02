@@ -89,7 +89,7 @@
                         </div>
                         <div class="mb-2">
                             <label class="form-label"><b>Ngày phát hành</b></label>
-                            <input class="form-control" type="datetime-local" asp-for="BlogDate"/>
+                            <input class="form-control" type="datetime-local" asp-for="PostDate"/>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                     <div class="card-body p-2">
                         <select multiple class="form-select select2" id="multiple-select-categories" data-placeholder="Danh mục">
                             @{
-                                var categories = categoryService.GetAll(string.Empty);
+                                var categories = categoryService.GetWithQuery( new CategoryQueryModel {Keywords = string.Empty,PageSize =1000,PageIndex =1});
                                 if(categories.Result.Data != null)
                                 {
                                     foreach(var category in categories.Result.Data)
@@ -126,7 +126,7 @@
                     <div class="card-body p-2">
                         <select multiple class="form-select select2" id="multiple-select-tag" data-placeholder="Thẻ">
                         @{
-                            var tags = tagService.GetAll(string.Empty);
+                            var tags = tagService.GetWithQuery( new TagQueryModel {Keywords = string.Empty,PageSize =1000,PageIndex =1} );
                             if(tags.Result.Data != null)
                             {
                                 foreach(var tag in tags.Result.Data)
@@ -235,7 +235,7 @@
             AuthorId: $('#AuthorId').val(),
             Summary: $('#Summary').val(),
             Image: $('#Image').val(),
-            BlogDate: $('#BlogDate').val(),
+            PostDate: $('#PostDate').val(),
             Content: $('#blog-content').val(),
             Categories: categories,
             Tags: tags,

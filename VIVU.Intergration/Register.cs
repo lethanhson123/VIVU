@@ -15,6 +15,10 @@ namespace VIVU.Intergration
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISalesOrderService, SalesOrderService>();
             services.AddScoped<IProductCategoryService, ProductCategoryService>();
+            services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IAuthenticateHelper, AuthenticateHelper>();
+            services.AddScoped<ICategoriesService, CategoryService>();
+            services.AddScoped<ITagService, TagService>();
             return services;
         }
 

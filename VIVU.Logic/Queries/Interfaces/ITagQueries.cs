@@ -7,10 +7,10 @@ using VIVU.Shared.Model;
 
 namespace VIVU.Logic.Queries.Interfaces
 {
-    public interface ICategoryQueries
+    public interface ITagQueries
     {
-        IEnumerable<CategoryModel> Get();
-        IEnumerable<CategoryModel> Get(CategoryQueryModel query);
-        Task<CategoryDetailModel> GetDetail(int Id);
+        IEnumerable<TagModel> Get();
+        IEnumerable<TagModel> Get(TagQueryModel query);
+        Task<TagDetailModel> GetDetail(int Id);
     }
 }

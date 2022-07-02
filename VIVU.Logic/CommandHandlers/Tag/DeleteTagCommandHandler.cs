@@ -26,7 +26,6 @@ public class DeleteTagCommandHandler :
 
             if (tag != null)
             {
-                mapper.Map(request, tag);
                 tag.MarkAsDeleted(request.UserName);
 
                 database.Tags.Update(tag);
