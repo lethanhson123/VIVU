@@ -1,7 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Danh sách sản phẩm";
+    ViewData["Title"] = "Danh sách hình ảnh sản phẩm";
 }
-
+@model ProductImageQueryModel
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
-                    <li class="breadcrumb-item active">Sản phẩm</li>
+                    <li class="breadcrumb-item active">Hình ảnh</li>
                 </ol>
             </div>
         </div>
@@ -22,6 +22,7 @@
         <div class="row w-100 m-0">
             <div class="card w-100 p-0">
                 <div class="card-body p-2">
+                      <input type="hidden" asp-for="ProductId"/>
                     <div class="row">
                         <div class="col-md-6">
                             <input class="form-control" type="text" id="keywords" name="keywords" placeholder="Tên, mã,.."/>
@@ -33,7 +34,7 @@
                             </button>
                         </div>
                         <div class="col-4 col-md-2 col-xl-2">
-                            <a class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onDetail('')">
+                            <a class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onDetail(0,'@Model.ProductId')">
                                 <i class="fas fa-plus"></i>
                                 Thêm
                             </a>
@@ -49,14 +50,18 @@
     </div>
 </section>
 <div id="modal-area-content"></div>
+<div id="modal-file-content">
+    @await Html.PartialAsync("~/Views/FileManager/Modal.cshtml")
+</div>
 <script src="~/lib/jquery.blockUI/jquery.blockUI.min.js"></script>
 <script src="~/lib/sweetalert/sweetalert.min.js"></script>
 <script>
     onSearch = () => {
         $.ajax({
             type: 'GET',
-            url: '@Url.Action("List","Product")',
+            url: '@Url.Action("List","ProductImage")',
             data: {
+                ProductId : $('#ProductId').val(),
                 keywords: $('#keywords').val(),
             },
             success: (res) => {
@@ -65,19 +70,29 @@
             },
         })
     }
-
-    onDetail = (id) => {
-        var url = "@Url.Action("Detail","Product")" + "/" + id;
-        window.location = url;
+    onDetail = (id, productId) => {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Modal","ProductImage")',
+            data: {
+                id: id,
+                productId : productId
+            },
+            success: (res) => {
+                $('#modal-area-content').empty();
+                $('#modal-area-content').html(res);
+            },
+        }).done(() => {
+            onInit(() => {
+                onSearch();
+            })
+        })
     }
-     onImage = (id) => {
-        var url = "@Url.Action("Index","ProductImage")" + "/" + id;
-        window.location = url;
-    }
+ 
     onDelete = (id) => {
         $.ajax({
             type:'POST',
-            url: '@Url.Action("Delete","Product")',
+            url: '@Url.Action("Delete","ProductImage")',
             data: {
                 id: id
             },

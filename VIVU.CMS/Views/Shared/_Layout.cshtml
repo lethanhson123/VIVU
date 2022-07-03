@@ -81,19 +81,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-action="Index" asp-controller="SaleOrder" class="nav-link">
+                                    <a asp-action="Detail" asp-controller="Product" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p class="h5">Chi tiết sản phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-action="Index" asp-controller="SaleOrder" class="nav-link">
+                                    <a asp-action="Index" asp-controller="Product" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p class="h5">Quản lý sản phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-action="Index" asp-controller="Product" class="nav-link">
+                                    <a asp-action="Index" asp-controller="ProductCategory" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p class="h5">Nhóm hàng</p>
                                     </a>
@@ -184,6 +184,24 @@
                                     <p class="h5">Thẻ</p>
                                 </a>
                             </li>
+                            </ul>
+                        </li>
+                        <!--File-->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link px-0">
+                                <i class="nav-icon far fa-bookmark"></i>
+                                <p class="h5">
+                                    File
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-action="Index" asp-controller="FileManager" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p class="h5">Thông tin</p>
+                                    </a>
+                                </li>      
                             </ul>
                         </li>
 

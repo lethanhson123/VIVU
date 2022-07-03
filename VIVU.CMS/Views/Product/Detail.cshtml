@@ -1,5 +1,224 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using VIVU.Intergration.Implement
+@using VIVU.Intergration.Interface
+@using VIVU.Shared.Model
+@inject IProductCategoryService productCategoryService
+
 @{
+    if (string.IsNullOrEmpty(Model.Name))
+    {
+        ViewData["Title"] = "Thêm sản phẩm";
+    }
+    else
+    {
+        ViewData["Title"] = Model.Name;
+    }
 }
+
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+@model ProductModel
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Bài viết</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li><button class="btn btn-primary" onclick="onSave()">Lưu</button></li>
+                    <li><a class="btn btn-dark ms-2" asp-action="index" asp-controller="blog">Thoát</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid px-0">
+        <div class="row w-100 m-0">
+            <div class="col-md-8">
+                <textarea asp-for="Description" id="product-content" rows="50"></textarea>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-0 mb-2 border-0">
+                    <div class="card-header p-2">
+                        <h3 class="card-title font-weight-bold mb-0">Thông tin chung</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <div class="mb-2">
+                            <label class="form-label"><b>Mã</b></label>
+                            <textarea rows="1" class="form-control" asp-for="Id" readonly></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Tên sản phẩm</b></label>
+                            <textarea rows="1" class="form-control" asp-for="Name"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>SKU</b></label>
+                            <textarea rows="1" class="form-control" asp-for="SKU"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Từ khóa</b></label>
+                            <textarea rows="2" class="form-control" asp-for="Keywords"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Giá nhập</b></label>
+                            <textarea rows="1" class="form-control" type="number" asp-for="PurchasePrice"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Giá bán</b></label>
+                            <textarea rows="1" class="form-control" type="number" asp-for="Price"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Giá bán cuối</b></label>
+                            <textarea rows="1" class="form-control" type="number" asp-for="DeliverPrice"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Meta</b></label>
+                            <input class="form-control" asp-for="Meta" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label"><b>Tag</b></label>
+                            <input class="form-control" asp-for="Tags" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-0 mb-2 border-0">
+                    <div class="card-header p-2">
+                        <h3 class="card-title font-weight-bold">Danh mục</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <select class="form-select select2" id="categories" name="categories" data-placeholder="Danh mục">
+                            @{
+                                var categories = productCategoryService.GetWithQuery(new ProductCategoryQueryModel { Keywords = string.Empty, Limit = 1000, PageIndex = 1 });
+                                if (categories.Result.Data != null)
+                                {
+                                    foreach (var category in categories.Result.Data)
+                                    {
+                                        if (Model.CategoryId == category.Id)
+                                        {
+                                            <option selected value="@category.Id">@category.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@category.Id">@category.Name</option>
+                                        }
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="card p-0 mb-2 border-0">
+                    <div class="card-header p-2">
+                        <h3 class="card-title font-weight-bold">Hình ảnh</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <div class="input-group">
+                            <input type="text" asp-for="Thumbnail" class="form-control" placeholder="Chọn file..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text btn btn-success" id="basic-addon2" onclick="onSelectImage()">Chọn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="modal-area-content"></div>
+<div id="modal-file-content">
+    @await Html.PartialAsync("~/Views/FileManager/Modal.cshtml")
+</div>
+<script src="~/lib/jquery.blockUI/jquery.blockUI.min.js"></script>
+<script src="~/lib/sweetalert/sweetalert.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $(".select2").select2({
+            theme: "bootstrap-5",
+        });
+
+        CKEDITOR
+            .replace('product-content', {
+                height: 600,
+                fontFamily: {
+                    options: [
+                        'default',
+                        'Ubuntu, Arial, sans-serif, Monteserrat',
+                        'Ubuntu Mono, Courier New, Courier, monospace'
+                    ]
+                },
+                extraPlugins: "toc",
+                toolbar: 'admin_mode',
+                filebrowserImageBrowseUrl: "@Url.Action("Index","FileManager")",
+                filebrowserImageUploadUrl: '/elfinder/connector?cmd=upload',
+            });
+    })
+
+    onSelectImage = () => {
+        $('#file-manager-modal').modal('show');
+        onFileInit(() => {
+            $('#Thumbnail').val(_selectedFilePath);
+        })
+    }
+
+    onSave = () => {
+
+
+        CKEDITOR.instances['product-content'].updateElement();
+
+
+
+        var product = {
+            Id: $('#Id').val(),
+            Name: $('#Name').val(),
+            SKU: $('#SKU').val(),
+            Keywords: $('#Keywords').val(),   
+            PurchasePrice: $('#PurchasePrice').val(),
+            Price: $('#Price').val(),
+            DeliverPrice: $('#DeliverPrice').val(),
+            Meta: $('#Meta').val(),
+            Description: $('#product-content').val(),
+            CategoryId: $('#categories').val(),
+            Tags: $('#Tags').val(),
+            Thumbnail : $('#Thumbnail').val()
+
+        };
+
+        $.blockUI({ message: 'Hệ thống đang xử lý vui lòng chờ...' })
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("SaveChange","Product")",
+            data: product,
+            success: (res) => {
+                if (res.success == true) {
+                    swal({
+                        title: "Thông báo",
+                        text: "Dữ liệu lưu thành công!",
+                        icon: "success"
+                    });
+
+                    if ($('#Id').val() == '')
+                        $('#Id').val(res.data.id)
+                }
+                else {
+                    swal({
+                        title: "Lỗi",
+                        text: res.message,
+                        icon: "error"
+                    });
+                }
+            },
+            error: (xhr, err) => {
+                $.unblockUI();
+                swal({
+                    title: "Lỗi",
+                    text: "Có lỗi trong quá trình xử lý, vui lòng thử lại sau",
+                    icon: "error"
+                });
+                console.log(xhr.responseText);
+            }
+        }).done(() => {
+            $.unblockUI();
+            $('#category-detail-modal').modal('hide');
+        })
+    }
+
+</script>

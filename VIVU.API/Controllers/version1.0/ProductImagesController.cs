@@ -1,6 +1,6 @@
 ﻿namespace VIVU.API.Controllers;
 
-[Route("api/v{version:apiVersion}/product_images")]
+[Route("api/v{version:apiVersion}/product_image")]
 [ApiVersion("1.0")]
 [ApiController]
 public class ProductImagesController : ControllerBase
@@ -15,6 +15,7 @@ public class ProductImagesController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<ProductImageModel>>>> GetAll(
         [FromQuery] string? keywords)
     {
@@ -25,6 +26,7 @@ public class ProductImagesController : ControllerBase
 
     [HttpGet]
     [Route("with_query")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(CommonResponseModel<IEnumerable<ProductImageModel>>), 200)]
     public async Task<ActionResult<CommonResponseModel<IEnumerable<ProductImageModel>>>> Get(
         [FromQuery] ProductImageQueryModel query)
@@ -37,10 +39,12 @@ public class ProductImagesController : ControllerBase
     [HttpGet]
     [Route("{id}")]
     [ProducesResponseType(typeof(CommonResponseModel<ProductImageModel>), 200)]
-    public async Task<ActionResult<CommonResponseModel<ProductImageModel>>> GetOne(string id)
+    [AllowAnonymous]
+
+    public async Task<ActionResult<CommonResponseModel<ProductImageModel>>> GetOne(int id)
     {
-        var response = new CommonResponseModel<IEnumerable<ProductImageModel>>();
-        var result = productImageQueries.Get(id);
+        var response = new CommonResponseModel<ProductImageModel>();
+        var result =await productImageQueries.GetDetail(id);
         return Ok(response.SetResult(true, String.Empty).SetData(result));
     }
 
@@ -65,7 +69,7 @@ public class ProductImagesController : ControllerBase
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ProducesResponseType(typeof(CommonResponseModel<object>), 200)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<CommonResponseModel<object>>> Update(string id,
+    public async Task<ActionResult<CommonResponseModel<object>>> Update(int id,
         [FromBody] UpdateProductImageCommand command)
     {
         if (command == null)

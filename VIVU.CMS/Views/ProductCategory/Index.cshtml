@@ -1,17 +1,20 @@
 ﻿@{
-    ViewData["Title"] = "Danh sách sản phẩm";
+    ViewData["Title"] = "Danh sách bài viết";
 }
+
+@using VIVU.Shared.Model
+@model ProductCategoryQueryModel
 
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Sản phẩm</h1>
+                <h1>Nhóm sản phẩm</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
-                    <li class="breadcrumb-item active">Sản phẩm</li>
+                    <li class="breadcrumb-item active">Nhóm sản phẩm</li>
                 </ol>
             </div>
         </div>
@@ -20,11 +23,11 @@
 <section class="content">
     <div class="container-fluid px-0">
         <div class="row w-100 m-0">
-            <div class="card w-100 p-0">
+            <div class="card w-100 p-0 mb-0">
                 <div class="card-body p-2">
                     <div class="row">
                         <div class="col-md-6">
-                            <input class="form-control" type="text" id="keywords" name="keywords" placeholder="Tên, mã,.."/>
+                            <input class="form-control" type="text" asp-for="Keywords" placeholder="Tên, mã,.."/>
                         </div>
                         <div class="col-4 col-md-2 col-xl-2">
                             <button class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onSearch()">
@@ -33,15 +36,15 @@
                             </button>
                         </div>
                         <div class="col-4 col-md-2 col-xl-2">
-                            <a class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onDetail('')">
+                            <a class="btn btn-outline-success mt-1 mt-md-0 w-100" onclick="onDetail()">
                                 <i class="fas fa-plus"></i>
                                 Thêm
                             </a>
                         </div>
                     </div>
                 </div>
-                <hr/>
-                <div class="row w-100 m-0 mt-2" id="list-post">
+                <hr class="my-1"/>
+                <div class="row w-100 m-0 mt-2" id="list-category">
                     
                 </div>
             </div>
@@ -52,32 +55,43 @@
 <script src="~/lib/jquery.blockUI/jquery.blockUI.min.js"></script>
 <script src="~/lib/sweetalert/sweetalert.min.js"></script>
 <script>
+    onDetail = (id) => {
+        console.log(id);
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Modal","ProductCategory")',
+            data: {
+                id: id
+            },
+            success: (res) => {
+                $('#modal-area-content').empty();
+                $('#modal-area-content').html(res);
+            },
+        }).done(() => {
+            onInit(() => {
+                onSearch();
+            })
+        })
+    }
+
     onSearch = () => {
         $.ajax({
             type: 'GET',
-            url: '@Url.Action("List","Product")',
+            url: '@Url.Action("List","ProductCategory")',
             data: {
-                keywords: $('#keywords').val(),
+                keywords: $('#Keywords').val(),
             },
             success: (res) => {
-                $('#list-post').empty();
-                $('#list-post').html(res);
+                $('#list-category').empty();
+                $('#list-category').html(res);
             },
         })
     }
 
-    onDetail = (id) => {
-        var url = "@Url.Action("Detail","Product")" + "/" + id;
-        window.location = url;
-    }
-     onImage = (id) => {
-        var url = "@Url.Action("Index","ProductImage")" + "/" + id;
-        window.location = url;
-    }
     onDelete = (id) => {
         $.ajax({
-            type:'POST',
-            url: '@Url.Action("Delete","Product")',
+            type: 'GET',
+            url: '@Url.Action("Delete","ProductCategory")',
             data: {
                 id: id
             },

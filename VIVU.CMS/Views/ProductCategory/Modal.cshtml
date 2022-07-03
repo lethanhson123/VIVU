@@ -1,0 +1,99 @@
+﻿@using VIVU.Shared.Model
+@model ProductCategoryModel
+
+<script>
+    var _closeCallbackFunc = null;
+    onInit = (closeCallbackFunc) => {
+        $('#category-detail-modal').modal('show');
+        $('#category-detail-modal').on('hidden.bs.modal', closeCallbackFunc);
+    }
+</script>
+<div class="modal fade" id="category-detail-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header p-2">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin danh mục</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-2">
+                <form id="category-modal-form">
+                     <div class="row w-100 m-0 mt-2">
+                        <div class="col-md-1 mt-2"><b>Mã:</b></div>
+                        <div class="col-md-11">
+                            <input class="form-control" placeholder="Mã tự sinh" asp-for="Id"  readonly/>
+                        </div>
+                    </div>
+
+                    <div class="row w-100 m-0 mt-2">
+                        <div class="col-md-1 mt-2"><b>Tên:</b></div>
+                        <div class="col-md-11">
+                            <input class="form-control" placeholder="VD: Cây treo quần áo....." asp-for="Name" />
+                        </div>
+                    </div>
+                    <hr class="my-2" />
+                    <hr class="my-2" />
+                    <div class="row w-100 m-0 mt-2">
+                        <div class="col-md-1 mt-2"><b>Mô tả:</b></div>
+                        <div class="col-md-11">
+                            <textarea class="form-control" rows="5" placeholder="" asp-for="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="row w-100 m-0 mt-2">
+                        <div class="col-md-1 mt-2"><b>ParentId:</b></div>
+                        <div class="col-md-11">
+                            <input class="form-control" placeholder="Mã của danh mục" asp-for="ParentId" />
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer p-1">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+                <button type="button" class="btn btn-primary" onclick="onSave()">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery.blockUI/jquery.blockUI.min.js"></script>
+<script src="~/lib/sweetalert/sweetalert.min.js"></script>
+<script>
+    onSave = () => {
+        $.blockUI({ message: 'Hệ thống đang xử lý vui lòng chờ...' })
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("SaveChange")',
+            data: $('#category-modal-form').serialize(),
+            success: (res) => {
+                if (res.success == true) {
+                    swal({
+                        title: "Thông báo",
+                        text: "Dữ liệu lưu thành công!",
+                        icon: "success"
+                    });
+                }
+                else {
+                    swal({
+                        title: "Lỗi",
+                        text: res.message,
+                        icon: "error"
+                    });
+                }
+            },
+            error: (xhr, err) => {
+                $.unblockUI();
+                swal({
+                    title: "Lỗi",
+                    text: "Có lỗi trong quá trình xử lý, vui lòng thử lại sau",
+                    icon: "error"
+                });
+                console.log(xhr.responseText);
+            }
+        }).done(() => {
+            $.unblockUI();
+            $('#category-detail-modal').modal('hide');
+        })
+    }
+
+</script>

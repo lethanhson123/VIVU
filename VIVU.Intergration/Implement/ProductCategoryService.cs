@@ -44,7 +44,7 @@ public class ProductCategoryService : IProductCategoryService
     /// <param name="request"></param>
     /// <param name="token"></param>
     /// <returns></returns>
-    public Task<CommonResponseModel<IEnumerable<ProductCategoryModel>>> Get(ProductCategoryQueryModel request, string token = "")
+    public Task<CommonResponseModel<IEnumerable<ProductCategoryModel>>> GetWithQuery(ProductCategoryQueryModel request, string token = "")
     {
 
         var response = new CommonResponseModel<IEnumerable<ProductCategoryModel>>();
@@ -54,7 +54,6 @@ public class ProductCategoryService : IProductCategoryService
             var headers = new Dictionary<string, string>();
             var path = string.Format("{0}{1}?{2}", clientConfig.Host, clientConfig.ProductCategoryGetWithQuery, request.ToQueryStringData());
 
-            headers.Add("Authorization", token);
             var remoteResponse = client
                 .ExecuteGet<CommonResponseModel<IEnumerable<ProductCategoryModel>>>(
                    path, null, headers);
@@ -76,8 +75,6 @@ public class ProductCategoryService : IProductCategoryService
             var client = httpClientFactory.CreateClient();
             var headers = new Dictionary<string, string>();
             var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.ProductCategory, Id);
-
-            headers.Add("Authorization",token);
             var remoteResponse = client
                 .ExecuteGet<CommonResponseModel<ProductCategoryModel>>(
                    path, null, headers);
@@ -100,7 +97,7 @@ public class ProductCategoryService : IProductCategoryService
             var headers = new Dictionary<string, string>();
             var path = string.Format("{0}{1}", clientConfig.Host, clientConfig.ProductCategory);
 
-            headers.Add("Authorization",token);
+            headers.Add("Authorization","Bearer "+ token);
             var remoteResponse = client.ExecutePost<CommonResponseModel<ProductCategoryModel>>(
                 path, request, null, headers);
             response = remoteResponse.Result.Data ??
@@ -122,7 +119,7 @@ public class ProductCategoryService : IProductCategoryService
             var headers = new Dictionary<string, string>();
             var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.ProductCategory, request.Id);
 
-            headers.Add("Authorization", token);
+            headers.Add("Authorization","Bearer " + token);
             var remoteResponse = client.ExecutePut<CommonResponseModel<object>>(
                path, request, null, headers);
             response = remoteResponse.Result.Data ??
@@ -144,7 +141,7 @@ public class ProductCategoryService : IProductCategoryService
             var headers = new Dictionary<string, string>();
             var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.ProductCategory, Id);
 
-            headers.Add("Authorization",token);
+            headers.Add("Authorization","Bearer " + token);
             var remoteResponse = client.ExecuteDelete<CommonResponseModel<object>>(
                path, null, null, headers);
             response = remoteResponse.Result.Data ??

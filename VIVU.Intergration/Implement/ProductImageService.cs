@@ -1,12 +1,12 @@
 ﻿
 namespace VIVU.Intergration.Implement;
 
-public class ProductService : IProductService
+public class ProductImageService : IProductImageService
 {
     private readonly IHttpClientFactory httpClientFactory;
     private readonly ClientConfig clientConfig;
 
-    public ProductService(IHttpClientFactory httpClientFactory,
+    public ProductImageService(IHttpClientFactory httpClientFactory,
            IOptions<ClientConfig> clientConfig)
     {
         this.httpClientFactory = httpClientFactory;
@@ -17,20 +17,19 @@ public class ProductService : IProductService
     /// </summary>
     /// <param name="token"></param>
     /// <returns></returns>
-    public Task<CommonResponseModel<IEnumerable<ProductModel>>> Get(string token = "")
+    public Task<CommonResponseModel<IEnumerable<ProductImageModel>>> Get(string token = "")
     {
-        var response = new CommonResponseModel<IEnumerable<ProductModel>>();
+        var response = new CommonResponseModel<IEnumerable<ProductImageModel>>();
         try
         {
             var client = httpClientFactory.CreateClient();
             var headers = new Dictionary<string, string>();
-            var path = string.Format("{0}{1}", clientConfig.Host, clientConfig.Product);
-            headers.Add("Authorization", token);
+            var path = string.Format("{0}{1}", clientConfig.Host, clientConfig.ProductImage);
             var remoteResponse = client
-                .ExecuteGet<CommonResponseModel<IEnumerable<ProductModel>>>(
+                .ExecuteGet<CommonResponseModel<IEnumerable<ProductImageModel>>>(
                    path, null, headers);
             response = remoteResponse.Result.Data ??
-                new CommonResponseModel<IEnumerable<ProductModel>>();
+                new CommonResponseModel<IEnumerable<ProductImageModel>>();
         }
         catch (Exception ex)
         {
@@ -44,21 +43,21 @@ public class ProductService : IProductService
     /// <param name="request"></param>
     /// <param name="token"></param>
     /// <returns></returns>
-    public Task<CommonResponseModel<IEnumerable<ProductModel>>> GetWithQuery(ProductQueryModel request, string token = "")
+    public Task<CommonResponseModel<IEnumerable<ProductImageModel>>> GetWithQuery(ProductImageQueryModel request, string token = "")
     {
 
-        var response = new CommonResponseModel<IEnumerable<ProductModel>>();
+        var response = new CommonResponseModel<IEnumerable<ProductImageModel>>();
         try
         {
             var client = httpClientFactory.CreateClient();
             var headers = new Dictionary<string, string>();
-            var path = string.Format("{0}{1}?{2}", clientConfig.Host, clientConfig.ProductGetWithQuery, request.ToQueryStringData());
+            var path = string.Format("{0}{1}?{2}", clientConfig.Host, clientConfig.ProductImageGetWithQuery, request.ToQueryStringData());
 
             var remoteResponse = client
-                .ExecuteGet<CommonResponseModel<IEnumerable<ProductModel>>>(
+                .ExecuteGet<CommonResponseModel<IEnumerable<ProductImageModel>>>(
                    path, null, headers);
             response = remoteResponse.Result.Data ??
-                new CommonResponseModel<IEnumerable<ProductModel>>();
+                new CommonResponseModel<IEnumerable<ProductImageModel>>();
         }
         catch (Exception ex)
         {
@@ -67,19 +66,19 @@ public class ProductService : IProductService
         return Task.FromResult(response);
     }
 
-    public Task<CommonResponseModel<ProductModel>> GetDetail(string Id,string token)
+    public Task<CommonResponseModel<ProductImageModel>> GetDetail(int Id,string token)
     {
-        var response = new CommonResponseModel<ProductModel>();
+        var response = new CommonResponseModel<ProductImageModel>();
         try
         {
             var client = httpClientFactory.CreateClient();
             var headers = new Dictionary<string, string>();
-            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.Product, Id);
+            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.ProductImage, Id);
             var remoteResponse = client
-                .ExecuteGet<CommonResponseModel<ProductModel>>(
+                .ExecuteGet<CommonResponseModel<ProductImageModel>>(
                    path, null, headers);
             response = remoteResponse.Result.Data ??
-                new CommonResponseModel<ProductModel>();
+                new CommonResponseModel<ProductImageModel>();
         }
         catch (Exception ex)
         {
@@ -87,21 +86,21 @@ public class ProductService : IProductService
         }
         return Task.FromResult(response);
     }
-    public Task<CommonResponseModel<ProductModel>> Create(ProductModel request, string token ="")
+    public Task<CommonResponseModel<ProductImageModel>> Create(ProductImageModel request, string token ="")
     {
-        var response = new CommonResponseModel<ProductModel>();
+        var response = new CommonResponseModel<ProductImageModel>();
 
         try
         {
             var client = httpClientFactory.CreateClient();
             var headers = new Dictionary<string, string>();
-            var path = string.Format("{0}{1}", clientConfig.Host, clientConfig.Product);
+            var path = string.Format("{0}{1}", clientConfig.Host, clientConfig.ProductImage);
 
             headers.Add("Authorization","Bearer " + token);
-            var remoteResponse = client.ExecutePost<CommonResponseModel<ProductModel>>(
+            var remoteResponse = client.ExecutePost<CommonResponseModel<ProductImageModel>>(
                 path, request, null, headers);
             response = remoteResponse.Result.Data ??
-                new CommonResponseModel<ProductModel>();
+                new CommonResponseModel<ProductImageModel>();
         }
         catch (Exception ex)
         {
@@ -110,14 +109,14 @@ public class ProductService : IProductService
 
         return Task.FromResult(response);
     }
-    public Task<CommonResponseModel<object>> Update(ProductModel request, string token = "") {
+    public Task<CommonResponseModel<object>> Update(ProductImageModel request, string token = "") {
         var response = new CommonResponseModel<object>();
 
         try
         {
             var client = httpClientFactory.CreateClient();
             var headers = new Dictionary<string, string>();
-            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.Product,request.Id);
+            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.ProductImage, request.Id);
 
             headers.Add("Authorization", "Bearer " + token);
             var remoteResponse = client.ExecutePut<CommonResponseModel<object>>(
@@ -132,14 +131,14 @@ public class ProductService : IProductService
 
         return Task.FromResult(response);
     }
-    public Task<CommonResponseModel<object>> Delete(string Id, string token = "") {
+    public Task<CommonResponseModel<object>> Delete(int Id, string token = "") {
         var response = new CommonResponseModel<object>();
 
         try
         {
             var client = httpClientFactory.CreateClient();
             var headers = new Dictionary<string, string>();
-            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.Product, Id);
+            var path = string.Format("{0}{1}/{2}", clientConfig.Host, clientConfig.ProductImage, Id);
 
             headers.Add("Authorization", "Bearer " + token);
             var remoteResponse = client.ExecuteDelete<CommonResponseModel<object>>(

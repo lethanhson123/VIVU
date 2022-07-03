@@ -19,6 +19,7 @@ namespace VIVU.Intergration
             services.AddScoped<IAuthenticateHelper, AuthenticateHelper>();
             services.AddScoped<ICategoriesService, CategoryService>();
             services.AddScoped<ITagService, TagService>();
+            services.AddScoped<IProductImageService, ProductImageService>();
             return services;
         }
 

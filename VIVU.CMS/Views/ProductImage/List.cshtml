@@ -1,5 +1,5 @@
 ﻿@using VIVU.Shared.Model
-@model IEnumerable<ProductModel>
+@model IEnumerable<ProductImageModel>
 
 @if(Model != null &&
    Model.Any())
@@ -10,18 +10,15 @@
             <div class="card-body p-1">
                 <div class="row w-100 m-0">
                     <div class="col-md-10">
-                        <h6 class="mb-0">@product.Id </h6>
-                        <p class="mb-0" style="font-size:12px;">Tên: @product.Name</p>
-                        <p class="mb-0" style="font-size:12px;">SKU: @product.SKU</p>
-                        <p class="mb-0" style="font-size:12px;">Giá bán:  @product.DeliverPrice </p>
+                        <h6 class="mb-0">@product.ProductId </h6>
+                        <p class="mb-0" style="font-size:12px;">Tên: @product.Title</p>
+                        <p class="mb-0" style="font-size:12px;">Sắp xếp: @product.SortOrder</p>
+                        <p class="mb-0" style="font-size:12px;">Loại:  @product.FileType </p>
                     </div>
                     <div class="col-md-2">
                         <div class="float-end">
-                            <button class="btn btn-outline-success mx-1" onclick="onDetail('@product.Id')">
+                            <button class="btn btn-outline-success mx-1" onclick="onDetail('@product.Id','@product.ProductId')">
                                 <i class="fa-solid fa-pen"></i>
-                            </button>
-                             <button class="btn btn-outline-success mx-1" onclick="onImage('@product.Id')">
-                                <i class="fa fa-file-image-o"></i>
                             </button>
                             <button class="btn btn-outline-danger mx-1" onclick="onDelete('@product.Id')">
                                 <i class="fa-solid fa-trash"></i>

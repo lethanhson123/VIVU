@@ -33,10 +33,28 @@ namespace VIVU.CMS.Controllers
             }
             return View(model);
         }
+        public async Task<ActionResult> Modal(string id)
+        {
+            var model = new ProductCategoryModel();
 
+            if (!string.IsNullOrEmpty(id))
+            {
+                var remoteResponseData = await productCategoryService.GetDetail(id);
+
+                if (remoteResponseData.Data != null)
+                {
+                    model = remoteResponseData.Data;
+                }
+            }
+
+            return PartialView(model);
+        }
         public async Task<ActionResult> List(ProductCategoryQueryModel query)
         {
-            var remoteResponseData = await productCategoryService.Get(query.Keywords ?? string.Empty);
+            query.Keywords = query.Keywords ?? string.Empty;
+            query.PageIndex = query.PageIndex > 1 ? query.PageIndex : 1;
+            query.Limit = query.Limit > 0 ? query.Limit : 1000;
+            var remoteResponseData = await productCategoryService.GetWithQuery(query);
             var model = remoteResponseData.Data;
             return PartialView(model);
         }

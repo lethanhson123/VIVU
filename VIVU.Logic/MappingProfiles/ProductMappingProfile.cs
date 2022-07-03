@@ -1,13 +1,13 @@
 ﻿namespace VIVU.Logic.MappingProfiles;
 
-public class ProductCategoryMappingProfile : Profile
+public class ProductMappingProfile : Profile
 {
-    public ProductCategoryMappingProfile()
+    public ProductMappingProfile()
     {
-        CreateMap<ProductCategoryModel, Product>();
-        CreateMap<Product, ProductCategoryModel>();
-        CreateMap<CreateProductCategoryCommand, Product>();
-        CreateMap<UpdateProductCategoryCommand, Product>();
-        CreateMap<DeleteProductCategoryCommand, Product>();
+        CreateMap<ProductModel, Product>();
+        CreateMap<Product, ProductModel>();
+        CreateMap<CreateProductCommand, Product>();
+        CreateMap<UpdateProductCommand, Product>();
+        CreateMap<DeleteProductCommand, Product>();
     }
 }

@@ -35,7 +35,10 @@ public class ProductController : Controller
 
     public async Task<ActionResult> List(ProductQueryModel query)
     {
-        var remoteResponseData = await productService.Get(query.Keywords ?? string.Empty);
+        query.Keywords = query.Keywords ?? string.Empty;
+        query.PageIndex = query.PageIndex > 1 ? query.PageIndex : 1;
+        query.Limit = query.Limit > 0 ? query.Limit : 1000;
+        var remoteResponseData = await productService.GetWithQuery(query);
         var model = remoteResponseData.Data;
         return PartialView(model);
     }

@@ -7,4 +7,5 @@ public class ProductImage : CommonAudit
     public string UrlLink { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string FileType { get; set; } = string.Empty;
+    public int SortOrder { get; set; }
 }
